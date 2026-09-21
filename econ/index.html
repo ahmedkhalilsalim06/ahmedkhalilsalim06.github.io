@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Econ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF0F4; --surface:#FFFFFF; --surface-2:#F7F8FA; --surface-3:#E8EAF0;
+  --ink:#15181F; --ink-2:#3D434F; --muted:#6B7284;
+  --rule:#DCE0E8; --rule-soft:#E9ECF1;
+  --accent:#33368C; --accent-soft:#E6E7F5;
+  --live:#1B6A4B; --live-bg:#E2F0E9;
+  --arch:#8A5410; --arch-bg:#F6EBDA;
+  --ext:#5A4B7C; --ext-bg:#EDE9F4;
+  --focus:#33368C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101319; --surface:#181C24; --surface-2:#1E232C; --surface-3:#161A21;
+    --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+    --rule:#2A303B; --rule-soft:#232932;
+    --accent:#A3A5F0; --accent-soft:#23264A;
+    --live:#6FCB9B; --live-bg:#163024;
+    --arch:#E0AE64; --arch-bg:#33260F;
+    --ext:#BDAEE6; --ext-bg:#262040;
+    --focus:#A3A5F0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101319; --surface:#181C24; --surface-2:#1E232C; --surface-3:#161A21;
+  --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+  --rule:#2A303B; --rule-soft:#232932;
+  --accent:#A3A5F0; --accent-soft:#23264A;
+  --live:#6FCB9B; --live-bg:#163024;
+  --arch:#E0AE64; --arch-bg:#33260F;
+  --ext:#BDAEE6; --ext-bg:#262040;
+  --focus:#A3A5F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:2px}
+.wrap{max-width:940px; margin:0 auto; padding:0 24px 96px}
+
+/* masthead */
+.mast{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 14px
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(34px,5.2vw,52px);
+  line-height:1.1; margin:0 0 16px; text-wrap:balance; letter-spacing:-.01em
+}
+.lede{max-width:62ch; color:var(--ink-2); font-size:17px; margin:0 0 28px}
+.tally{display:flex; flex-wrap:wrap; gap:10px}
+.tally span{
+  font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.03em;
+  padding:5px 11px; border:1px solid var(--rule); border-radius:999px; color:var(--ink-2);
+  background:var(--surface); font-variant-numeric:tabular-nums
+}
+.callout{
+  margin:28px 0 0; padding:18px 20px; background:var(--accent-soft);
+  border-left:3px solid var(--accent); border-radius:0 4px 4px 0;
+}
+.callout p{margin:0 0 10px; font-size:15px; color:var(--ink-2); max-width:64ch}
+.callout p:last-child{margin:0}
+
+/* toc */
+.toc{display:flex; flex-direction:column; margin:36px 0 0; border-top:1px solid var(--rule-soft)}
+.toc-link{
+  display:flex; align-items:baseline; gap:16px; padding:13px 4px;
+  border-bottom:1px solid var(--rule-soft); text-decoration:none; color:var(--ink)
+}
+.toc-link:hover{background:var(--surface-2)}
+.toc-code{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); min-width:88px}
+.toc-title{font-family:Spectral,Georgia,serif; font-size:18px; flex:1}
+.toc-n{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums; white-space:nowrap}
+.toc-side{color:var(--muted)}
+
+/* course */
+.course{padding-top:64px; scroll-margin-top:16px}
+.course-head{border-bottom:2px solid var(--ink); padding-bottom:18px; margin-bottom:6px}
+.course-id{
+  font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.12em;
+  color:var(--accent); margin-bottom:6px
+}
+.course-head h2{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(26px,3.6vw,34px);
+  margin:0 0 12px; line-height:1.2; text-wrap:balance
+}
+.blurb{margin:0 0 14px; color:var(--ink-2); max-width:66ch; font-size:15.5px}
+.course-meta{
+  display:flex; gap:18px; align-items:baseline; font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px; color:var(--muted); flex-wrap:wrap
+}
+.course-meta strong{color:var(--ink); font-weight:500}
+.who-line{
+  margin-top:10px; font-family:"IBM Plex Mono",monospace; font-size:12px;
+  color:var(--muted); font-variant-numeric:tabular-nums
+}
+
+/* group */
+.grp{padding-top:30px}
+.grp-head{display:flex; align-items:baseline; gap:12px}
+.grp-head h3,.fold-h{
+  font-family:"Public Sans",sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:.1em; text-transform:uppercase; margin:0; color:var(--ink)
+}
+.count{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+  font-variant-numeric:tabular-nums
+}
+.grp-note{margin:8px 0 0; font-size:14.5px; color:var(--muted); max-width:64ch; font-style:italic}
+.items{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column}
+.item{
+  display:grid; grid-template-columns:1fr auto auto; gap:8px 14px; align-items:baseline;
+  padding:10px 2px; border-bottom:1px solid var(--rule-soft)
+}
+.item:hover{background:var(--surface-2)}
+.item a{text-decoration:none; font-size:15.5px; color:var(--ink); border-bottom:1px solid transparent}
+.item a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+.who{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); white-space:nowrap}
+.badge{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.09em;
+  padding:2px 7px; border-radius:3px; white-space:nowrap
+}
+.badge.live{color:var(--live); background:var(--live-bg)}
+.badge.archive{color:var(--arch); background:var(--arch-bg)}
+.badge.ext{color:var(--ext); background:var(--ext-bg)}
+
+/* folds */
+details summary{cursor:pointer; list-style:none}
+details summary::-webkit-details-marker{display:none}
+.fold>summary{display:flex; align-items:baseline; gap:12px; padding:2px 0}
+.fold-cue{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--accent); margin-left:auto
+}
+details[open]>summary .fold-cue::after{content:"\2009\2212"}
+details:not([open])>summary .fold-cue::after{content:"\2009+"}
+.fold>summary:hover .fold-h{color:var(--accent)}
+
+/* aside — side material */
+.side{
+  margin-top:44px; background:var(--surface-3); border:1px solid var(--rule);
+  border-left:3px solid var(--muted); border-radius:0 5px 5px 0; padding:20px 22px 4px
+}
+.side>details>summary{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding-bottom:2px}
+.side-eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted); border:1px solid var(--rule);
+  border-radius:999px; padding:2px 9px; background:var(--surface)
+}
+.side-h{font-family:Spectral,Georgia,serif; font-size:20px; font-weight:600; color:var(--ink-2)}
+.side>details>summary:hover .side-h{color:var(--accent)}
+.side-note{margin:12px 0 0; font-size:14.5px; color:var(--muted); max-width:64ch; font-style:italic}
+.side .grp{padding-top:26px}
+.side .item a{font-size:15px}
+.side .grp:last-child .items{margin-bottom:14px}
+
+/* notes + footer */
+.notes{margin-top:80px; padding-top:28px; border-top:1px solid var(--rule)}
+.notes h2{font-family:Spectral,Georgia,serif; font-weight:600; font-size:24px; margin:0 0 6px}
+.notes h4{
+  font-family:"Public Sans",sans-serif; font-size:13px; letter-spacing:.09em;
+  text-transform:uppercase; margin:26px 0 6px; color:var(--ink)
+}
+.notes p{margin:0 0 10px; color:var(--ink-2); max-width:66ch; font-size:15px}
+code{font-family:"IBM Plex Mono",monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px}
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--rule); color:var(--muted); font-size:13.5px}
+@media (max-width:560px){
+  .item{grid-template-columns:1fr auto}
+  .who{grid-column:1 / -1; order:3}
+  .toc-code{min-width:0}
+  .side{padding:16px 14px 4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">İhsan Doğramacı Bilkent University · past papers and course material</p>
+    <h1>Econ</h1>
+    <p class="lede">ECON 101, MATH 105 and CS 125 — everything Bilkent instructors published openly for these three courses, and an honest account of what does not exist.</p>
+    <div class="tally">
+      <span>85 items for the three courses</span>
+      <span>57 side material</span>
+      <span>30 live</span>
+      <span>108 recovered from archive</span>
+      <span>9 instructors</span>
+    </div>
+    <div class="callout">
+      <p><strong>Each course section is only that course.</strong> Anything belonging to a neighbouring course — MATH 106, macroeconomics, CS 115 — is folded into a grey <em>Side material</em> panel at the end of its section, closed by default. Nothing there is what you asked for; it is there because in two of the three cases the course itself has almost nothing.</p>
+      <p><strong>Read the badges.</strong> <span class="badge live">LIVE</span> means the file is still on a Bilkent server. <span class="badge archive">ARCHIVE</span> means the instructor’s folder has been deleted and the link goes to the Internet Archive’s copy — those occasionally take a few seconds to rebuild, and a first click that stalls usually works on the second. <span class="badge ext">EXTERNAL</span> is neither.</p>
+    </div>
+    <nav class="toc">
+<a class="toc-link" href="#ECON101"><span class="toc-code">ECON 101</span><span class="toc-title">Introduction to Economics I</span><span class="toc-n">71<span class="toc-side"> + 4</span></span></a>
+<a class="toc-link" href="#MATH105"><span class="toc-code">MATH 105</span><span class="toc-title">Introduction to Calculus I</span><span class="toc-n">12<span class="toc-side"> + 45</span></span></a>
+<a class="toc-link" href="#CS125"><span class="toc-code">CS 125</span><span class="toc-title">Introduction to Data Analysis for Social Sciences</span><span class="toc-n">2<span class="toc-side"> + 8</span></span></a>
+    </nav>
+  </header>
+
+  <article class="course" id="ECON101">
+    <header class="course-head">
+      <div class="course-id">ECON 101</div>
+      <h2>Introduction to Economics I</h2>
+      <p class="blurb">Bilkent’s first-year principles course. Five instructors put material online over twenty years. Taner Yiğit’s site is still serving files today; the folders of Çağla Ökten, Osman Zaim, Selin Sayek Böke and Tarık Kara were deleted when Bilkent retired personal pages, so their material comes back through the Internet Archive.</p>
+      <div class="course-meta">
+        <span><strong>71</strong> items for this course</span>
+        <span>4 to the side</span>
+        <a href="https://catalog.bilkent.edu.tr/course/c05101.html" target="_blank" rel="noopener">Catalogue entry</a>
+      </div>
+      <div class="who-line">S. Sayek Böke&nbsp;27 · T. Yiğit&nbsp;19 · T. Kara&nbsp;10 · Ç. Ökten&nbsp;9 · O. Zaim&nbsp;6</div>
+    </header>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Exams, answer keys and practice papers</h3>
+      <span class="count">11</span>
+    </div>
+    <p class="grp-note">Ökten’s two midterms come with full answer keys — the only marked-up ECON 101 papers in public. Yiğit’s two are real sat papers; the rest are the practice sets handed out before exams. There is no public final.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20060111101229id_/http://www.bilkent.edu.tr:80/~cokten/econ101/Midterm1.doc" target="_blank" rel="noopener">Midterm 1 — question paper</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20060111092134id_/http://www.bilkent.edu.tr:80/~cokten/econ101/Midterm1as.doc" target="_blank" rel="noopener">Midterm 1 — answer key</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20060323224326id_/http://www.bilkent.edu.tr:80/~cokten/econ101/Midterm2.doc" target="_blank" rel="noopener">Midterm 2 — question paper</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20060111111837id_/http://www.bilkent.edu.tr:80/~cokten/econ101/Midterm2as.doc" target="_blank" rel="noopener">Midterm 2 — answer key</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20041108183955id_/http://www.bilkent.edu.tr:80/~cokten/econ101/q07-1as.doc" target="_blank" rel="noopener">Quiz 7 — with answers</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20041108145709id_/http://www.bilkent.edu.tr:80/~cokten/econ101/q10-1as.doc" target="_blank" rel="noopener">Quiz 10 — with answers</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20041108153314id_/http://www.bilkent.edu.tr:80/~cokten/econ101/Sample%20Questions.doc" target="_blank" rel="noopener">Sample exam questions</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/prinmid1.pdf" target="_blank" rel="noopener">Midterm 1 — principles section</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/mid2ans.pdf" target="_blank" rel="noopener">Midterm 2 — with answers</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/exercise_midterm1_spring2010.pdf" target="_blank" rel="noopener">Spring 2010 — Midterm 1 practice set</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/final_practice_problems.pdf" target="_blank" rel="noopener">Final — practice problems</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Homework</h3>
+      <span class="count">20</span>
+    </div>
+    <p class="grp-note">Six semesters, four instructors, newest first.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20120317023725id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/hw/econ101_112_hw01.pdf" target="_blank" rel="noopener">Spring 2012 — Homework 1</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120317023731id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/hw/econ101_112_hw02.pdf" target="_blank" rel="noopener">Spring 2012 — Homework 2</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/ECON101_HW1_spring2011.pdf" target="_blank" rel="noopener">Spring 2011 — Homework 1</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/ECON101_HW2_spring2011.pdf" target="_blank" rel="noopener">Spring 2011 — Homework 2</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100525011413id_/http://www.bilkent.edu.tr:80/~sayek/econhw2polsir.pdf" target="_blank" rel="noopener">Spring 2010, POLS/IR — Homework 2</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100525011419id_/http://www.bilkent.edu.tr:80/~sayek/econhw3polsirSP2010.pdf" target="_blank" rel="noopener">Spring 2010, POLS/IR — Homework 3</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20130120181122id_/http://www.bilkent.edu.tr:80/~sayek/econhw4polsirSP2010.pdf" target="_blank" rel="noopener">Spring 2010, POLS/IR — Homework 4</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20130120181126id_/http://www.bilkent.edu.tr:80/~sayek/econhw5polsirSP2010.pdf" target="_blank" rel="noopener">Spring 2010, POLS/IR — Homework 5</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100525011423id_/http://www.bilkent.edu.tr:80/~sayek/econhw6polsirSP2010.pdf" target="_blank" rel="noopener">Spring 2010, POLS/IR — Homework 6</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120127062918id_/http://www.bilkent.edu.tr:80/~sayek/econ101hw2.pdf" target="_blank" rel="noopener">Fall 2009 — Homework 2</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091122203557id_/http://www.bilkent.edu.tr:80/~sayek/econ101hw3.pdf" target="_blank" rel="noopener">Fall 2009 — Homework 3</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120127062859id_/http://www.bilkent.edu.tr:80/~sayek/HW4.pdf" target="_blank" rel="noopener">Fall 2009 — Homework 4</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120127062906id_/http://www.bilkent.edu.tr:80/~sayek/HW5.pdf" target="_blank" rel="noopener">Fall 2009 — Homework 5</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_hw01.pdf" target="_blank" rel="noopener">Large-class section — Homework 1</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_hw02.pdf" target="_blank" rel="noopener">Large-class section — Homework 2</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20130424084408id_/http://www.bilkent.edu.tr:80/~sayek/hw2.doc" target="_blank" rel="noopener">2003 — Homework 2</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20011229121413id_/http://www.bilkent.edu.tr:80/~zaim/ECON101-HW1.html" target="_blank" rel="noopener">2001 — Homework 1</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/hw1.doc" target="_blank" rel="noopener">Early set — Homework 1</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/hw1answer.doc" target="_blank" rel="noopener">Early set — Homework 1, answers</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/hw2.doc" target="_blank" rel="noopener">Early set — Homework 2</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Exercise sets and discussion-hour handouts</h3>
+      <span class="count">7</span>
+    </div>
+    <p class="grp-note">What the assistants actually worked through in section.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/exercise1.doc" target="_blank" rel="noopener">Exercise set 1</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/exercise2.doc" target="_blank" rel="noopener">Exercise set 2</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091014151114id_/http://www.bilkent.edu.tr:80/~sayek/week1essay.pdf" target="_blank" rel="noopener">Week 1 — the essay exercise</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091014151108id_/http://www.bilkent.edu.tr:80/~sayek/discussion_econ101_Sept2328.pdf" target="_blank" rel="noopener">Sept 23–28 — discussion sheet</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091014151109id_/http://www.bilkent.edu.tr:80/~sayek/discussion_econ101_demandupply_inclass.pdf" target="_blank" rel="noopener">Demand and supply — in-class discussion</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091229063458id_/http://www.bilkent.edu.tr:80/~sayek/discussionweek15_web.pdf" target="_blank" rel="noopener">Week 15 — final discussion sheet</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20130424084210id_/http://www.bilkent.edu.tr:80/~sayek/tutorial5b.pdf" target="_blank" rel="noopener">Tutorial 5b</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Lecture slides and notes</h3>
+      <span class="count">6</span>
+    </div>
+    <p class="grp-note">Osman Zaim taught from PowerPoint and put the decks online in 2001–02, both as click-through slide shows and as one downloadable file. This is the only public ECON 101 lecture material at Bilkent.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20011229124405id_/http://www.bilkent.edu.tr:80/~zaim/week1&amp;2/index.htm" target="_blank" rel="noopener">Weeks 1–2 — “What is Economics?” (52-slide show)</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20020716105137id_/http://www.bilkent.edu.tr:80/~zaim/week1&amp;2/week1&amp;2.PPT" target="_blank" rel="noopener">Weeks 1–2 — PowerPoint deck (.PPT, 167 KB)</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20011229123359id_/http://www.bilkent.edu.tr:80/~zaim/week3/index.htm" target="_blank" rel="noopener">Week 3 — slide show</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20020205225814id_/http://www.bilkent.edu.tr:80/~zaim/week4/index.htm" target="_blank" rel="noopener">Week 4 — slide show</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20020610051908id_/http://www.bilkent.edu.tr:80/~zaim/econ101.htm" target="_blank" rel="noopener">Course page — lecture summaries and download tips</a>
+        <span class="who">O. Zaim</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120527033130id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/notes.html" target="_blank" rel="noopener">Class-notes index — surplus, theory of the firm, monopoly</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Interactive applets</h3>
+      <span class="count">4</span>
+    </div>
+    <p class="grp-note">Tarık Kara built small browser applets for the three diagrams first-years get stuck on. They still run from the archived copy.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20120316063552id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/applets/elasticity.html" target="_blank" rel="noopener">Elasticity</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120316063558id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/applets/tax_burden.html" target="_blank" rel="noopener">Tax burden</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120527033123id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/applets/negative_externality_due_to_production.html" target="_blank" rel="noopener">Negative externality in production</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120316021740id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/applets.html" target="_blank" rel="noopener">Applets index</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <details class="fold">
+      <summary><span class="fold-h">Syllabi and course pages</span><span class="count">23</span><span class="fold-cue">show</span></summary>
+      <p class="grp-note">Twenty years of topic lists and weightings. Mostly useful for matching an old paper to the syllabus it was written against — folded away so it stays out of the way.</p>
+          <ul class="items">
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/syllabus101_new.pdf" target="_blank" rel="noopener">Syllabus — current version</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_syllabus.pdf" target="_blank" rel="noopener">Syllabus — combined ECON 101 / 111 large class</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/intro/syllabus.doc" target="_blank" rel="noopener">Syllabus — early version</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/principles.htm" target="_blank" rel="noopener">Course page — Principles</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/principles_large_class.htm" target="_blank" rel="noopener">Course page — Principles, large class</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/teaching.htm" target="_blank" rel="noopener">Teaching index — every course on this site</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20060111110731id_/http://www.bilkent.edu.tr:80/~cokten/econ101/syllabus101-03.doc" target="_blank" rel="noopener">Syllabus — 2003</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20041108164546id_/http://www.bilkent.edu.tr:80/~cokten/econ101/syllabus-economics101-07.doc" target="_blank" rel="noopener">Syllabus — section 07</a>
+        <span class="who">Ç. Ökten</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111030174859id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/econ101_111_syllabus.pdf" target="_blank" rel="noopener">Syllabus — Fall 2011</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111020204617id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/" target="_blank" rel="noopener">Course page — Spring 2012</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120316063602id_/http://www.bilkent.edu.tr:80/~ktarik/econ101/hw.html" target="_blank" rel="noopener">Homework page — Spring 2012</a>
+        <span class="who">T. Kara</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20031217021334id_/http://www.bilkent.edu.tr:80/~sayek/eco101main.htm" target="_blank" rel="noopener">Course page and description — 2003</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20040214164612id_/http://www.bilkent.edu.tr:80/~sayek/eco101syllabus.htm" target="_blank" rel="noopener">Syllabus — 2003</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20031218232224id_/http://www.bilkent.edu.tr:80/~sayek/eco101homeworks.htm" target="_blank" rel="noopener">Assignments and exam rules — 2003</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20070627024844id_/http://www.bilkent.edu.tr:80/~sayek/eco101description.htm" target="_blank" rel="noopener">Course description</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20130904213517id_/http://www.bilkent.edu.tr/~sayek/econ101syllabus_fall2007.pdf" target="_blank" rel="noopener">Syllabus — Fall 2007</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20081010162956id_/http://www.bilkent.edu.tr:80/~sayek/eco101syllabusECONMAN.pdf" target="_blank" rel="noopener">Syllabus — Fall 2008, ECON and MAN sections</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20081003023201id_/http://www.bilkent.edu.tr:80/~sayek/eco101mainECONMAN.htm" target="_blank" rel="noopener">Course page — Fall 2008, ECON and MAN</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120127062913id_/http://www.bilkent.edu.tr:80/~sayek/eco101syllabusfall09.pdf" target="_blank" rel="noopener">Syllabus — Fall 2009</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20091017033126id_/http://www.bilkent.edu.tr:80/~sayek/eco101econman.htm" target="_blank" rel="noopener">Course page — Fall 2009 (with Yiğit)</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100119190300id_/http://www.bilkent.edu.tr:80/~sayek/syllabuseco101POLSIR.pdf" target="_blank" rel="noopener">Syllabus — Spring 2010, POLS/IR sections</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20090207002049id_/http://www.bilkent.edu.tr:80/~sayek/eco101mainPOLSIR.htm" target="_blank" rel="noopener">Course page — POLS/IR sections</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20090209050140id_/http://www.bilkent.edu.tr:80/~sayek/eco101homeworksPOLSIR.htm" target="_blank" rel="noopener">Assignments page — POLS/IR sections</a>
+        <span class="who">S. Sayek Böke</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+    </details>
+  </section>
+
+  <aside class="side">
+    <details>
+      <summary>
+        <span class="side-eyebrow">Side material</span>
+        <span class="side-h">Not ECON 101</span>
+        <span class="count">4</span>
+        <span class="fold-cue">show</span>
+      </summary>
+      <p class="side-note">Kept off to the side because you did not ask for it. Same instructor, same site, the course ECON 101 feeds into.</p>
+  <section class="grp">
+    <div class="grp-head">
+      <h3>ECON 102 / macroeconomics — Yiğit</h3>
+      <span class="count">4</span>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/macro/Practicequestionsforfinalexams2003.doc" target="_blank" rel="noopener">Practice questions for final exams, 2003</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/macro/exercisequestions1.doc" target="_blank" rel="noopener">Exercise questions 1</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/macro/growth.pdf" target="_blank" rel="noopener">Growth — lecture notes</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://tyigit.bilkent.edu.tr/macro/syllabus.doc" target="_blank" rel="noopener">Macroeconomics syllabus</a>
+        <span class="who">T. Yiğit</span>
+        <span class="badge live">LIVE</span>
+      </li>
+    </ul>
+  </section>
+    </details>
+  </aside>
+  </article>
+
+  <article class="course" id="MATH105">
+    <header class="course-head">
+      <div class="course-id">MATH 105</div>
+      <h2>Introduction to Calculus I</h2>
+      <p class="blurb">The calculus course for economics and business students — limits, differentiation, optimisation, curve sketching, applied to economic problems. Only two instructors ever posted for it and both folders have been deleted, so every link here is an Internet Archive recovery. <strong>This is all of it.</strong> MATH 105 has no public midterm or final; that has now been confirmed twice across the whole science-faculty domain.</p>
+      <div class="course-meta">
+        <span><strong>12</strong> items for this course</span>
+        <span>45 to the side</span>
+        <a href="https://catalog.bilkent.edu.tr/course/c03105.html" target="_blank" rel="noopener">Catalogue entry</a>
+      </div>
+      <div class="who-line">S. Karadağ&nbsp;11 · Ü. Özger&nbsp;1</div>
+    </header>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Quizzes with full solutions</h3>
+      <span class="count">2</span>
+    </div>
+    <p class="grp-note">The only graded MATH 105 papers that were ever posted publicly.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071041id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz1%20exam_solution_2011s.pdf" target="_blank" rel="noopener">2011 — Quiz 1, with solutions</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111125021731id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz2%20exam_solutions_2011.pdf" target="_blank" rel="noopener">2011 — Quiz 2, with solutions</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Exercise sets — 2011</h3>
+      <span class="count">7</span>
+    </div>
+    <p class="grp-note">Seven sets covering the semester in order. These are the course’s working problems.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071045id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%201%20_2011.doc" target="_blank" rel="noopener">Exercise set 1</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071051id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%202%20_2011.doc" target="_blank" rel="noopener">Exercise set 2</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071055id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%203%20_2011.doc" target="_blank" rel="noopener">Exercise set 3</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071100id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%204%20_2011.doc" target="_blank" rel="noopener">Exercise set 4</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071109id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%205%20_2011.doc" target="_blank" rel="noopener">Exercise set 5</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071112id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%206%20_2011.doc" target="_blank" rel="noopener">Exercise set 6</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203071117id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%207%20_2011.doc" target="_blank" rel="noopener">Exercise set 7</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Syllabi and course pages</h3>
+      <span class="count">3</span>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20111203200941id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_%20105_%20syllabus%20(2011-2012).doc" target="_blank" rel="noopener">Syllabus, 2011–12</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20040603131129id_/http://www.fen.bilkent.edu.tr:80/~kumit/105syllabus.htm" target="_blank" rel="noopener">Syllabus and exam schedule, Spring 2003–04</a>
+        <span class="who">Ü. Özger</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20081019085505id_/http://www.fen.bilkent.edu.tr:80/~karadag/Math105_Course-Page.php" target="_blank" rel="noopener">Course homepage, 2008</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <aside class="side">
+    <details>
+      <summary>
+        <span class="side-eyebrow">Side material</span>
+        <span class="side-h">Not MATH 105</span>
+        <span class="count">45</span>
+        <span class="fold-cue">show</span>
+      </summary>
+      <p class="side-note">Kept off to the side because you did not ask for it. MATH 105 itself has no solved exam in public — these do, and they are the closest thing in the same calculus sequence. Take them or leave them.</p>
+  <section class="grp">
+    <div class="grp-head">
+      <h3>MATH 106 — solved exam papers</h3>
+      <span class="count">4</span>
+    </div>
+    <p class="grp-note">Introduction to Calculus II. Özkan’s midterms are printed together with their worked solutions.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816041007id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/mt2.pdf" target="_blank" rel="noopener">Midterm II — printed with full solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816092847id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/mt3.pdf" target="_blank" rel="noopener">Midterm III — printed with full solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100601143245id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_midterm1%20exam_solutions.pdf" target="_blank" rel="noopener">Midterm 1 — full solutions</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20140308155452id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_quiz1%20solutions_2014.pdf" target="_blank" rel="noopener">2014 — Quiz 1, solutions</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <details class="fold">
+      <summary><span class="fold-h">MATH 106 — weekly problem sets, Spring 2003</span><span class="count">21</span><span class="fold-cue">show</span></summary>
+      <p class="grp-note">“Solutions” is the instructor’s own worked answer sheet for that week’s set. Twelve sets, eight of them answered.</p>
+          <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816062753id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week1.pdf" target="_blank" rel="noopener">Week 1 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816060417id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week2.pdf" target="_blank" rel="noopener">Week 2 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816035153id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week2.pdf" target="_blank" rel="noopener">Week 2 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816053116id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week3.pdf" target="_blank" rel="noopener">Week 3 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816083034id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week3.pdf" target="_blank" rel="noopener">Week 3 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816093122id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week4.pdf" target="_blank" rel="noopener">Week 4 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816050301id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week4.pdf" target="_blank" rel="noopener">Week 4 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816070845id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week5.pdf" target="_blank" rel="noopener">Week 5 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816054448id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week5.pdf" target="_blank" rel="noopener">Week 5 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816084634id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week6.pdf" target="_blank" rel="noopener">Week 6 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816073223id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week6.pdf" target="_blank" rel="noopener">Week 6 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816060130id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week7.pdf" target="_blank" rel="noopener">Week 7 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816072029id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week7.pdf" target="_blank" rel="noopener">Week 7 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816092756id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week8.pdf" target="_blank" rel="noopener">Week 8 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816034718id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week9.pdf" target="_blank" rel="noopener">Week 9 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816060741id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week10-11.pdf" target="_blank" rel="noopener">Weeks 10–11 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816064846id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week10-11.pdf" target="_blank" rel="noopener">Weeks 10–11 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816083845id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week12.pdf" target="_blank" rel="noopener">Week 12 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816091522id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/week13-14.pdf" target="_blank" rel="noopener">Weeks 13–14 — problem set</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030820153000id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/106week13-14.pdf" target="_blank" rel="noopener">Weeks 13–14 — solutions</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030222212655id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/homework/main.htm" target="_blank" rel="noopener">Problem-set index</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+    </details>
+  </section>
+
+  <section class="grp">
+    <details class="fold">
+      <summary><span class="fold-h">MATH 106 — summaries, reference sheets, exercises and syllabi</span><span class="count">19</span><span class="fold-cue">show</span></summary>
+          <ul class="items">
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816092944id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/summaryI.pdf" target="_blank" rel="noopener">Summary I</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816091324id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/summaryII.pdf" target="_blank" rel="noopener">Summary II</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816090526id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/summaryIII.pdf" target="_blank" rel="noopener">Summary III</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816075421id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/summaryIV.pdf" target="_blank" rel="noopener">Summary IV</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816040835id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/integraltable.pdf" target="_blank" rel="noopener">Integral table</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030816051424id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/document/trig.htm" target="_blank" rel="noopener">Basic trigonometric relations</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20140308155444id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math106_homework%201%20_2014.pdf" target="_blank" rel="noopener">2014 — Homework 1</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014940id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises2_ANSWERS.pdf" target="_blank" rel="noopener">Exercise set 2 — answers</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014912id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises3-4-5%20(ANSWERS).pdf" target="_blank" rel="noopener">Exercise sets 3–5 — answers</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120216113622id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_exercises%201%20_2012.doc" target="_blank" rel="noopener">2012 — Exercise set 1</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014921id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math106_exercises_%202%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 2</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014916id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises_%203%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 3</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014944id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises5%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 5</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030501142141id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/fenis.html" target="_blank" rel="noopener">Course page, Spring 2003</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030501204712id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/syllabus_and_course_information.htm" target="_blank" rel="noopener">Syllabus and course information, 2003</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20030222212220id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math106/course_policies.htm" target="_blank" rel="noopener">Course policies, 2003</a>
+        <span class="who">G. Özkan</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20100326014933id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_02-04-05_syllabus.doc" target="_blank" rel="noopener">Syllabus, sections 02/04/05</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20120216113631id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_syllabus_2012.doc" target="_blank" rel="noopener">Syllabus, 2012</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://web.archive.org/web/20090221031617id_/http://www.fen.bilkent.edu.tr:80/~karadag/Math106_Course-Page.php" target="_blank" rel="noopener">Course homepage, 2009</a>
+        <span class="who">S. Karadağ</span>
+        <span class="badge archive">ARCHIVE</span>
+      </li>
+    </ul>
+    </details>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Elsewhere</h3>
+      <span class="count">1</span>
+    </div>
+    <p class="grp-note">MATH 105 is the lighter version of MATH 101 — same limits, derivatives and optimisation, fewer proofs. That archive is by far the biggest source of solved calculus questions at Bilkent.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://ahmedkhalilsalim06.github.io/math101/" target="_blank" rel="noopener">Bilkent MATH 101 archive — 559 exams, quizzes and homework sets</a>
+        <span class="who">this collection</span>
+        <span class="badge ext">EXTERNAL</span>
+      </li>
+    </ul>
+  </section>
+    </details>
+  </aside>
+  </article>
+
+  <article class="course" id="CS125">
+    <header class="course-head">
+      <div class="course-id">CS 125</div>
+      <h2>Introduction to Data Analysis for Social Sciences</h2>
+      <p class="blurb">Python for social scientists — IDLE and Jupyter, variables and control flow, lists and dictionaries, then numpy, pandas and matplotlib on real datasets. <strong>No Bilkent instructor has ever posted material for this course in public.</strong> Rechecked for this update; the answer did not move. The two items below are the whole official record, and everything else is off to the side.</p>
+      <div class="course-meta">
+        <span><strong>2</strong> items for this course</span>
+        <span>8 to the side</span>
+        <a href="https://catalog.bilkent.edu.tr/course/c11125.html" target="_blank" rel="noopener">Catalogue entry</a>
+      </div>
+      <div class="who-line">Bilkent catalogue&nbsp;1 · Bilkent STARS&nbsp;1</div>
+    </header>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>The official record, in full</h3>
+      <span class="count">2</span>
+    </div>
+    <ul class="items">
+      <li class="item">
+        <a href="https://catalog.bilkent.edu.tr/course/c11125.html" target="_blank" rel="noopener">CS 125 — catalogue entry</a>
+        <span class="who">Bilkent catalogue</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://stars.bilkent.edu.tr/syllabus/view/CS/125/" target="_blank" rel="noopener">CS 125 — STARS syllabus record</a>
+        <span class="who">Bilkent STARS</span>
+        <span class="badge live">LIVE</span>
+      </li>
+    </ul>
+  </section>
+
+  <aside class="side">
+    <details>
+      <summary>
+        <span class="side-eyebrow">Side material</span>
+        <span class="side-h">Not CS 125</span>
+        <span class="count">8</span>
+        <span class="fold-cue">show</span>
+      </summary>
+      <p class="side-note">Kept off to the side because none of it is the course. It is here because the course itself has nothing.</p>
+  <section class="grp">
+    <div class="grp-head">
+      <h3>CS 115 — the same Python, same department</h3>
+      <span class="count">6</span>
+    </div>
+    <p class="grp-note">Aynur Dayanık’s CS 115 covers the identical first two-thirds of CS 125: environments, types, control flow, lists, dictionaries, functions. Thirteen weeks of slides and nine runnable code bundles, all live. It stops short of pandas and matplotlib.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/" target="_blank" rel="noopener">CS 115 — full course page (slides and code index)</a>
+        <span class="who">A. Dayanık</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week1.pdf" target="_blank" rel="noopener">CS 115 — Week 1 slides</a>
+        <span class="who">A. Dayanık</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week7.pdf" target="_blank" rel="noopener">CS 115 — Week 7 slides</a>
+        <span class="who">A. Dayanık</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week13.pdf" target="_blank" rel="noopener">CS 115 — Week 13 slides</a>
+        <span class="who">A. Dayanık</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Review-Exercises2.pdf" target="_blank" rel="noopener">CS 115 — review exercises</a>
+        <span class="who">A. Dayanık</span>
+        <span class="badge live">LIVE</span>
+      </li>
+      <li class="item">
+        <a href="https://ahmedkhalilsalim06.github.io/study-locker-2/" target="_blank" rel="noopener">CS 115 — every week and every code bundle, already collected</a>
+        <span class="who">this collection</span>
+        <span class="badge ext">EXTERNAL</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="grp">
+    <div class="grp-head">
+      <h3>Third-party, and not free</h3>
+      <span class="count">2</span>
+    </div>
+    <p class="grp-note">A commercial Turkish prep site sells a CS 125 course and advertises five past papers behind it. A few sample questions are viewable without paying; the papers are not, and nothing there was published by a Bilkent instructor. Listed so you know it exists, not as a recommendation.</p>
+    <ul class="items">
+      <li class="item">
+        <a href="https://unicourse.co/ders/bilkent-cs125-midterm" target="_blank" rel="noopener">unicourse.co — CS 125 midterm course page (paid, free preview)</a>
+        <span class="who">third party</span>
+        <span class="badge ext">EXTERNAL</span>
+      </li>
+      <li class="item">
+        <a href="https://unicourse.co/ders/bilkent-cs125-final" target="_blank" rel="noopener">unicourse.co — CS 125 final course page (paid, free preview)</a>
+        <span class="who">third party</span>
+        <span class="badge ext">EXTERNAL</span>
+      </li>
+    </ul>
+  </section>
+    </details>
+  </aside>
+  </article>
+
+  <section class="notes">
+    <h2>What was searched, and what isn’t here</h2>
+    <p>Search engines index almost none of this material: the files sit loose in personal <code>~user</code> folders under names like <code>HW4.pdf</code> or <code>mt2.pdf</code> that say nothing about the course, and directory listings are switched off, so nothing can be browsed. What works instead is enumerating the Internet Archive’s index of every file it ever crawled under <code>bilkent.edu.tr</code> — folder by folder, with no keyword filter — and then reading the course pages it returns to find out which course each anonymous filename belonged to. That is how <code>~cokten/econ101/Midterm1as.doc</code> and <code>~zaim/week1&amp;2/week1&amp;2.PPT</code> turned up.</p>
+
+    <h4>ECON 101 — five instructors, one still live</h4>
+    <p>Taner Yiğit’s site survived the department’s move to a new CMS and every file on it was re-tested and still serves today. The folders of Çağla Ökten, Osman Zaim, Selin Sayek Böke and Tarık Kara were deleted when Bilkent retired <code>www.bilkent.edu.tr/~user</code> pages, so everything from them is an archive recovery. Two gaps worth naming: Kara’s three lecture-note PDFs (surplus, theory of the firm, monopoly) are linked from his notes page but were never crawled; and Sayek Böke’s 2003 homework sets 1 and 3–7 and her Fall 2008 sets are in the same position. Both index pages are linked above so you can see what existed. Berument publishes only econometrics, Taşkın only ECON 302 readings, Hasker only ECON 107/203/204/439, and the department’s own site has never hosted anything but discussion papers.</p>
+
+    <h4>MATH 105 — twelve items, and that is the whole public record</h4>
+    <p>Only Salih Karadağ and Ümit Özger ever posted MATH 105 publicly, and both folders are gone from the server. The course has no public midterm or final — confirmed twice, across the whole <code>fen.bilkent.edu.tr</code> domain, by filename probing as well as keyword search. Everything solved in this subject is MATH 106, which is why it sits in the side panel rather than padding the section out. Gonca Özkan’s Midterm I solutions are linked from her own documents page but were never crawled; Midterms II and III survived.</p>
+
+    <h4>CS 125 — still genuinely nothing</h4>
+    <p>Rechecked for this update, and the answer did not move. The department course index skips from CS 101 to CS 201, all twenty-two CS faculty folders come back clean, direct path probes return 404, and a full <code>cs.bilkent.edu.tr</code> archive sweep filtered on the course number returns only a professor’s poetry pages and a lab monitoring dashboard. The course has run on Moodle since it started.</p>
+
+    <h4>Nothing was worked around</h4>
+    <p>Every file here was posted publicly by the instructor. No access control was bypassed; archived copies are snapshots of pages that were openly reachable when crawled. A handful of files that turned up in the sweep were named grade lists and tutorial rosters with student numbers on them — those were found and deliberately left off this page. Current-semester material stays on Moodle and STARS; reach it with your own student login on campus or the university VPN.</p>
+
+    <h4>Use these the way they were meant</h4>
+    <p>These are study materials. Check each course’s academic-honesty policy before using anything in graded work, and note that the syllabi and grading schemes here belong to old semesters — the Ökten papers are from 2003–06, the Zaim slides from 2001, the Özkan calculus set from 2003.</p>
+  </section>
+
+  <footer>
+    First compiled 2026-09-09; deepened and reorganised 2026-09-10. Links marked <span class="badge live">LIVE</span> point at the instructor’s server; <span class="badge archive">ARCHIVE</span> links go to the Internet Archive’s copy of the original file; <span class="badge ext">EXTERNAL</span> links go somewhere else entirely. Live links use plain <code>http</code>, which some browsers will flag.
+  </footer>
+</div>
+</body>
+</html>

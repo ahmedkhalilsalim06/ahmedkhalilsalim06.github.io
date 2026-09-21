@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>MATH 241 Archive</title>
+<meta name="description" content="Public course materials for Bilkent MATH 241 Engineering Mathematics I">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --ground:#F3F6F5; --surface:#FFFFFF; --ink:#15201C; --muted:#56655F; --rule:#D5DEDA; --soft:#E9EFEC;
+  --live:#1D7A46; --live-bg:#E1F2E8; --arch:#83620E; --arch-bg:#F6EDD5; --focus:#1B5FD1; --gated:#7A3E8F; --gated-bg:#F1E5F5;
+  --accent:#3D4CA3; --accent-soft:#E3E6F6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825;
+    --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36;
+    --accent:#9BA8F2; --accent-soft:#1C2140;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825;
+  --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36;
+  --accent:#9BA8F2; --accent-soft:#1C2140;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.5;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:"Archivo","Arial Narrow",sans-serif;font-stretch:78%;font-weight:800;font-size:clamp(44px,9vw,84px);line-height:.92;letter-spacing:-.01em;color:var(--accent);text-wrap:balance}
+.sub{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(20px,3.2vw,28px);text-wrap:balance}
+.trace{width:100%;max-width:640px;height:44px;display:block}
+.trace path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;opacity:.8}
+.trace line{stroke:var(--rule);stroke-width:1}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px 24px;margin:4px 0 0;padding:0;list-style:none;max-width:980px}
+.stats li{display:flex;flex-direction:column}
+.stats b{font-family:"Archivo",sans-serif;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.stats span{font-size:13px;color:var(--muted)}
+.intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px 32px}
+.intro p{margin:0 0 10px;max-width:66ch}
+.note{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--muted)}
+.note strong{color:var(--ink)}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+.toolbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);padding-block:10px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.85}
+.toolbar .sp{flex:1}
+.toolbar input[type=search]{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;min-width:0;width:220px;max-width:100%}
+.toggle{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--accent)}
+section.grp{display:flex;flex-direction:column;gap:10px}
+section.grp>h2{margin:0;font-family:"Archivo",sans-serif;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:baseline;border-bottom:2px solid var(--accent);padding-bottom:6px}
+section.grp>h2 .n{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;color:var(--muted)}
+.term{display:grid;grid-template-columns:170px minmax(0,1fr);gap:4px 20px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.term:last-child{border-bottom:0}
+.term h3{margin:0;font-size:14px;font-weight:600;color:var(--muted);padding-top:3px}
+.term ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:start}
+.it a{font-weight:600;text-decoration-color:var(--rule);text-underline-offset:3px}
+.it a:hover{text-decoration-color:var(--accent);color:var(--accent)}
+.meta{grid-column:1;font-size:13px;color:var(--muted)}
+.meta .f{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--rule);border-radius:4px;padding:0 4px;margin-right:6px;color:var(--ink)}
+.meta em{font-style:normal;color:var(--arch)}
+.badge{grid-column:2;grid-row:1;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.badge.LIVE{color:var(--live);background:var(--live-bg)}
+.badge.ARCHIVE{color:var(--arch);background:var(--arch-bg)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.tm{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.sec{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted)}
+td.sl{white-space:nowrap}
+.secl{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;border:1px solid var(--rule);border-radius:4px;padding:1px 5px;margin:0 2px 2px 0;display:inline-block}
+.secl:hover{border-color:var(--accent);color:var(--accent)}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.lists h2{font-family:"Archivo",sans-serif;font-size:20px;margin:0 0 8px}
+.lists ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.lists li strong{color:var(--ink)}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:720px){
+  .intro{grid-template-columns:1fr}
+  .term{grid-template-columns:1fr}
+  .toolbar input[type=search]{width:100%}
+  .toolbar .sp{display:none}
+  .toolbar{position:static}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Bilkent University · Electrical &amp; Electronics Engineering · swept 18 Sep 2026</div>
+  <h1>MATH 241</h1>
+  <p class="sub">Engineering Mathematics I</p>
+  <svg class="trace" viewBox="0 0 640 44" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="22" x2="640" y2="22"/><path d="M0 5.0 L4 6.0 L8 8.1 L12 11.1 L16 14.9 L20 19.0 L24 23.2 L28 27.1 L32 30.5 L36 33.2 L40 34.9 L44 35.5 L48 35.2 L52 33.9 L56 31.8 L60 29.0 L64 25.8 L68 22.5 L72 19.2 L76 16.3 L80 13.9 L84 12.3 L88 11.4 L92 11.3 L96 12.0 L100 13.4 L104 15.4 L108 17.9 L112 20.5 L116 23.1 L120 25.6 L124 27.7 L128 29.3 L132 30.2 L136 30.6 L140 30.3 L144 29.4 L148 28.0 L152 26.2 L156 24.1 L160 22.0 L164 20.0 L168 18.2 L172 16.7 L176 15.7 L180 15.2 L184 15.2 L188 15.8 L192 16.7 L196 18.1 L200 19.6 L204 21.3 L208 22.9 L212 24.5 L216 25.7 L220 26.7 L224 27.3 L228 27.4 L232 27.2 L236 26.6 L240 25.6 L244 24.5 L248 23.1 L252 21.8 L256 20.5 L260 19.4 L264 18.5 L268 18.0 L272 17.7 L276 17.8 L280 18.1 L284 18.8 L288 19.6 L292 20.6 L296 21.7 L300 22.7 L304 23.7 L308 24.5 L312 25.0 L316 25.4 L320 25.4 L324 25.2 L328 24.8 L332 24.2 L336 23.4 L340 22.6 L344 21.8 L348 21.0 L352 20.3 L356 19.7 L360 19.4 L364 19.3 L368 19.3 L372 19.6 L376 20.0 L380 20.6 L384 21.2 L388 21.9 L392 22.6 L396 23.1 L400 23.6 L404 24.0 L408 24.1 L412 24.2 L416 24.0 L420 23.7 L424 23.3 L428 22.8 L432 22.3 L436 21.8 L440 21.3 L444 20.9 L448 20.5 L452 20.3 L456 20.3 L460 20.3 L464 20.5 L468 20.8 L472 21.2 L476 21.6 L480 22.0 L484 22.4 L488 22.8 L492 23.1 L496 23.3 L500 23.4 L504 23.4 L508 23.3 L512 23.1 L516 22.8 L520 22.5 L524 22.1 L528 21.8 L532 21.5 L536 21.2 L540 21.1 L544 20.9 L548 20.9 L552 21.0 L556 21.1 L560 21.3 L564 21.5 L568 21.8 L572 22.0 L576 22.3 L580 22.5 L584 22.7 L588 22.8 L592 22.9 L596 22.9 L600 22.8 L604 22.7 L608 22.5 L612 22.3 L616 22.1 L620 21.9 L624 21.7 L628 21.5 L632 21.4 L636 21.3 L640 21.3"/></svg>
+  <ul class="stats">
+    <li><b>16</b><span>files &amp; pages</span></li>
+    <li><b>10</b><span>still live on Bilkent servers</span></li>
+    <li><b>6</b><span>recovered from the Wayback Machine</span></li>
+    <li><b>0</b><span>midterm &amp; final files</span></li>
+    <li><b>0</b><span>quiz files</span></li>
+    <li><b>2008–2012</b><span>years covered</span></li>
+  </ul>
+</header>
+<div class="intro">
+  <div>
+    <p>Taught by the EEE department, not Mathematics: differential equations and linear algebra for engineers, with weekly quizzes and MATLAB. Textbook for years: Greenberg, Advanced Engineering Mathematics. <a href="https://catalog.bilkent.edu.tr/course/c03241.html" target="_blank" rel="noopener">Catalog entry</a>.</p>
+    <p>Everything below was posted publicly by the course’s instructors and opens directly, with no account or payment. <span class="badge LIVE">LIVE</span> links go to the file on the Bilkent server. <span class="badge ARCHIVE">ARCHIVE</span> links open the copy the Internet Archive took while the page was public. Grade lists, attendance sheets, rosters and seating plans were left out because they name students.</p>
+  </div>
+  <div class="note">
+    <p><strong>Use these for practice, not submission.</strong> Old solutions show how a problem was graded in that year. Handing them in, or reusing lab reports, breaks Bilkent’s academic-integrity rules.</p>
+    <p><strong>Current material lives on Moodle.</strong> For this semester’s slides and exams, use Moodle (from campus or the university VPN). STARS holds the official syllabus for every section since 2010.</p>
+  </div>
+</div>
+<div class="toolbar" role="toolbar" aria-label="Filter materials">
+  <button class="chip" type="button" data-g="all" aria-pressed="true">All <span class="n">16</span></button><button class="chip" type="button" data-g="exams" aria-pressed="false">Exams &amp; solutions <span class="n">0</span></button><button class="chip" type="button" data-g="quizzes" aria-pressed="false">Quizzes &amp; solutions <span class="n">0</span></button><button class="chip" type="button" data-g="homework" aria-pressed="false">Homework &amp; solutions <span class="n">4</span></button><button class="chip" type="button" data-g="notes" aria-pressed="false">Lecture notes &amp; slides <span class="n">1</span></button><button class="chip" type="button" data-g="labs" aria-pressed="false">Labs &amp; tutorials <span class="n">1</span></button><button class="chip" type="button" data-g="pages" aria-pressed="false">Course pages &amp; syllabi <span class="n">10</span></button>
+  <span class="sp"></span>
+  <label class="toggle" for="liveonly"><input type="checkbox" id="liveonly"> Live only</label>
+  <input type="search" id="q" placeholder="Filter: midterm, 2005, VHDL…" aria-label="Filter by text">
+</div>
+<main class="wrap" style="gap:28px">
+<section class="grp" data-none data-g="exams"><h2>Exams &amp; solutions <span class="n">0 items</span></h2><p class="empty" data-empty>No midterm or final for MATH 241 was ever posted publicly by an instructor. Since 2013 the exams have been on Moodle only.</p></section><section class="grp" data-none data-g="quizzes"><h2>Quizzes &amp; solutions <span class="n">0 items</span></h2><p class="empty" data-empty>No quiz or quiz solution for MATH 241 was ever posted publicly by an instructor. The weekly quizzes have been on Moodle only.</p></section><section class="grp" data-g="homework"><h2>Homework &amp; solutions <span class="n">4 items</span></h2><div class="term"><h3>Fall 2012</h3><ul><li class="it" data-s="LIVE" data-q="homework 1 vakur ertürk &amp; y. ziya i̇der fall 2012 pdf "><a href="https://www.ee.bilkent.edu.tr/~math241/math241_hw1.pdf" target="_blank" rel="noopener">Homework 1</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder</span></li><li class="it" data-s="LIVE" data-q="homework 2 vakur ertürk &amp; y. ziya i̇der fall 2012 pdf "><a href="https://www.ee.bilkent.edu.tr/~math241/math241_hw2.PDF" target="_blank" rel="noopener">Homework 2</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder</span></li><li class="it" data-s="LIVE" data-q="homework 3 (corrected version) vakur ertürk &amp; y. ziya i̇der fall 2012 pdf "><a href="https://www.ee.bilkent.edu.tr/~math241/HW3_Fall_2012-2013_MATH241_corrected2.pdf" target="_blank" rel="noopener">Homework 3 (corrected version)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder</span></li><li class="it" data-s="LIVE" data-q="homework 4 vakur ertürk &amp; y. ziya i̇der fall 2012 pdf "><a href="https://www.ee.bilkent.edu.tr/~math241/math241_hw4_typed.pdf" target="_blank" rel="noopener">Homework 4</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder</span></li></ul></div></section><section class="grp" data-g="notes"><h2>Lecture notes &amp; slides <span class="n">1 item</span></h2><div class="term"><h3>Fall 2012</h3><ul><li class="it" data-s="LIVE" data-q="lecture notes (96 pp., compiled sept 2010) vakur ertürk &amp; y. ziya i̇der fall 2012 pdf 7 mb"><a href="https://www.ee.bilkent.edu.tr/~math241/LectureNotes.pdf" target="_blank" rel="noopener">Lecture notes (96 pp., compiled Sept 2010)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder · <em>7 MB</em></span></li></ul></div></section><section class="grp" data-g="labs"><h2>Labs &amp; tutorials <span class="n">1 item</span></h2><div class="term"><h3>Fall 2012</h3><ul><li class="it" data-s="LIVE" data-q="matlab tutorial (word) vakur ertürk &amp; y. ziya i̇der fall 2012 doc "><a href="https://www.ee.bilkent.edu.tr/~math241/Matlab-Tutorial.doc" target="_blank" rel="noopener">MATLAB tutorial (Word)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">DOC</span>Vakur Ertürk &amp; Y. Ziya İder</span></li></ul></div></section><section class="grp" data-g="pages"><h2>Course pages &amp; syllabi <span class="n">10 items</span></h2><div class="term"><h3>Fall 2008</h3><ul><li class="it" data-s="ARCHIVE" data-q="course page (greenberg textbook, grading, assistants) orhan arıkan &amp; vakur ertürk fall 2008 page "><a href="https://web.archive.org/web/20081211133614/http://www.ee.bilkent.edu.tr/~math241/" target="_blank" rel="noopener">Course page (Greenberg textbook, grading, assistants)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>Orhan Arıkan &amp; Vakur Ertürk</span></li><li class="it" data-s="ARCHIVE" data-q="announcements (weekly, links to hw1–11) arıkan &amp; ertürk fall 2008 html the homework pdfs themselves were never archived"><a href="https://web.archive.org/web/20081211133419/http://www.ee.bilkent.edu.tr/~math241/Announcements.html" target="_blank" rel="noopener">Announcements (weekly, links to HW1–11)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">HTML</span>Arıkan &amp; Ertürk · <em>The homework PDFs themselves were never archived</em></span></li><li class="it" data-s="ARCHIVE" data-q="semester schedule — quiz, midterm &amp; final weeks arıkan &amp; ertürk fall 2008 html "><a href="https://web.archive.org/web/20081012060849/http://www.ee.bilkent.edu.tr/~math241/Math241_program.htm" target="_blank" rel="noopener">Semester schedule — quiz, midterm &amp; final weeks</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">HTML</span>Arıkan &amp; Ertürk</span></li></ul></div><div class="term"><h3>Spring 2009</h3><ul><li class="it" data-s="ARCHIVE" data-q="course page (sections, textbook, moodle pointer) y. ziya i̇der &amp; a. serdar tan spring 2009 page "><a href="https://web.archive.org/web/20090223021043/http://www.ee.bilkent.edu.tr/~math241/" target="_blank" rel="noopener">Course page (sections, textbook, Moodle pointer)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>Y. Ziya İder &amp; A. Serdar Tan</span></li></ul></div><div class="term"><h3>Spring 2010</h3><ul><li class="it" data-s="ARCHIVE" data-q="course page (grading: 7 quizzes, midterm, final, weekly hw) vakur ertürk spring 2010 page "><a href="https://web.archive.org/web/20100407085854/http://www.ee.bilkent.edu.tr/~math241/" target="_blank" rel="noopener">Course page (grading: 7 quizzes, midterm, final, weekly HW)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>Vakur Ertürk</span></li><li class="it" data-s="ARCHIVE" data-q="announcements (hw1–9 dates, matlab tutorial, quiz grading) vakur ertürk spring 2010 html the hw and tutorial pdfs were never archived"><a href="https://web.archive.org/web/20100406090003/http://www.ee.bilkent.edu.tr/~math241/announcements.html" target="_blank" rel="noopener">Announcements (HW1–9 dates, MATLAB tutorial, quiz grading)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">HTML</span>Vakur Ertürk · <em>The HW and tutorial PDFs were never archived</em></span></li><li class="it" data-s="LIVE" data-q="“important issues” — homework &amp; exam rules vakur ertürk spring 2010 html "><a href="https://www.ee.bilkent.edu.tr/~math241/importantIssues.html" target="_blank" rel="noopener">“Important issues” — homework &amp; exam rules</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">HTML</span>Vakur Ertürk</span></li></ul></div><div class="term"><h3>Fall 2012</h3><ul><li class="it" data-s="LIVE" data-q="course page (the live one) vakur ertürk &amp; y. ziya i̇der fall 2012 page "><a href="https://www.ee.bilkent.edu.tr/~math241/" target="_blank" rel="noopener">Course page (the live one)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>Vakur Ertürk &amp; Y. Ziya İder</span></li><li class="it" data-s="LIVE" data-q="syllabus vakur ertürk &amp; y. ziya i̇der fall 2012 pdf "><a href="https://www.ee.bilkent.edu.tr/~math241/math241_syl.pdf" target="_blank" rel="noopener">Syllabus</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>Vakur Ertürk &amp; Y. Ziya İder</span></li><li class="it" data-s="LIVE" data-q="announcements (exam calendar dated feb 2012) vakur ertürk &amp; y. ziya i̇der fall 2012 html the calendar file it links is gone; seating plans left out"><a href="https://www.ee.bilkent.edu.tr/~math241/announcements.html" target="_blank" rel="noopener">Announcements (exam calendar dated Feb 2012)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">HTML</span>Vakur Ertürk &amp; Y. Ziya İder · <em>The calendar file it links is gone; seating plans left out</em></span></li></ul></div></section>
+<p class="empty" id="none" hidden>Nothing matches that filter.</p>
+</main>
+<section class="grp" id="stars">
+  <h2>Official syllabus <span class="n">1 term</span></h2>
+  <p class="empty">Only for Fall 2012, the semester of the live homework set. Syllabi for every other term since 2010 are on <a href="https://stars.bilkent.edu.tr/syllabus/view/MATH/241/" target="_blank" rel="noopener">STARS</a>.</p>
+  <div class="tablewrap"><table><thead><tr><th>Term</th><th>Instructors (sections)</th><th>Syllabus</th></tr></thead><tbody>
+  <tr><td class="tm">Fall 2012</td><td>Yusuf Ziya İder <span class="sec">§1, 3</span>; Vakur Ertürk <span class="sec">§2</span>; TBA <span class="sec">§4</span></td><td class="sl"><a class="secl" href="https://stars.bilkent.edu.tr/syllabus/view/MATH/241/20121?section=1" target="_blank" rel="noopener">§1</a> <a class="secl" href="https://stars.bilkent.edu.tr/syllabus/view/MATH/241/20121?section=2" target="_blank" rel="noopener">§2</a> <a class="secl" href="https://stars.bilkent.edu.tr/syllabus/view/MATH/241/20121?section=3" target="_blank" rel="noopener">§3</a> <a class="secl" href="https://stars.bilkent.edu.tr/syllabus/view/MATH/241/20121?section=4" target="_blank" rel="noopener">§4</a></td></tr>
+  </tbody></table></div>
+</section>
+<div class="lists">
+  <div><h2>Linked but lost</h2><ul><li>Fall 2008: HW1–11 (Homework/fall08_hwN.pdf) and both MATLAB tutorials (Tutorials/intro*.pdf) were linked but never archived. They are not on the server either.</li><li>Spring 2009: the course ran on Moodle. Only the one-page course info was public, and its syllabus PDF was never archived.</li><li>Spring 2010: the syllabus, HW1–9 (MATH241HWn.pdf) and the MATLAB tutorial PDF were never archived and are gone from the server.</li><li>Fall 2012: only HW1–4 were ever posted on the public page. The 2012 exam-calendar spreadsheet now returns 404.</li><li>Since 2013 MATH 241 has run entirely on Moodle (coordinator Tolga Çukur since 2015). No instructor has ever posted a MATH 241 exam, quiz or solution on a public page. Student copies exist only on sites that need an account or payment (Course Hero, Studocu), so they are not listed here.</li></ul></div>
+  <div><h2>What was searched</h2><ul><li><strong>Every instructor since the course began in Fall 2008</strong> (Arıkan, Ertürk, İder, Serdar Tan, Köymen, H. Özbay, Nil Şahin, Onaran, Çukur, Eryaman, Sayın): all their ~user folders on www.ee and kilyos.ee, live and full Wayback listings; Nil Şahin’s Google Site; Sayın’s GAIN lab site (pages and uploads); ICON lab; Özbay’s hidden courses/ folder</li><li><strong>Assistants’ pages</strong> from the 2008–2012 course sites (Teke, Serdar Tan, Güldoğan, Suhre, Tofighi, Yıldız and others)</li><li><strong>Course folder</strong> <code>~math241</code> on both hosts, snapshots from 2008, 2009 and 2010, and about 170 guessed exam/quiz filenames</li><li><strong>Wayback CDX</strong>: every exam-, quiz- or midterm-named file on the whole ee.bilkent.edu.tr domain (159, none for MATH 241); keyword filters (Greenberg, engineering math, Laplace); fen.bilkent.edu.tr, ie.bilkent.edu.tr and ieee.bilkent.edu.tr</li><li><strong>STARS</strong> syllabi for every term 2008–2026, including their “web address” fields (all point to Moodle)</li><li><strong>Student copies</strong>: GitHub, Reddit, Turkish forums, local tutoring sites (Calculus Bilkent, Minex) — nothing freely accessible. Login- and paywall-gated upload sites are excluded.</li></ul></div>
+</div>
+<footer>Built 18 September 2026. Links checked the same day. Archive links point at the capture listed in the Wayback CDX index; a live Bilkent file can move or vanish without notice. Copies on Course Hero, Studocu and paid prep sites were not included.</footer>
+</div>
+<script>
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('.chip[data-g]'));
+  var q=document.getElementById('q'), live=document.getElementById('liveonly');
+  var active='all';
+  function apply(){
+    var term=(q.value||'').trim().toLowerCase(), lo=live.checked;
+    document.querySelectorAll('section.grp[data-g]').forEach(function(sec){
+      var gshow=(active==='all'||sec.dataset.g===active), secCount=0;
+      sec.querySelectorAll('.term').forEach(function(tb){
+        var c=0;
+        tb.querySelectorAll('.it').forEach(function(li){
+          var ok=gshow&&(!lo||li.dataset.s==='LIVE')&&(!term||li.dataset.q.indexOf(term)>-1);
+          li.hidden=!ok; if(ok)c++;
+        });
+        tb.hidden=(c===0); secCount+=c;
+      });
+      if(sec.hasAttribute('data-none')){ sec.hidden=!(gshow&&!term&&!lo); return; }
+      sec.hidden=(secCount===0);
+      var n=sec.querySelector('h2 .n'); if(n) n.textContent=secCount+(secCount===1?' item':' items');
+    });
+    var none=document.getElementById('none');
+    none.hidden=!!document.querySelector('section.grp[data-g]:not([hidden])');
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    active=c.dataset.g; chips.forEach(function(o){o.setAttribute('aria-pressed',String(o===c));}); apply();
+  });});
+  q.addEventListener('input',apply); live.addEventListener('change',apply);
+})();
+</script>
+</body>
+</html>

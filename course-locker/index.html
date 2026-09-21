@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style>
+<title>Bilkent Course Locker</title>
+<meta name="description" content="Study materials for PHYS 101, CS 201, CS 223 and MATH 225 — exams, slides, labs and homeworks, live and archived">
+<style>
+  :root {
+    --bg:#f4f2ee; --surface:#fbfaf8; --surface-2:#f0ede7;
+    --ink:#1c1a17; --ink-soft:#5c574e; --line:#ddd7cc;
+    --accent:#0b6b5f; --accent-soft:#0b6b5f18; --accent-ink:#084b43;
+    --amber:#a9640b; --amber-soft:#a9640b16;
+    --font-d:"Fraunces",Georgia,serif;
+    --font-b:"Public Sans",-apple-system,system-ui,sans-serif;
+    --font-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#16150f; --surface:#201e17; --surface-2:#2a271e;
+      --ink:#f2efe6; --ink-soft:#b0a993; --line:#38342a;
+      --accent:#4fbfa6; --accent-soft:#4fbfa61f; --accent-ink:#8fe0cd;
+      --amber:#e0a24e; --amber-soft:#e0a24e1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#16150f; --surface:#201e17; --surface-2:#2a271e;
+    --ink:#f2efe6; --ink-soft:#b0a993; --line:#38342a;
+    --accent:#4fbfa6; --accent-soft:#4fbfa61f; --accent-ink:#8fe0cd;
+    --amber:#e0a24e; --amber-soft:#e0a24e1c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:clamp(1.5rem,4vw,3.5rem) clamp(1rem,4vw,2rem) 4rem}
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:1.4rem;margin-bottom:2rem}
+  .eyebrow{font-family:var(--font-m);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent-ink);margin:0 0 .6rem}
+  h1{font-family:var(--font-d);font-weight:600;font-size:clamp(2rem,5vw,3rem);line-height:1.02;
+    margin:0;text-wrap:balance;letter-spacing:-.01em}
+  .lede{color:var(--ink-soft);max-width:60ch;margin:1rem 0 0;font-size:1.02rem}
+  .stat{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:1.5rem;font-family:var(--font-m);font-size:.8rem}
+  .stat b{font-family:var(--font-d);font-size:1.5rem;display:block;color:var(--accent-ink);font-weight:600}
+  .stat span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
+  .note{background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;
+    padding:.9rem 1.1rem;margin:2rem 0;font-size:.9rem;color:var(--ink)}
+  .note b{color:var(--amber)}
+  .course{margin-top:2.6rem}
+  .course-head{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:.6rem;margin-bottom:1.4rem}
+  .course-head h2{font-family:var(--font-d);font-weight:600;font-size:1.7rem;margin:0;letter-spacing:-.01em}
+  .course-head .who{color:var(--ink-soft);font-size:.9rem}
+  .groups{display:grid;gap:1rem}
+  @media(min-width:680px){.groups{grid-template-columns:1fr 1fr}}
+  .group{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem}
+  .group-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.2rem}
+  .group-head h3{font-family:var(--font-b);font-weight:700;font-size:1rem;margin:0;letter-spacing:-.005em}
+  .cnt{font-family:var(--font-m);font-size:.7rem;background:var(--accent-soft);color:var(--accent-ink);
+    padding:.1rem .45rem;border-radius:20px}
+  .group-desc{color:var(--ink-soft);font-size:.85rem;margin:.15rem 0 .8rem}
+  ul.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  ul.files a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;text-decoration:none;color:var(--ink);
+    padding:.4rem .5rem;border-radius:6px;font-size:.86rem;transition:background .12s}
+  ul.files a:hover{background:var(--surface-2)}
+  ul.files a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .fname{font-size:.84rem;word-break:break-word;flex:1;min-width:0}
+  .tags{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+  .src{font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;
+    padding:.1rem .38rem;border-radius:4px;font-weight:600}
+  .src-live{background:var(--accent-soft);color:var(--accent-ink)}
+  .src-arch{background:var(--amber-soft);color:var(--amber)}
+  .src-yr{background:var(--surface-2);color:var(--ink-soft)}
+  .ext{font-family:var(--font-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;
+    padding:.1rem .4rem;border-radius:4px;background:var(--surface-2);color:var(--ink-soft);flex-shrink:0}
+  .ext-pdf{background:#c0392b18;color:#b23a2b} .ext-zip,.ext-tar{background:var(--accent-soft);color:var(--accent-ink)}
+  .ext-ppt{background:#d3540218;color:#c25a0a} .ext-doc{background:#2b579a18;color:#2b6bb0}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ext-pdf{color:#f0897c}
+    :root:not([data-theme="light"]) .ext-ppt{color:#f0a862} :root:not([data-theme="light"]) .ext-doc{color:#7fb0e8}}
+  footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line);
+    color:var(--ink-soft);font-size:.8rem;line-height:1.6}
+  footer a{color:var(--accent-ink)}
+  a.livelink{color:var(--accent-ink);font-family:var(--font-m);font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Four courses · live pages + Wayback Machine</p>
+    <h1>Bilkent Course Locker</h1>
+    <p class="lede">Every study document I could round up for these four courses — pulled straight from instructor pages where they're still posted, and recovered from the Internet Archive where they're not. Each link opens the original file.</p>
+    <div class="stat">
+      <div><b>176</b><span>documents</span></div>
+      <div><b>4</b><span>courses</span></div>
+      <div><b>24</b><span>PHYS 101</span></div>
+      <div><b>65</b><span>CS 201</span></div>
+      <div><b>61</b><span>CS 223</span></div>
+      <div><b>26</b><span>MATH 225</span></div>
+    </div>
+  </header>
+
+  <div class="note">
+    <b>How to use:</b> each row is tagged <span class="src src-live">live</span> (still on the instructor's own site) or <span class="src src-arch">archive</span> (recovered from the Wayback Machine). Click any link to open the original. If an archived file is slow, that's the Archive rebuilding it — give it a few seconds.
+  </div>
+
+  <div class="course">
+    <div class="course-head">
+      <h2>PHYS 101</h2>
+      <span class="who">General Physics I · past exams with solutions, 2023–2026, plus the full lab manual · all live</span>
+    </div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head">
+          <h3>Past exams — all with solutions</h3>
+          <span class="cnt">15</span>
+        </div>
+        <p class="group-desc">Midterm 1, Midterm 2 and Final for five semesters, 2023-24 through 2025-26.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-2_1M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Spring — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-2_2M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Spring — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-2_3F_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Spring — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-1_1M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Fall — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-1_2M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Fall — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2025-26-1_3F_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2025-26 Fall — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-2_1M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Spring — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-2_2M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Spring — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-2_3F_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Spring — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-1_1M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Fall — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-1_2M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Fall — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2024-25-1_3F_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2024-25 Fall — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2023-24-2_1M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2023-24 Spring — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2023-24-2_2M_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2023-24 Spring — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/Exam%20Solutions/P101_2023-24-2_3F_Sol.pdf" target="_blank" rel="noopener"><span class="fname">2023-24 Spring — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Lab manual</h3>
+          <span class="cnt">5</span>
+        </div>
+        <p class="group-desc">Introduction, measurement &amp; errors, and the three lab experiments.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/p101Lab/Introduction.pdf" target="_blank" rel="noopener"><span class="fname">Lab manual — Introduction</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/p101Lab/Measurement.pdf" target="_blank" rel="noopener"><span class="fname">Measurement &amp; Errors</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/p101Lab/P101-Exp1.pdf" target="_blank" rel="noopener"><span class="fname">Experiment 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/p101Lab/P101-Exp2.pdf" target="_blank" rel="noopener"><span class="fname">Experiment 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/p101Lab/P101-Exp3.pdf" target="_blank" rel="noopener"><span class="fname">Experiment 3</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Course documents</h3>
+          <span class="cnt">3</span>
+        </div>
+        <p class="group-desc">Syllabus, semester plan, and the generative-AI policy.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/syllabus.pdf" target="_blank" rel="noopener"><span class="fname">Syllabus</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/semesterPlanner.pdf" target="_blank" rel="noopener"><span class="fname">Semester plan</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~phys101/GenAI_Policy.pdf" target="_blank" rel="noopener"><span class="fname">Generative-AI policy</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Lectures</h3>
+          <span class="cnt">1</span>
+        </div>
+        <p class="group-desc">The full lecture series on YouTube (video — this course uses videos, not slide decks).</p>
+        <ul class="files">
+<li><a href="https://www.youtube.com/playlist?list=PL5B3KLQNAC5hKpC6tNJk3kyo6Qi3zqJNp" target="_blank" rel="noopener"><span class="fname">Full lecture series — Prof. Oktel (YouTube playlist)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-link">link</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head">
+      <h2>CS 201</h2>
+      <span class="who">Fundamental Structures of Computer Science · Prof. Selim Aksoy · the older data-structures course</span>
+    </div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head">
+          <h3>Current syllabus set (Aksoy)</h3>
+          <span class="cnt">10</span>
+        </div>
+        <p class="group-desc">Lecture slides 1–7 as PDFs, plus HW1, syllabus &amp; honor code — the exact files behind that 403.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20211205115417id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/1_Introduction.pdf" target="_blank" rel="noopener"><span class="fname">1_Introduction.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211130083442id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/2_Functions.pdf" target="_blank" rel="noopener"><span class="fname">2_Functions.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211130090726id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/3_Pointers_Arrays.pdf" target="_blank" rel="noopener"><span class="fname">3_Pointers_Arrays.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211130091446id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/4_Case_Study.pdf" target="_blank" rel="noopener"><span class="fname">4_Case_Study.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211130091905id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/5_MultiDimensional_Arrays.pdf" target="_blank" rel="noopener"><span class="fname">5_MultiDimensional_Arrays.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211205112048id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/6_Recursion.pdf" target="_blank" rel="noopener"><span class="fname">6_Recursion.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211205113620id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/slides/7_Algorithm_Analysis.pdf" target="_blank" rel="noopener"><span class="fname">7_Algorithm_Analysis.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20071118224314id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201/tex/cs201_hw1.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw1.pdf</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20081203150545id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201/tex/cs201_syllabus.pdf" target="_blank" rel="noopener"><span class="fname">cs201_syllabus.pdf</span><span class="tags"><span class="src src-yr">2008</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20081203150539id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201/tex/cs201_honor_code.pdf" target="_blank" rel="noopener"><span class="fname">cs201_honor_code.pdf</span><span class="tags"><span class="src src-yr">2008</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Fall 2020 — full lecture set</h3>
+          <span class="cnt">11</span>
+        </div>
+        <p class="group-desc">All 11 lecture decks (1–7 PDF, 8–11 PowerPoint). The most complete single-semester slide set.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20211202214000id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/1_Introduction.pdf" target="_blank" rel="noopener"><span class="fname">1_Introduction.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202225827id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/2_Functions.pdf" target="_blank" rel="noopener"><span class="fname">2_Functions.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202223848id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/3_Pointers_Arrays.pdf" target="_blank" rel="noopener"><span class="fname">3_Pointers_Arrays.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202220606id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/4_Case_Study.pdf" target="_blank" rel="noopener"><span class="fname">4_Case_Study.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202212429id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/5_MultiDimensional_Arrays.pdf" target="_blank" rel="noopener"><span class="fname">5_MultiDimensional_Arrays.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202211537id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/6_Recursion.pdf" target="_blank" rel="noopener"><span class="fname">6_Recursion.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20211202225813id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/7_Algorithm_Analysis.pdf" target="_blank" rel="noopener"><span class="fname">7_Algorithm_Analysis.pdf</span><span class="tags"><span class="src src-yr">2021</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20240806101404id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/8_Abstract_Data_Types.ppt" target="_blank" rel="noopener"><span class="fname">8_Abstract_Data_Types.ppt</span><span class="tags"><span class="src src-yr">2024</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20240804084241id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/9_Linked_Lists.ppt" target="_blank" rel="noopener"><span class="fname">9_Linked_Lists.ppt</span><span class="tags"><span class="src src-yr">2024</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20240804114404id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/10_Stacks.ppt" target="_blank" rel="noopener"><span class="fname">10_Stacks.ppt</span><span class="tags"><span class="src src-yr">2024</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20240806115542id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2020/slides/11_Queues.ppt" target="_blank" rel="noopener"><span class="fname">11_Queues.ppt</span><span class="tags"><span class="src src-yr">2024</span><span class="ext ext-ppt">ppt</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Summer 2014 — full slide set (PPT)</h3>
+          <span class="cnt">11</span>
+        </div>
+        <p class="group-desc">Editable PowerPoint versions of every topic, including classes deeper look.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20180820140915id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/introduction.ppt" target="_blank" rel="noopener"><span class="fname">introduction.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142604id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/functions.ppt" target="_blank" rel="noopener"><span class="fname">functions.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142020id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/pointers.ppt" target="_blank" rel="noopener"><span class="fname">pointers.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820140545id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/arrays.ppt" target="_blank" rel="noopener"><span class="fname">arrays.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142608id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/recursion.ppt" target="_blank" rel="noopener"><span class="fname">recursion.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820140553id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/linked_lists.ppt" target="_blank" rel="noopener"><span class="fname">linked_lists.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142025id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/stacks.ppt" target="_blank" rel="noopener"><span class="fname">stacks.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820140556id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/queues.ppt" target="_blank" rel="noopener"><span class="fname">queues.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142015id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/abstract_data_types.ppt" target="_blank" rel="noopener"><span class="fname">abstract_data_types.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142552id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/algorithm_analysis.ppt" target="_blank" rel="noopener"><span class="fname">algorithm_analysis.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20180820142558id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Summer2014/slides/classes_deeper_look.ppt" target="_blank" rel="noopener"><span class="fname">classes_deeper_look.ppt</span><span class="tags"><span class="src src-yr">2018</span><span class="ext ext-ppt">ppt</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Fall 2008 — homeworks &amp; setup guides</h3>
+          <span class="cnt">9</span>
+        </div>
+        <p class="group-desc">HW1–3, syllabus, and the compiler/Linux setup PDFs.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20260118004801id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/tex/cs201_hw1.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw1.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118023344id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/tex/cs201_hw2.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw2.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118020544id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/tex/cs201_hw3.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw3.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118005319id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/tex/cs201_syllabus.pdf" target="_blank" rel="noopener"><span class="fname">cs201_syllabus.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118012224id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/src/C-Linux.pdf" target="_blank" rel="noopener"><span class="fname">C-Linux.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118011333id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/src/DiveIntoGCCLinux.pdf" target="_blank" rel="noopener"><span class="fname">DiveIntoGCCLinux.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118012101id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/src/DiveIntoCygwinGCC.pdf" target="_blank" rel="noopener"><span class="fname">DiveIntoCygwinGCC.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118020618id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/src/linux-commands.pdf" target="_blank" rel="noopener"><span class="fname">linux-commands.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260118004208id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2008/src/linux-commands2.pdf" target="_blank" rel="noopener"><span class="fname">linux-commands2.pdf</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Fall 2007 — the deep archive</h3>
+          <span class="cnt">21</span>
+        </div>
+        <p class="group-desc">Deitel &amp; Carrano chapter slides, HW1–3, and the actual code bundles (.zip / .tar).</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20251211222322id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch3.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch3.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251212222050id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch4.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch4.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251218170557id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch5.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch5.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251216230416id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch6.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch6.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251214042119id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch7.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch7.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251218035914id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch8.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch8.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251213024103id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch9.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch9.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251220023824id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch10.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch10.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20260105192537id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/deitel_ch11.ppt" target="_blank" rel="noopener"><span class="fname">deitel_ch11.ppt</span><span class="tags"><span class="src src-yr">2026</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251215191602id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/carrano_ch2.ppt" target="_blank" rel="noopener"><span class="fname">carrano_ch2.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251211180815id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/carrano_ch3.ppt" target="_blank" rel="noopener"><span class="fname">carrano_ch3.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251227024906id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/carrano_ch4.ppt" target="_blank" rel="noopener"><span class="fname">carrano_ch4.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251215121852id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/carrano_ch6.ppt" target="_blank" rel="noopener"><span class="fname">carrano_ch6.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251214052837id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/slides/carrano_ch7.ppt" target="_blank" rel="noopener"><span class="fname">carrano_ch7.ppt</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251218164657id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/tex/cs201_hw1.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw1.pdf</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251212163138id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/tex/cs201_hw2.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw2.pdf</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251212204238id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/tex/cs201_linux_tutorial.doc" target="_blank" rel="noopener"><span class="fname">cs201_linux_tutorial.doc</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251212144437id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/src/cpphtp5_examples.zip" target="_blank" rel="noopener"><span class="fname">cpphtp5_examples.zip</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251219105654id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/src/SourceCodeWM4e.v1.0.zip" target="_blank" rel="noopener"><span class="fname">SourceCodeWM4e.v1.0.zip</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="https://web.archive.org/web/20251215141752id_/https://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2007/src/cs201_hw3_files.tar" target="_blank" rel="noopener"><span class="fname">cs201_hw3_files.tar</span><span class="tags"><span class="src src-yr">2025</span><span class="ext ext-tar">tar</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150806200941id_/http://www.cs.bilkent.edu.tr:80/~saksoy/courses/cs201-Fall2007/src/command_line_arguments.pdf" target="_blank" rel="noopener"><span class="fname">command_line_arguments.pdf</span><span class="tags"><span class="src src-yr">2015</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Fall 2006 — extra homeworks</h3>
+          <span class="cnt">3</span>
+        </div>
+        <p class="group-desc">HW1, HW4, HW5 for more practice problems.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20071203183555id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2006/tex/cs201_hw1.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw1.pdf</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20170101175934id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2006/tex/cs201_hw4.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw4.pdf</span><span class="tags"><span class="src src-yr">2017</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20170101175926id_/http://www.cs.bilkent.edu.tr/~saksoy/courses/cs201-Fall2006/tex/cs201_hw5.pdf" target="_blank" rel="noopener"><span class="fname">cs201_hw5.pdf</span><span class="tags"><span class="src src-yr">2017</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head">
+      <h2>CS 223</h2>
+      <span class="who">Digital Design · Prof. David Davenport (~will) · archived 2001–2012</span>
+    </div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head">
+          <h3>Past exams</h3>
+          <span class="cnt">7</span>
+        </div>
+        <p class="group-desc">Finals 2004, 2005, 2010, Spring 2011; midterms 2008, Fall 2009, Spring 2011. The real exam-prep gold.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20120131064013id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/cs2232010Final.pdf" target="_blank" rel="noopener"><span class="fname">cs2232010Final.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120131043407id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/CS223Spring2011Final.pdf" target="_blank" rel="noopener"><span class="fname">CS223Spring2011Final.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20121119001439id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/midterm2011Spring.pdf" target="_blank" rel="noopener"><span class="fname">midterm2011Spring.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111110074433id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/midterm2008.doc" target="_blank" rel="noopener"><span class="fname">midterm2008.doc</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111110074439id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/midterm2009Fall.doc" target="_blank" rel="noopener"><span class="fname">midterm2009Fall.doc</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070104073904id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/FinalExam_2004.doc" target="_blank" rel="noopener"><span class="fname">FinalExam_2004.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070104073359id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/FinalExam_2005.doc" target="_blank" rel="noopener"><span class="fname">FinalExam_2005.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Lecture slides</h3>
+          <span class="cnt">9</span>
+        </div>
+        <p class="group-desc">Chapter decks 1–7 plus the LCDF3 Verilog chapters 4–5.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20111030175106id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch01.ppt" target="_blank" rel="noopener"><span class="fname">ch01.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175118id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch02.ppt" target="_blank" rel="noopener"><span class="fname">ch02.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175122id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch03.ppt" target="_blank" rel="noopener"><span class="fname">ch03.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175139id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch04.ppt" target="_blank" rel="noopener"><span class="fname">ch04.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175151id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch05.ppt" target="_blank" rel="noopener"><span class="fname">ch05.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175211id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch06.ppt" target="_blank" rel="noopener"><span class="fname">ch06.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111030175218id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ch07.ppt" target="_blank" rel="noopener"><span class="fname">ch07.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161655id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/LCDF3_Verilog_Ch_4.pdf" target="_blank" rel="noopener"><span class="fname">LCDF3_Verilog_Ch_4.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161659id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/LCDF3_Verilog_Ch_5.ppt" target="_blank" rel="noopener"><span class="fname">LCDF3_Verilog_Ch_5.ppt</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-ppt">ppt</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Solutions</h3>
+          <span class="cnt">10</span>
+        </div>
+        <p class="group-desc">Chapter-3 sequential-circuit solutions and homework solution sets.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20120105140212id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/sol_ch3_seq1.pdf" target="_blank" rel="noopener"><span class="fname">sol_ch3_seq1.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140225id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/sol_ch3_seq2.pdf" target="_blank" rel="noopener"><span class="fname">sol_ch3_seq2.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140235id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/sol_ch3_seq3.pdf" target="_blank" rel="noopener"><span class="fname">sol_ch3_seq3.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140241id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/sol_ch3_seq4.pdf" target="_blank" rel="noopener"><span class="fname">sol_ch3_seq4.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20030130042421id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw4_sol.htm" target="_blank" rel="noopener"><span class="fname">hw4_sol.htm</span><span class="tags"><span class="src src-yr">2003</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20030130042234id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw5_sol.htm" target="_blank" rel="noopener"><span class="fname">hw5_sol.htm</span><span class="tags"><span class="src src-yr">2003</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20020109120600id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw6_sol.htm" target="_blank" rel="noopener"><span class="fname">hw6_sol.htm</span><span class="tags"><span class="src src-yr">2002</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20020203155546id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw7_sol.htm" target="_blank" rel="noopener"><span class="fname">hw7_sol.htm</span><span class="tags"><span class="src src-yr">2002</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20020109122049id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw8_sol.htm" target="_blank" rel="noopener"><span class="fname">hw8_sol.htm</span><span class="tags"><span class="src src-yr">2002</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20020109123429id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/Homeworks/hw9_sol.htm" target="_blank" rel="noopener"><span class="fname">hw9_sol.htm</span><span class="tags"><span class="src src-yr">2002</span><span class="ext ext-htm">htm</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Homeworks</h3>
+          <span class="cnt">9</span>
+        </div>
+        <p class="group-desc">Homework 1–8 problem sets.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20070102073445id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework1.doc" target="_blank" rel="noopener"><span class="fname">homework1.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070102073459id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework2.doc" target="_blank" rel="noopener"><span class="fname">homework2.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20091014151154id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework2b.pdf" target="_blank" rel="noopener"><span class="fname">homework2b.pdf</span><span class="tags"><span class="src src-yr">2009</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070102073219id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework3.doc" target="_blank" rel="noopener"><span class="fname">homework3.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20061212175325id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework4.doc" target="_blank" rel="noopener"><span class="fname">homework4.doc</span><span class="tags"><span class="src src-yr">2006</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070102073235id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework5.doc" target="_blank" rel="noopener"><span class="fname">homework5.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070102073332id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework6.doc" target="_blank" rel="noopener"><span class="fname">homework6.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070102073511id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/homework7.doc" target="_blank" rel="noopener"><span class="fname">homework7.doc</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-doc">doc</span></span></a></li>
+<li><a href="https://web.archive.org/web/20061211215021id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework8.doc" target="_blank" rel="noopener"><span class="fname">homework8.doc</span><span class="tags"><span class="src src-yr">2006</span><span class="ext ext-doc">doc</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Textbook &amp; Verilog / FPGA references</h3>
+          <span class="cnt">13</span>
+        </div>
+        <p class="group-desc">Givone digital design text, Verilog examples, language reference, and Xilinx ISE tutorials.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20110105062004id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Givone.pdf" target="_blank" rel="noopener"><span class="fname">Givone.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140104id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/Verilog_tutorial.pdf" target="_blank" rel="noopener"><span class="fname">Verilog_tutorial.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140056id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/VerilogBehavioralExamples.pdf" target="_blank" rel="noopener"><span class="fname">VerilogBehavioralExamples.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161710id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/VerilogExamples.pdf" target="_blank" rel="noopener"><span class="fname">VerilogExamples.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161714id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/VerilogExamples1.pdf" target="_blank" rel="noopener"><span class="fname">VerilogExamples1.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161727id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/verilogexamples2.pdf" target="_blank" rel="noopener"><span class="fname">verilogexamples2.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161725id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/VerilogLangRefManual.pdf" target="_blank" rel="noopener"><span class="fname">VerilogLangRefManual.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111119161705id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/UEVerilogTutorial.pdf" target="_blank" rel="noopener"><span class="fname">UEVerilogTutorial.pdf</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120105140105id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Verilog/vhdlvlogcompared.pdf" target="_blank" rel="noopener"><span class="fname">vhdlvlogcompared.pdf</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031126012910id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ISE4tutorial.pdf" target="_blank" rel="noopener"><span class="fname">ISE4tutorial.pdf</span><span class="tags"><span class="src src-yr">2003</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031126035554id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ISE5tutorial.pdf" target="_blank" rel="noopener"><span class="fname">ISE5tutorial.pdf</span><span class="tags"><span class="src src-yr">2003</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20070221073808id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/ISE6tutorial.pdf" target="_blank" rel="noopener"><span class="fname">ISE6tutorial.pdf</span><span class="tags"><span class="src src-yr">2007</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111018012603id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/FPGA_tutorial.doc" target="_blank" rel="noopener"><span class="fname">FPGA_tutorial.doc</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-doc">doc</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Lab assignments</h3>
+          <span class="cnt">11</span>
+        </div>
+        <p class="group-desc">Labs 0–9 plus the extra-credit lab.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20111007105519id_/http://cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_0.htm" target="_blank" rel="noopener"><span class="fname">CS223_Lab_0.htm</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111012141015id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_1.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_1.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111019192749id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_2.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_2.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111025204817id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_3.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_3.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111104182139id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_4.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_4.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111116020207id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_5.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_5.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111128034425id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_6.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_6.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20111206002448id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_7.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_7.html</span><span class="tags"><span class="src src-yr">2011</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120108002208id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_8.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_8.html</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120108070940id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_9.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_9.html</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20120112062740id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/Labs/CS223_Lab_ExtraCredit.html" target="_blank" rel="noopener"><span class="fname">CS223_Lab_ExtraCredit.html</span><span class="tags"><span class="src src-yr">2012</span><span class="ext ext-html">html</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Syllabus &amp; past-exam index</h3>
+          <span class="cnt">2</span>
+        </div>
+        <p class="group-desc">Course syllabus and the original past-exams listing page.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20011004104937id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/syllabus.html" target="_blank" rel="noopener"><span class="fname">syllabus.html</span><span class="tags"><span class="src src-yr">2001</span><span class="ext ext-html">html</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031129141037id_/http://www.cs.bilkent.edu.tr:80/~will/courses/CS223/pastexams.htm" target="_blank" rel="noopener"><span class="fname">pastexams.htm</span><span class="tags"><span class="src src-yr">2003</span><span class="ext ext-htm">htm</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head">
+      <h2>MATH 225</h2>
+      <span class="who">Linear Algebra &amp; Differential Equations · Profs. Kurtulmaz &amp; Gürses · mostly live</span>
+    </div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head">
+          <h3>Past exams &amp; solutions — Kurtulmaz</h3>
+          <span class="cnt">16</span>
+        </div>
+        <p class="group-desc">Midterms and finals 2008–2015, most with full worked solutions.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20070129144520id_/http://www.ee.bilkent.edu.tr:80/~math225/F04-MT2.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2004 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2008-Fall.Midterm1.1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008.SolForMt21.yeni.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Fall.Finalexam..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008-09 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009.fall.midt1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2009 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/Math%20225.2010-11.Spring.2ndMidterm.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2010-11 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2011-12Fall-Final.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2011-12 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2012-13 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt2..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2012-13 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14%20Final.sol..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2013-14 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14SpringSol.%20to%20Mdt1.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14.Spring.Mdt2.Solut..pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14Spring%20Sol.to%20Final.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.%20to%20Mdt%201.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15Fall.Solt.Midt2.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.Final%20exam.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Past exams — Gürses</h3>
+          <span class="cnt">5</span>
+        </div>
+        <p class="group-desc">A separate set: two midterms and a final, each with solutions.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1sol.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2sol.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam3sol.pdf" target="_blank" rel="noopener"><span class="fname">Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Homeworks</h3>
+          <span class="cnt">4</span>
+        </div>
+        <p class="group-desc">Archived problem sets from the EE-hosted section, plus partial Ch.3 solutions.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20070129144533id_/http://www.ee.bilkent.edu.tr:80/~math225/hw1.pdf" target="_blank" rel="noopener"><span class="fname">Homework 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20190712174227id_/http://kilyos.ee.bilkent.edu.tr:80/~math225/Homework/HW2.pdf" target="_blank" rel="noopener"><span class="fname">Homework 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031118051100id_/http://www.ee.bilkent.edu.tr:80/~math225/Homeworks/HW5.pdf" target="_blank" rel="noopener"><span class="fname">Homework 5</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031118083714id_/http://www.ee.bilkent.edu.tr:80/~math225/Ch3SolHalf.pdf" target="_blank" rel="noopener"><span class="fname">Chapter 3 — partial solutions</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head">
+          <h3>Practice</h3>
+          <span class="cnt">1</span>
+        </div>
+        <p class="group-desc">A suggested-questions sheet for review.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.Suggested.questions.pdf" target="_blank" rel="noopener"><span class="fname">Suggested practice questions</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:2.4rem">
+    <b>CS 211 (Data Structures):</b> no public materials exist — it's a newer course with no personal course page, so nothing was ever posted or crawled. For a live current-semester CS 223 lab guide, see
+    <a class="livelink" href="http://www.cs.bilkent.edu.tr/~oonder/CS223/" target="_blank" rel="noopener">~oonder/CS223</a>.
+  </div>
+
+  <footer>
+    Public course materials from instructor pages and the <a href="https://web.archive.org" target="_blank" rel="noopener">Internet Archive Wayback Machine</a>. Nothing here bypasses an access control — live links point to files the instructors still publish, and archived links are snapshots of pages that were publicly reachable when crawled. Use them for your own study and follow each course's academic-honesty policy.
+  </footer>
+</div>
+</body>
+</html>

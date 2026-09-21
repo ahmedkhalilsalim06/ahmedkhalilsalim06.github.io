@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Bilkent ECON 101 Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF0F4; --surface:#FFFFFF; --surface-2:#F7F8FA;
+  --ink:#15181F; --ink-2:#3D434F; --muted:#6B7284;
+  --rule:#DCE0E8; --rule-soft:#E9ECF1;
+  --accent:#33368C; --accent-soft:#E6E7F5;
+  --live:#1B6A4B; --live-bg:#E2F0E9;
+  --arch:#8A5410; --arch-bg:#F6EBDA;
+  --focus:#33368C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
+    --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+    --rule:#2A303B; --rule-soft:#232932;
+    --accent:#A3A5F0; --accent-soft:#23264A;
+    --live:#6FCB9B; --live-bg:#163024;
+    --arch:#E0AE64; --arch-bg:#33260F;
+    --focus:#A3A5F0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
+  --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+  --rule:#2A303B; --rule-soft:#232932;
+  --accent:#A3A5F0; --accent-soft:#23264A;
+  --live:#6FCB9B; --live-bg:#163024;
+  --arch:#E0AE64; --arch-bg:#33260F;
+  --focus:#A3A5F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:2px}
+.wrap{max-width:940px; margin:0 auto; padding:0 24px 96px}
+
+/* masthead */
+.mast{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 14px
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(34px,5.2vw,52px);
+  line-height:1.1; margin:0 0 16px; text-wrap:balance; letter-spacing:-.01em
+}
+.lede{max-width:62ch; color:var(--ink-2); font-size:17px; margin:0 0 28px}
+.tally{display:flex; flex-wrap:wrap; gap:10px}
+.tally span{
+  font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.03em;
+  padding:5px 11px; border:1px solid var(--rule); border-radius:999px; color:var(--ink-2);
+  background:var(--surface); font-variant-numeric:tabular-nums
+}
+
+/* correction callout */
+.correction{
+  margin:28px 0 0; padding:18px 20px; background:var(--accent-soft);
+  border-left:3px solid var(--accent); border-radius:0 4px 4px 0;
+}
+.correction strong{font-weight:700}
+.correction p{margin:0; font-size:15px; color:var(--ink-2); max-width:64ch}
+
+/* toc */
+.toc{display:flex; flex-direction:column; margin:36px 0 0; border-top:1px solid var(--rule-soft)}
+.toc-link{
+  display:flex; align-items:baseline; gap:16px; padding:13px 4px;
+  border-bottom:1px solid var(--rule-soft); text-decoration:none; color:var(--ink)
+}
+.toc-link:hover{background:var(--surface-2)}
+.toc-code{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); min-width:88px}
+.toc-title{font-family:Spectral,Georgia,serif; font-size:18px; flex:1}
+.toc-n{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+
+/* course */
+.course{padding-top:64px; scroll-margin-top:16px}
+.course-head{border-bottom:2px solid var(--ink); padding-bottom:18px; margin-bottom:8px}
+.course-id{
+  font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.12em;
+  color:var(--accent); margin-bottom:6px
+}
+.course-head h2{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(26px,3.6vw,34px);
+  margin:0 0 12px; line-height:1.2; text-wrap:balance
+}
+.blurb{margin:0 0 14px; color:var(--ink-2); max-width:66ch; font-size:15.5px}
+.course-meta{
+  display:flex; gap:18px; align-items:baseline; font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px; color:var(--muted); flex-wrap:wrap
+}
+
+/* group */
+.grp{padding-top:30px}
+.grp-head{display:flex; align-items:baseline; gap:12px}
+.grp-head h3{
+  font-family:"Public Sans",sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:.1em; text-transform:uppercase; margin:0; color:var(--ink)
+}
+.count{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+  font-variant-numeric:tabular-nums
+}
+.grp-note{margin:8px 0 0; font-size:14.5px; color:var(--muted); max-width:64ch; font-style:italic}
+.items{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column}
+.item{
+  display:grid; grid-template-columns:1fr auto auto; gap:8px 14px; align-items:baseline;
+  padding:10px 2px; border-bottom:1px solid var(--rule-soft)
+}
+.item:hover{background:var(--surface-2)}
+.item a{text-decoration:none; font-size:15.5px; color:var(--ink); border-bottom:1px solid transparent}
+.item a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+.who{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); white-space:nowrap}
+.badge{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.09em;
+  padding:2px 7px; border-radius:3px; white-space:nowrap
+}
+.badge.live{color:var(--live); background:var(--live-bg)}
+.badge.archive{color:var(--arch); background:var(--arch-bg)}
+
+/* absences + footer */
+.notes{margin-top:72px; padding-top:28px; border-top:1px solid var(--rule)}
+.notes h2{font-family:Spectral,Georgia,serif; font-weight:600; font-size:24px; margin:0 0 6px}
+.notes h4{
+  font-family:"Public Sans",sans-serif; font-size:13px; letter-spacing:.09em;
+  text-transform:uppercase; margin:26px 0 6px; color:var(--ink)
+}
+.notes p{margin:0 0 10px; color:var(--ink-2); max-width:66ch; font-size:15px}
+.notes ul{margin:0 0 10px; padding-left:20px; color:var(--ink-2); max-width:66ch; font-size:15px}
+.notes li{margin-bottom:5px}
+code{font-family:"IBM Plex Mono",monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px}
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--rule); color:var(--muted); font-size:13.5px}
+@media (max-width:560px){
+  .item{grid-template-columns:1fr auto}
+  .who{grid-column:1 / -1; order:3}
+  .toc-code{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">Bilkent University · Department of Mathematics</p>
+    <h1>Principles, from the one page that survived</h1>
+    <p class="lede">Every publicly posted ECON 101 exam, homework, exercise set and syllabus at Bilkent — all of it from Taner Yiğit’s own site, which is still online and still serving files.</p>
+    <div class="tally">
+      <span>23 items</span>
+      <span>23 live</span>
+      <span>0 recovered from archive</span>
+      <span>1 instructor · all links live</span>
+    </div>
+    <div class="correction">
+      <p><strong>One instructor, one site.</strong> Bilkent’s economics department moved to a CMS that publishes no course files, and its other faculty host on Google Sites and personal domains that carry research, not coursework. Taner Yiğit’s old FrontPage site at <code>tyigit.bilkent.edu.tr</code> is the single public source of ECON 101 material — and every file on it still resolves.</p>
+    </div>
+    <nav class="toc">
+<a class="toc-link" href="#ECON101"><span class="toc-code">ECON 101</span><span class="toc-title">Introduction to Economics I</span><span class="toc-n">23</span></a>
+    </nav>
+  </header>
+
+
+    <article class="course" id="ECON101">
+      <header class="course-head">
+        <div class="course-id">ECON 101</div>
+        <h2>Introduction to Economics I</h2>
+        <p class="blurb">Bilkent’s first-year principles course. Everything public for it comes from one instructor — Taner Yiğit — whose site survived the department’s move to a new CMS and is still serving files today.</p>
+        <div class="course-meta">
+          <span>23 items</span>
+          <a href="https://catalog.bilkent.edu.tr/course/c05101.html" target="_blank" rel="noopener">Course catalogue entry</a>
+        </div>
+      </header>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Exams and practice papers</h3>
+          <span class="count">4</span>
+        </div>
+        <p class="grp-note">The closest thing to past papers that exists publicly for this course. Two are real sat exams; two are the practice sets handed out before them.</p>
+        <ul class="items">
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/prinmid1.pdf" target="_blank" rel="noopener">Midterm 1 — principles section</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/mid2ans.pdf" target="_blank" rel="noopener">Midterm 2 — with answers</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/exercise_midterm1_spring2010.pdf" target="_blank" rel="noopener">Spring 2010 — Midterm 1 practice set</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/final_practice_problems.pdf" target="_blank" rel="noopener">Final — practice problems</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Homework</h3>
+          <span class="count">7</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/ECON101_HW1_spring2011.pdf" target="_blank" rel="noopener">Spring 2011 — Homework 1</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/ECON101_HW2_spring2011.pdf" target="_blank" rel="noopener">Spring 2011 — Homework 2</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_hw01.pdf" target="_blank" rel="noopener">Large-class section — Homework 1</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_hw02.pdf" target="_blank" rel="noopener">Large-class section — Homework 2</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/hw1.doc" target="_blank" rel="noopener">Early set — Homework 1</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/hw1answer.doc" target="_blank" rel="noopener">Early set — Homework 1, answers</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/hw2.doc" target="_blank" rel="noopener">Early set — Homework 2</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Exercise sets</h3>
+          <span class="count">2</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/exercise1.doc" target="_blank" rel="noopener">Exercise set 1</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/exercise2.doc" target="_blank" rel="noopener">Exercise set 2</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Syllabi and course pages</h3>
+          <span class="count">6</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/syllabus101_new.pdf" target="_blank" rel="noopener">Syllabus — current version</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/econ101_111_syllabus.pdf" target="_blank" rel="noopener">Syllabus — combined ECON 101 / 111 large class</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/intro/syllabus.doc" target="_blank" rel="noopener">Syllabus — early version</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/principles.htm" target="_blank" rel="noopener">Course page — Principles</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/principles_large_class.htm" target="_blank" rel="noopener">Course page — Principles, large class</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/teaching.htm" target="_blank" rel="noopener">Teaching index — every course on this site</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Carries on into macroeconomics</h3>
+          <span class="count">4</span>
+        </div>
+        <p class="grp-note">Same instructor, same site, the course ECON 101 feeds into. Worth having if you are taking the sequence.</p>
+        <ul class="items">
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/macro/Practicequestionsforfinalexams2003.doc" target="_blank" rel="noopener">Practice questions for final exams, 2003</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/macro/exercisequestions1.doc" target="_blank" rel="noopener">Exercise questions 1</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/macro/growth.pdf" target="_blank" rel="noopener">Growth — lecture notes</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://tyigit.bilkent.edu.tr/macro/syllabus.doc" target="_blank" rel="noopener">Macroeconomics syllabus</a>
+            <span class="who">T. Yiğit</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+  <section class="notes">
+    <h2>What was searched, and what isn't here</h2>
+    <p>The sweep covered the economics faculty list and all twenty-two personal sites it links to, the department domain, a Wayback CDX sweep of <code>econ.bilkent.edu.tr</code> and of each Bilkent-hosted faculty subdomain, and filename probing on the folders that turned up.</p>
+
+    <h4>No solved exam papers exist</h4>
+    <p>Only two real ECON 101 papers were ever posted — a midterm 1 and a midterm 2 with answers. There is no public final. The two practice sets above are what the course gave out instead, and they are the closest thing to a past-paper bank you will find.</p>
+
+    <h4>The other instructors publish research, not teaching</h4>
+    <p>Berument’s site is entirely econometrics (ECON 301/302/317). Taşkın’s holds ECON 302 readings. Kızılkaya’s covers ECON 222. Hasker publishes ECON 107, 203, 204 and 439 — no 101. The rest host on Google Sites with no course files at all.</p>
+
+    <h4>Nothing was worked around</h4>
+    <p>Every file here was posted publicly by the instructor. No access control was bypassed. Current-semester material lives on Moodle and STARS — reach it with your own student login.</p>
+
+    <h4>Use these the way they were meant</h4>
+    <p>These are study materials. Check your section’s academic-honesty policy before using anything in graded work, and note that the syllabi and grading schemes here belong to old semesters.</p>
+  </section>
+
+  <footer>
+    Compiled 2026-09-09. Links marked <span class="badge live">LIVE</span> point at the instructor's server; <span class="badge archive">ARCHIVE</span> links go to the Internet Archive's copy of the original file. Live links use plain <code>http</code>, which some browsers will flag.
+  </footer>
+</div>
+</body>
+</html>

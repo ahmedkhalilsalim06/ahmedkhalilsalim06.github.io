@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Bilkent MATH 132 Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EEF0F4; --surface:#FFFFFF; --surface-2:#F7F8FA;
+  --ink:#15181F; --ink-2:#3D434F; --muted:#6B7284;
+  --rule:#DCE0E8; --rule-soft:#E9ECF1;
+  --accent:#33368C; --accent-soft:#E6E7F5;
+  --live:#1B6A4B; --live-bg:#E2F0E9;
+  --arch:#8A5410; --arch-bg:#F6EBDA;
+  --focus:#33368C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
+    --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+    --rule:#2A303B; --rule-soft:#232932;
+    --accent:#A3A5F0; --accent-soft:#23264A;
+    --live:#6FCB9B; --live-bg:#163024;
+    --arch:#E0AE64; --arch-bg:#33260F;
+    --focus:#A3A5F0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
+  --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
+  --rule:#2A303B; --rule-soft:#232932;
+  --accent:#A3A5F0; --accent-soft:#23264A;
+  --live:#6FCB9B; --live-bg:#163024;
+  --arch:#E0AE64; --arch-bg:#33260F;
+  --focus:#A3A5F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:2px}
+.wrap{max-width:940px; margin:0 auto; padding:0 24px 96px}
+
+/* masthead */
+.mast{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 14px
+}
+h1{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(34px,5.2vw,52px);
+  line-height:1.1; margin:0 0 16px; text-wrap:balance; letter-spacing:-.01em
+}
+.lede{max-width:62ch; color:var(--ink-2); font-size:17px; margin:0 0 28px}
+.tally{display:flex; flex-wrap:wrap; gap:10px}
+.tally span{
+  font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.03em;
+  padding:5px 11px; border:1px solid var(--rule); border-radius:999px; color:var(--ink-2);
+  background:var(--surface); font-variant-numeric:tabular-nums
+}
+
+/* correction callout */
+.correction{
+  margin:28px 0 0; padding:18px 20px; background:var(--accent-soft);
+  border-left:3px solid var(--accent); border-radius:0 4px 4px 0;
+}
+.correction strong{font-weight:700}
+.correction p{margin:0; font-size:15px; color:var(--ink-2); max-width:64ch}
+
+/* toc */
+.toc{display:flex; flex-direction:column; margin:36px 0 0; border-top:1px solid var(--rule-soft)}
+.toc-link{
+  display:flex; align-items:baseline; gap:16px; padding:13px 4px;
+  border-bottom:1px solid var(--rule-soft); text-decoration:none; color:var(--ink)
+}
+.toc-link:hover{background:var(--surface-2)}
+.toc-code{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); min-width:88px}
+.toc-title{font-family:Spectral,Georgia,serif; font-size:18px; flex:1}
+.toc-n{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+
+/* course */
+.course{padding-top:64px; scroll-margin-top:16px}
+.course-head{border-bottom:2px solid var(--ink); padding-bottom:18px; margin-bottom:8px}
+.course-id{
+  font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.12em;
+  color:var(--accent); margin-bottom:6px
+}
+.course-head h2{
+  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(26px,3.6vw,34px);
+  margin:0 0 12px; line-height:1.2; text-wrap:balance
+}
+.blurb{margin:0 0 14px; color:var(--ink-2); max-width:66ch; font-size:15.5px}
+.course-meta{
+  display:flex; gap:18px; align-items:baseline; font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px; color:var(--muted); flex-wrap:wrap
+}
+
+/* group */
+.grp{padding-top:30px}
+.grp-head{display:flex; align-items:baseline; gap:12px}
+.grp-head h3{
+  font-family:"Public Sans",sans-serif; font-weight:700; font-size:13px;
+  letter-spacing:.1em; text-transform:uppercase; margin:0; color:var(--ink)
+}
+.count{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+  font-variant-numeric:tabular-nums
+}
+.grp-note{margin:8px 0 0; font-size:14.5px; color:var(--muted); max-width:64ch; font-style:italic}
+.items{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column}
+.item{
+  display:grid; grid-template-columns:1fr auto auto; gap:8px 14px; align-items:baseline;
+  padding:10px 2px; border-bottom:1px solid var(--rule-soft)
+}
+.item:hover{background:var(--surface-2)}
+.item a{text-decoration:none; font-size:15.5px; color:var(--ink); border-bottom:1px solid transparent}
+.item a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+.who{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); white-space:nowrap}
+.badge{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.09em;
+  padding:2px 7px; border-radius:3px; white-space:nowrap
+}
+.badge.live{color:var(--live); background:var(--live-bg)}
+.badge.archive{color:var(--arch); background:var(--arch-bg)}
+
+/* absences + footer */
+.notes{margin-top:72px; padding-top:28px; border-top:1px solid var(--rule)}
+.notes h2{font-family:Spectral,Georgia,serif; font-weight:600; font-size:24px; margin:0 0 6px}
+.notes h4{
+  font-family:"Public Sans",sans-serif; font-size:13px; letter-spacing:.09em;
+  text-transform:uppercase; margin:26px 0 6px; color:var(--ink)
+}
+.notes p{margin:0 0 10px; color:var(--ink-2); max-width:66ch; font-size:15px}
+.notes ul{margin:0 0 10px; padding-left:20px; color:var(--ink-2); max-width:66ch; font-size:15px}
+.notes li{margin-bottom:5px}
+code{font-family:"IBM Plex Mono",monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px}
+footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--rule); color:var(--muted); font-size:13.5px}
+@media (max-width:560px){
+  .item{grid-template-columns:1fr auto}
+  .who{grid-column:1 / -1; order:3}
+  .toc-code{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">Bilkent University · Department of Mathematics</p>
+    <h1>Discrete maths, everything public</h1>
+    <p class="lede">Every publicly posted MATH 132 past paper, solution set, lecture note and problem list that survives — pulled from instructors' own folders on <code>fen.bilkent.edu.tr</code> and, where those files are gone, recovered from the Internet Archive.</p>
+    <div class="tally">
+      <span>39 items</span>
+      <span>31 live</span>
+      <span>8 recovered from archive</span>
+      <span>8 instructors · 2002–2023</span>
+    </div>
+    <div class="correction">
+      <p><strong>Want more practice?</strong> MATH 110 and MATH 210 run on the same Grimaldi textbook and cover much the same syllabus — Barker says so himself. Their papers, including a complete fourteen-week lecture-note set, are on the <a href="https://ahmedkhalilsalim06.github.io/math110-210/">MATH 110 and 210 companion page</a>.</p>
+    </div>
+    <nav class="toc">
+<a class="toc-link" href="#MATH132"><span class="toc-code">MATH 132</span><span class="toc-title">Discrete and Combinatorial Mathematics</span><span class="toc-n">39</span></a>
+    </nav>
+  </header>
+
+
+    <article class="course" id="MATH132">
+      <header class="course-head">
+        <div class="course-id">MATH 132</div>
+        <h2>Discrete and Combinatorial Mathematics</h2>
+        <p class="blurb">The Bilkent discrete-mathematics course taken by CS and engineering students. Textbook throughout its history: Grimaldi, <em>Discrete and Combinatorial Mathematics</em>.</p>
+        <div class="course-meta">
+          <span>39 items</span>
+          <a href="https://catalog.bilkent.edu.tr/course/c03132.html" target="_blank" rel="noopener">Course catalogue entry</a>
+        </div>
+      </header>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Course archives</h3>
+          <span class="count">5</span>
+        </div>
+        <p class="grp-note">Barker bundles a whole semester — exam papers, solutions, homework — into one PDF per term. These are the densest single files here.</p>
+        <ul class="items">
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/arch132spr23.pdf" target="_blank" rel="noopener">Spring 2023 — full course archive</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/arch132fall22.pdf" target="_blank" rel="noopener">Fall 2022 — full course archive</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/arch132fall17.pdf" target="_blank" rel="noopener">Fall 2017 — full course archive</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/arch132fall15.pdf" target="_blank" rel="noopener">Fall 2015 — full course archive</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/arch132spr14.pdf" target="_blank" rel="noopener">Spring 2014 — full course archive</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Individual exam papers</h3>
+          <span class="count">10</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/2005-1.pdf" target="_blank" rel="noopener">2005 — Midterm 1</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/2005-2.pdf" target="_blank" rel="noopener">2005 — Midterm 2</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/2005-f.pdf" target="_blank" rel="noopener">2005 — Final</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/132m1s.pdf" target="_blank" rel="noopener">Spring 2012 — Midterm 1, with solutions</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/m132m2s.pdf" target="_blank" rel="noopener">Spring 2012 — Midterm 2, with solutions</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/sample.pdf" target="_blank" rel="noopener">Spring 2012 — Sample midterm questions</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/fin132fall15.pdf" target="_blank" rel="noopener">Fall 2015 — Final</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~otekman/disc/ak132_1.pdf" target="_blank" rel="noopener">Older MATH 132 — Midterm 1 (reposted as practice)</a>
+            <span class="who">O. Tekman</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~otekman/disc/ak132_2.pdf" target="_blank" rel="noopener">Older MATH 132 — Midterm 2 (reposted as practice)</a>
+            <span class="who">O. Tekman</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~otekman/disc/ak132_f.pdf" target="_blank" rel="noopener">Older MATH 132 — Final (reposted as practice)</a>
+            <span class="who">O. Tekman</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Lecture notes and draft chapters</h3>
+          <span class="count">5</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/LN_counting.pdf" target="_blank" rel="noopener">Counting — full lecture notes</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/LN_relations.pdf" target="_blank" rel="noopener">Relations — full lecture notes</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/dincom2.pdf" target="_blank" rel="noopener">Graph theory — draft chapter 2</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/dincom4.pdf" target="_blank" rel="noopener">Enumerative combinatorics and binomial coefficients — draft chapter 4</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/discretepastpapers.pdf" target="_blank" rel="noopener">Collected discrete past papers and solutions (110 / 132 / 210)</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Homework and problem lists</h3>
+          <span class="count">3</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/hw132fall15.pdf" target="_blank" rel="noopener">Fall 2015 — homework set</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/hw132fall17.pdf" target="_blank" rel="noopener">Fall 2017 — homework set</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/problems.html" target="_blank" rel="noopener">Suggested problems, keyed to Grimaldi 5th ed.</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Syllabi and course pages</h3>
+          <span class="count">8</span>
+        </div>
+        
+        <ul class="items">
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/intro132fall15.pdf" target="_blank" rel="noopener">Fall 2015 — course introduction</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/intro132spr14.pdf" target="_blank" rel="noopener">Spring 2014 — course introduction</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~barker/spec132fall17.pdf" target="_blank" rel="noopener">Fall 2017 — course specification</a>
+            <span class="who">L. Barker</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/syl.pdf" target="_blank" rel="noopener">Syllabus</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~degt/math132/math132.html" target="_blank" rel="noopener">Course homepage</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/132.html" target="_blank" rel="noopener">Spring 2012 — course homepage</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/132s.pdf" target="_blank" rel="noopener">Spring 2012 — syllabus</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+          <li class="item">
+            <a href="http://www.fen.bilkent.edu.tr/~hamza/info.html" target="_blank" rel="noopener">Spring 2012 — midterm and final information</a>
+            <span class="who">H. Ünal</span>
+            <span class="badge live">LIVE</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="grp">
+        <div class="grp-head">
+          <h3>Recovered from the Wayback Machine</h3>
+          <span class="count">8</span>
+        </div>
+        <p class="grp-note">These pages were public when the Internet Archive crawled them but no longer resolve on the university server.</p>
+        <ul class="items">
+          <li class="item">
+            <a href="https://web.archive.org/web/20081019045648id_/http://www.fen.bilkent.edu.tr:80/~unluo/Math132_Fall2008.html" target="_blank" rel="noopener">Fall 2008 — course homepage</a>
+            <span class="who">Ö. Ünlü</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20081019085515id_/http://www.fen.bilkent.edu.tr:80/~unluo/Math132_Fall2008_Homework.html" target="_blank" rel="noopener">Fall 2008 — homework</a>
+            <span class="who">Ö. Ünlü</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20081019054320id_/http://www.fen.bilkent.edu.tr:80/~unluo/Math132_Fall2008_Midterms_and_Final_Exam_Information.html" target="_blank" rel="noopener">Fall 2008 — midterm and final exam information</a>
+            <span class="who">Ö. Ünlü</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20081019085520id_/http://www.fen.bilkent.edu.tr:80/~unluo/Math132_Fall2008_Quizzes.html" target="_blank" rel="noopener">Fall 2008 — quizzes</a>
+            <span class="who">Ö. Ünlü</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20071128091849id_/http://www.fen.bilkent.edu.tr:80/~degt/math132/classes.htm" target="_blank" rel="noopener">2007 — class-by-class log</a>
+            <span class="who">A. Degtyarev</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20040324212232id_/http://www.fen.bilkent.edu.tr:80/~natalya/math132/home.htm" target="_blank" rel="noopener">2004 — course homepage</a>
+            <span class="who">N. Sedova</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20071104044836id_/http://www.fen.bilkent.edu.tr:80/~kaptan/132/" target="_blank" rel="noopener">2007 — course folder index</a>
+            <span class="who">S. Kaptanoğlu</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+          <li class="item">
+            <a href="https://web.archive.org/web/20021010032543id_/http://www.fen.bilkent.edu.tr:80/~huishi/m132.html" target="_blank" rel="noopener">2002 — course page</a>
+            <span class="who">H. Li</span>
+            <span class="badge archive">ARCHIVE</span>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+  <section class="notes">
+    <h2>What was searched, and what isn't here</h2>
+    <p>The sweep covered the departmental faculty list, all twenty personal <code>~user</code> folders it links to, each instructor's course subfolders, and a Wayback CDX sweep of the whole <code>fen.bilkent.edu.tr</code> domain filtered on the course numbers.</p>
+
+    <h4>Nothing public after roughly 2023</h4>
+    <p>Recent MATH 132 sections run entirely on Moodle and STARS. Both Degtyarev and Barker say so on their own pages. Barker's Spring 2023 archive is the newest public file of any kind; there is no public 2024–2026 material to find.</p>
+
+    <h4>Three files are gone for good</h4>
+    <p>Degtyarev's course page still links to three review sheets in <code>~guloglua/</code> — midterm 1, midterm 2 and final sample problems. All three now 404, and the Internet Archive never crawled them. Those links are dead everywhere, so they are not listed above.</p>
+
+    <h4>Nothing was worked around</h4>
+    <p>Everything here was posted publicly by the instructor. No access control was bypassed; the archived copies are snapshots of pages that were openly reachable when the crawler visited. Material behind Moodle or STARS stays there — reach it with your own student login on the campus network or VPN.</p>
+
+    <h4>Use these the way they were meant</h4>
+    <p>These are study materials. Past papers are for practising against; check your course's own academic-honesty policy before using anything in graded work, and note that syllabi and grading schemes shown here belong to old semesters and no longer apply.</p>
+  </section>
+
+  <footer>
+    Compiled 2026-09-09. Links marked <span class="badge live">LIVE</span> point at the instructor's server; <span class="badge archive">ARCHIVE</span> links go to the Internet Archive's copy of the original file. Live links use plain <code>http</code>, which some browsers will flag.
+  </footer>
+</div>
+</body>
+</html>

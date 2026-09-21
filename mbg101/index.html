@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Biology I Lecture Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<style>:root{
+  --paper:#F6F4F9; --sunken:#EDE9F3;
+  --ink:#17131E; --muted:#5F576E; --faint:#8C859A;
+  --rule:#CFC7DB; --hair:#E0DAE9;
+  --accent:#5F3F94; --accent-ink:#523481; --accent-wash:#E6DEF3;
+  --amber:#8A5A17; --amber-wash:#F1E8D7;
+
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#100E17; --sunken:#1A1723;
+  --ink:#E5E1EC; --muted:#9E96AE; --faint:#736C82;
+  --rule:#2D2739; --hair:#241F2E;
+  --accent:#A283D4; --accent-ink:#B79DE2; --accent-wash:#211A31;
+  --amber:#D3A45E; --amber-wash:#292216;
+}}
+:root[data-theme="dark"]{
+  --paper:#100E17; --sunken:#1A1723;
+  --ink:#E5E1EC; --muted:#9E96AE; --faint:#736C82;
+  --rule:#2D2739; --hair:#241F2E;
+  --accent:#A283D4; --accent-ink:#B79DE2; --accent-wash:#211A31;
+  --amber:#D3A45E; --amber-wash:#292216;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1060px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
+a{color:var(--accent-ink)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+
+.mast{padding-block:52px 30px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 18px;
+}
+.code{
+  font-family:var(--mono); font-size:13px; font-weight:500; letter-spacing:.1em;
+  color:var(--accent-ink); display:block; margin-bottom:8px;
+}
+h1{
+  font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,5.4vw,3.1rem);
+  line-height:1.08; letter-spacing:-.015em; margin:0 0 16px; text-wrap:balance;
+}
+.standfirst{
+  font-family:var(--serif); font-size:clamp(1.02rem,2.2vw,1.18rem); line-height:1.58;
+  color:var(--muted); max-width:60ch; margin:0;
+}
+.tally{
+  display:flex; flex-wrap:wrap; gap:0 30px; margin-top:26px;
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--muted);
+}
+.tally b{
+  display:block; font-family:var(--serif); font-size:1.55rem; font-weight:500;
+  letter-spacing:0; color:var(--ink); line-height:1.1; font-variant-numeric:tabular-nums;
+}
+.tally span{display:block; text-transform:uppercase; letter-spacing:.12em; margin-top:3px}
+
+.jump{
+  position:sticky; top:0; z-index:5; background:var(--paper);
+  border-bottom:1px solid var(--rule); margin-bottom:44px;
+  display:flex; gap:4px; overflow-x:auto; padding-block:9px;
+}
+.jump a{
+  flex:none; font-family:var(--mono); font-size:11px; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); text-decoration:none;
+  padding:5px 9px; border-radius:4px; white-space:nowrap;
+}
+.jump a:hover{color:var(--ink); background:var(--sunken)}
+
+.note{max-width:66ch; color:var(--muted); font-size:14.5px}
+.note p{margin:0 0 12px}
+.note strong{color:var(--ink); font-weight:600}
+
+.legend{
+  display:flex; flex-wrap:wrap; gap:14px 26px; margin:22px 0 0;
+  padding:16px 18px; background:var(--sunken); border-radius:6px;
+}
+.legend div{display:flex; align-items:flex-start; gap:9px; font-size:13.5px; color:var(--muted); max-width:38ch}
+
+section{margin-top:56px; scroll-margin-top:56px}
+.shead{border-top:2px solid var(--ink); padding-top:14px; margin-bottom:6px}
+h2{
+  font-family:var(--serif); font-weight:500; font-size:1.7rem; letter-spacing:-.01em;
+  margin:0; line-height:1.2; text-wrap:balance;
+}
+h3.sub{font-family:var(--serif); font-weight:500; font-size:1.05rem; margin:26px 0 0}
+.byline{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--muted);
+  margin:7px 0 0; display:flex; flex-wrap:wrap; gap:4px 14px;
+}
+.byline em{font-style:normal; color:var(--accent-ink)}
+.blurb{max-width:64ch; color:var(--muted); font-size:14.5px; margin:14px 0 0}
+
+.b{
+  flex:none; font-family:var(--mono); font-size:9.5px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; padding:2px 6px; border-radius:3px; line-height:1.5;
+  min-width:56px; text-align:center;
+}
+.b-live{color:var(--accent-ink); background:var(--accent-wash)}
+.b-arc{color:var(--amber); background:var(--amber-wash)}
+
+.list{margin-top:20px; display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:0 34px}
+.list.solo{grid-template-columns:1fr; max-width:70ch}
+.row{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; padding:9px 0;
+  border-bottom:1px solid var(--hair); min-width:0;
+}
+.row a{text-decoration:none; color:var(--ink); flex:1 1 12ch; min-width:0; overflow-wrap:anywhere}
+.row a:hover{color:var(--accent-ink); text-decoration:underline; text-underline-offset:2px}
+.row .why{flex:0 0 100%; font-size:12.5px; line-height:1.45; color:var(--faint)}
+
+.gridwrap{margin-top:22px; overflow-x:auto}
+table{border-collapse:collapse; width:100%; min-width:520px}
+th,td{text-align:left; vertical-align:middle; padding:9px 12px 9px 0; border-bottom:1px solid var(--hair)}
+thead th{
+  font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; border-bottom:1px solid var(--rule); padding-bottom:8px;
+}
+tbody th{
+  font-family:var(--mono); font-size:12.5px; font-weight:500; color:var(--ink);
+  white-space:nowrap; font-variant-numeric:tabular-nums; width:1%;
+}
+tbody tr:hover{background:var(--sunken)}
+thead th:nth-child(2),thead th:nth-child(3),thead th:nth-child(4){width:30%}
+.qs{display:flex; flex-wrap:wrap; gap:4px}
+.q{
+  font-family:var(--mono); font-size:11.5px; text-decoration:none; color:var(--accent-ink);
+  background:var(--accent-wash); padding:3px 7px; border-radius:3px; line-height:1.4;
+}
+.q:hover{background:var(--accent); color:var(--paper)}
+.q.arc{color:var(--amber); background:var(--amber-wash)}
+.q.arc:hover{background:var(--amber); color:var(--paper)}
+.na{font-family:var(--mono); font-size:11.5px; color:var(--faint)}
+
+.cluster{margin-top:20px; display:flex; flex-direction:column; gap:12px}
+.crow{display:flex; gap:14px; align-items:baseline; padding-bottom:12px; border-bottom:1px solid var(--hair)}
+.crow .cn{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--muted);
+  white-space:nowrap; width:60px; flex:none; padding-top:2px;
+}
+.crow .cl{display:flex; flex-wrap:wrap; gap:5px}
+
+.gaps{
+  margin-top:56px; padding:24px 26px; background:var(--sunken); border-radius:8px;
+  border-left:3px solid var(--accent);
+}
+.gaps h2{font-size:1.25rem; margin-bottom:12px}
+.gaps ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px; max-width:66ch}
+.gaps li{margin-bottom:8px}
+.gaps li::marker{color:var(--accent)}
+
+footer{
+  margin-top:52px; padding-top:20px; border-top:1px solid var(--rule);
+  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--faint);
+  display:flex; flex-wrap:wrap; gap:6px 20px;
+}
+
+@media (max-width:560px){
+  .mast{padding-block:36px 24px}
+  .list{grid-template-columns:1fr}
+  .tally{gap:0 22px}
+  .crow{flex-direction:column; gap:6px}
+  .crow .cn{width:auto}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap"><header class="mast">
+<p class="eyebrow">Bilkent University &middot; Molecular Biology and Genetics</p>
+<span class="code">MBG 101</span>
+<h1>Biology I lecture archive</h1>
+<p class="standfirst">MBG 101 has almost no public footprint and not one exam anywhere &mdash; but a full lecture sequence survives under a misleading filename, and more Biology I material sits under the course&rsquo;s older code. This page is all of it, reassembled and checked.</p>
+<div class="tally"><div><b>28</b><span>items</span></div><div><b>15</b><span>live</span></div><div><b>13</b><span>from the archive</span></div><div><b>21</b><span>lecture decks</span></div><div><b>0</b><span>MBG 101 exams in public</span></div></div>
+<div class="legend"><div><span class="b b-live">live</span> Still served by Bilkent. If a link is slow, the department server is slow &mdash; try again.</div><div><span class="b b-arc">archive</span> Deleted from Bilkent; the link opens the Wayback Machine&rsquo;s copy of a page that was public when crawled.</div></div>
+<p class="note" style="margin-top:22px">These are materials instructors published openly on their own faculty pages. Nothing here came from Moodle, STARS or any account-protected system. The decks are lecture slides, not exam papers &mdash; treat them as a topic map, and check the current syllabus for what your section actually covers.</p>
+</header><nav class="jump"><a href="#lectures">Lecture decks</a><a href="#mbgpages">Course pages</a><a href="#mbg110">MBG 110</a><a href="#mbg210">MBG 210</a></nav><section id="lectures"><div class="shead"><h2>&Ouml;zlen Konu&rsquo;s lecture decks</h2><p class="byline"><span><em>&Ouml;zlen Konu</em></span><span>16 decks</span><span>fen.bilkent.edu.tr/~konu</span></p></div><p class="blurb">The full lecture sequence for the course, in the order it was taught: molecules and stereochemistry, then replication, repair, transcription and translation, then recombinant technique, development and cancer. Six decks have since been removed from the server and are linked from the archive instead.</p><div class="list"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Lecture1.ppt">Lecture 1</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Lecture2.ppt">Lecture 2</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Lecture3.ppt">Lecture 3</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Lecture4.ppt">Lecture 4</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/november6.ppt">Lecture 7 — DNA repair</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Replication.ppt">DNA replication</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/transcription.ppt">Transcription</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/12_PPTLecture_LEC.ppt">Recombinant technology</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Recombinant_DNA.ppt">Molecular biology techniques</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Evolutionary%20BiologyExamples.ppt">Evolutionary biology — examples</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225184126id_/http://www.fen.bilkent.edu.tr/~konu/Lecture6.ppt">Lecture 6</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225184852id_/http://www.fen.bilkent.edu.tr/~konu/Lecture8.ppt">Lecture 8</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225185626id_/http://www.fen.bilkent.edu.tr/~konu/november13.ppt">Lecture 9</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225182724id_/http://www.fen.bilkent.edu.tr/~konu/Translation.ppt">Translation</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225185919id_/http://www.fen.bilkent.edu.tr/~konu/cancerslides.ppt">Cancer</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20041225183114id_/http://www.fen.bilkent.edu.tr/~konu/sickle_cell.ppt">Sickle cell</a></div></div></section><section id="mbgpages"><div class="shead"><h2>Course pages</h2><p class="byline"><span>2 pages</span><span>1997 and 2004</span></p></div><p class="blurb">The 1997 outline is a genuine curiosity: Tayfun &Ouml;z&ccedil;elik&rsquo;s original MBG 101 page, with the grading split and week-by-week schedule of the course&rsquo;s earliest years.</p><div class="list solo"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/mbg105lectures.htm">Lecture index — MBG 101 Biology</a><span class="why">Filed under a 105 filename; the page itself is headed MBG-101</span></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/19971022074955id_/http://www.fen.bilkent.edu.tr/~bilmbg/courses/mbg101/mbg101.html">Fall 1997 course outline</a><span class="why">Tayfun Özçelik — grading split, schedule and topic list</span></div></div></section><section id="mbg110"><div class="shead"><h2>MBG 110 &mdash; Biology I under its older code</h2><p class="byline"><span><em>Kamruddin Ahmed, Can Ak&ccedil;al&#305;</em></span><span>2003 and 2005</span><span>6 items</span><span>Wayback Machine only</span></p></div><p class="blurb">I&#351;&#305;k Yulu&#287;&rsquo;s own teaching record lists &ldquo;MBG 101 and MBG 102 &mdash; Biology I&rdquo; and &ldquo;MBG 110 &mdash; Biology I&rdquo; side by side: 110 is the same course under an older number. That makes these decks real Biology I material, and they are the only lecture notes here by anyone other than Konu.</p><div class="list"><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20030711063352id_/http://www.fen.bilkent.edu.tr/~ahmed/MBG110%20slide1.ppt">Kamruddin Ahmed &amp;mdash; Lecture 1</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20030711071432id_/http://www.fen.bilkent.edu.tr/~ahmed/MBG110slide2DNA.ppt">Kamruddin Ahmed &amp;mdash; Lecture 2, DNA</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20030711090633id_/http://www.fen.bilkent.edu.tr/~ahmed/MBG110slide3.ppt">Kamruddin Ahmed &amp;mdash; Lecture 3</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20030426162504id_/http://www.fen.bilkent.edu.tr/~ahmed/MBG110slide9A.ppt">Kamruddin Ahmed &amp;mdash; Lecture 9A</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20030711131651id_/http://www.fen.bilkent.edu.tr/~ahmed/MBG110slide10.ppt">Kamruddin Ahmed &amp;mdash; Lecture 10</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20051224052329id_/http://www.fen.bilkent.edu.tr/~akcali/mbg110/mbg110.html">Can Ak&amp;ccedil;al&amp;#305; &amp;mdash; MBG 110 course page, Fall 2005</a></div></div></section><section id="mbg210"><div class="shead"><h2>Next door: MBG 210 Genetics</h2><p class="byline"><span><em>&Ouml;zlen Konu</em></span><span>4 entry points</span></p></div><p class="blurb">Konu&rsquo;s genetics course is the one she kept properly: about twenty-five slide decks, a laboratory manual and reading lists, all still live. It is the follow-on course, not a substitute for MBG 101, but the molecular chapters overlap &mdash; and it holds the one actual exam paper in this whole search.</p><div class="list solo"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/FINALEXAM.ppt">MBG 210 &amp;mdash; take-home final</a><span class="why">The only exam paper any MBG instructor has left in public &amp;mdash; and it belongs to Genetics, not Biology I</span></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/week1.htm">MBG 210 Genetics — weekly lecture notes</a><span class="why">Same instructor, the follow-on genetics course — about 25 slide decks and readings</span></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/Labsession1.doc">MBG 210 — genetics laboratory manual</a><span class="why">Lab manual for the genetics course</span></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~konu/laboratorypages.html">MBG 210 — laboratory web supplements</a><span class="why">Model organisms, comparative genomics, Biology Workbench</span></div></div></section><div class="gaps"><h2>What is not here, and why</h2>
+<ul>
+<li><strong>No MBG 101 exam has ever been posted publicly.</strong> Not a midterm, not a final, not a quiz &mdash; in any year, by any instructor, under either course code. I went back a second time for this one: probed 174 exam-shaped filenames against Konu&rsquo;s live folder, ran a Wayback sweep for exam-, midterm-, final- and quiz-named files across every MBG-linked folder on <code>fen.bilkent.edu.tr</code>, and walked the old department&rsquo;s per-faculty <code>~bilmbg/people/facmem/</code> tree. The only exam paper any MBG instructor left in public is Konu&rsquo;s MBG 210 take-home final, listed below under Genetics.</li>
+<li><strong>The 1997 course outline tells you the shape of the exams</strong> &mdash; two midterms at 25% each, final at 40%, homework and attendance 10% &mdash; but links no papers.</li>
+<li><strong>One file was found and deliberately not linked:</strong> a makeup-exam results spreadsheet from Ak&ccedil;al&#305;&rsquo;s 2005 section. It is a list of named students&rsquo; grades, not course material.</li>
+<li><strong>The lecture index is filed as <code>mbg105lectures.htm</code></strong> even though the page itself is headed MBG-101. That mismatch is why no search engine surfaces it, and it is the single reason this section has any content at all.</li>
+<li><strong>Seven files are gone entirely</strong> &mdash; Konu&rsquo;s Lecture 5a, Lecture 5b, Stereoisomers and Development, and Ak&ccedil;al&#305;&rsquo;s MBG 110 syllabus and three lecture decks. Deleted from the server and never crawled, so no copy exists anywhere. They still appear as links on their course pages; do not chase them.</li>
+<li><strong>Checked and empty:</strong> the current MBG department site, all eleven current faculty profiles, the old departmental <code>~bilmbg</code> folder including its per-course pages, and Wayback sweeps of both <code>mbg.bilkent.edu.tr</code> and <code>fen.bilkent.edu.tr</code>. The department&rsquo;s public files are internship forms and alumni lists.</li>
+<li><strong>Current sections run on Moodle</strong> &mdash; enrolled-student access through your Bilkent account, which is where anything recent will be.</li>
+</ul></div><p class="note" style="margin-top:32px"><strong>Course description.</strong> MBG 101 Biology I, 4 credits / 6.5 ECTS: molecules of life, the central dogma from DNA to protein, manipulation and analysis of nucleic acids and proteins, and an introduction to genetics, immunology, development and cancer. <a href="https://catalog.bilkent.edu.tr/course/c04101.html">Official catalog entry</a> &middot; <a href="https://stars.bilkent.edu.tr/homepage/offerings.php?DEPT=MBG">Current MBG offerings</a></p><footer><span>Built 10 September 2026</span><span>Every link opened and checked</span><span>Sources: fen.bilkent.edu.tr, Wayback Machine</span></footer></div>
+</body>
+</html>

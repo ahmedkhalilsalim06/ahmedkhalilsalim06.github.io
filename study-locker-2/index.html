@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style>
+<title>Bilkent Study Locker II</title>
+<meta name="description" content="MATH 225, MATH 260, CS 115 and IE 272 — exams, slides, homeworks and code, live and archived">
+<style>
+  :root {
+    --bg:#f4f2ee; --surface:#fbfaf8; --surface-2:#f0ede7;
+    --ink:#1c1a17; --ink-soft:#5c574e; --line:#ddd7cc;
+    --accent:#0b6b5f; --accent-soft:#0b6b5f18; --accent-ink:#084b43;
+    --amber:#a9640b; --amber-soft:#a9640b16;
+    --font-d:"Fraunces",Georgia,serif; --font-b:"Public Sans",-apple-system,system-ui,sans-serif;
+    --font-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark) { :root:not([data-theme="light"]) {
+    --bg:#16150f; --surface:#201e17; --surface-2:#2a271e; --ink:#f2efe6; --ink-soft:#b0a993; --line:#38342a;
+    --accent:#4fbfa6; --accent-soft:#4fbfa61f; --accent-ink:#8fe0cd; --amber:#e0a24e; --amber-soft:#e0a24e1c; } }
+  :root[data-theme="dark"] {
+    --bg:#16150f; --surface:#201e17; --surface-2:#2a271e; --ink:#f2efe6; --ink-soft:#b0a993; --line:#38342a;
+    --accent:#4fbfa6; --accent-soft:#4fbfa61f; --accent-ink:#8fe0cd; --amber:#e0a24e; --amber-soft:#e0a24e1c; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:clamp(1.5rem,4vw,3.5rem) clamp(1rem,4vw,2rem) 4rem}
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:1.4rem;margin-bottom:2rem}
+  .eyebrow{font-family:var(--font-m);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 .6rem}
+  h1{font-family:var(--font-d);font-weight:600;font-size:clamp(2rem,5vw,3rem);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+  .lede{color:var(--ink-soft);max-width:60ch;margin:1rem 0 0;font-size:1.02rem}
+  .stat{display:flex;gap:1.8rem;flex-wrap:wrap;margin-top:1.5rem;font-family:var(--font-m);font-size:.8rem}
+  .stat b{font-family:var(--font-d);font-size:1.5rem;display:block;color:var(--accent-ink);font-weight:600}
+  .stat span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
+  .note{background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:.9rem 1.1rem;margin:2rem 0;font-size:.9rem;color:var(--ink)}
+  .note b{color:var(--amber)}
+  .course{margin-top:2.6rem}
+  .course-head{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:.6rem;margin-bottom:1.4rem}
+  .course-head h2{font-family:var(--font-d);font-weight:600;font-size:1.7rem;margin:0;letter-spacing:-.01em}
+  .course-head .who{color:var(--ink-soft);font-size:.9rem}
+  .groups{display:grid;gap:1rem}
+  @media(min-width:680px){.groups{grid-template-columns:1fr 1fr}}
+  .group{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem}
+  .group-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.2rem}
+  .group-head h3{font-family:var(--font-b);font-weight:700;font-size:1rem;margin:0}
+  .cnt{font-family:var(--font-m);font-size:.7rem;background:var(--accent-soft);color:var(--accent-ink);padding:.1rem .45rem;border-radius:20px}
+  .group-desc{color:var(--ink-soft);font-size:.85rem;margin:.15rem 0 .8rem}
+  ul.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  ul.files a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;text-decoration:none;color:var(--ink);padding:.4rem .5rem;border-radius:6px;font-size:.86rem;transition:background .12s}
+  ul.files a:hover{background:var(--surface-2)}
+  ul.files a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .fname{font-size:.84rem;word-break:break-word;flex:1;min-width:0}
+  .tags{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+  .src{font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;padding:.1rem .38rem;border-radius:4px;font-weight:600}
+  .src-live{background:var(--accent-soft);color:var(--accent-ink)} .src-arch{background:var(--amber-soft);color:var(--amber)}
+  .ext{font-family:var(--font-m);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:.1rem .4rem;border-radius:4px;background:var(--surface-2);color:var(--ink-soft)}
+  .ext-pdf{color:#b23a2b} .ext-zip,.ext-tar{color:var(--accent-ink)} .ext-ppt{color:#c25a0a} .ext-doc{color:#2b6bb0} .ext-htm,.ext-html{color:#7a5ea8}
+  @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .ext-pdf{color:#f0897c} :root:not([data-theme="light"]) .ext-htm,:root:not([data-theme="light"]) .ext-html{color:#b79fe0}}
+  footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--line);color:var(--ink-soft);font-size:.8rem;line-height:1.6}
+  footer a{color:var(--accent-ink)}
+  a.livelink{color:var(--accent-ink);font-family:var(--font-m);font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Four courses · live pages + Wayback Machine</p>
+    <h1>Bilkent Study Locker II</h1>
+    <p class="lede">Study materials for MATH 225, MATH 260, CS 115 and IE 272 — pulled from instructor pages where they're still posted, recovered from the Internet Archive where they're not.</p>
+    <div class="stat">
+      <div><b>91</b><span>documents</span></div>
+      <div><b>41</b><span>MATH 225</span></div>
+      <div><b>27</b><span>MATH 260</span></div>
+      <div><b>23</b><span>CS 115</span></div>
+      <div><b>0</b><span>IE 272</span></div>
+    </div>
+  </header>
+
+  <div class="note">
+    <b>How to use:</b> each row is tagged <span class="src src-live">live</span> (still on the instructor's site) or <span class="src src-arch">archive</span> (recovered from the Wayback Machine). Click to open the original.
+  </div>
+
+  <div class="course">
+    <div class="course-head"><h2>MATH 225</h2><span class="who">Linear Algebra &amp; Differential Equations · Kurtulmaz &amp; Gürses · mostly live</span></div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head"><h3>Past exams &amp; solutions — Kurtulmaz</h3><span class="cnt">25</span></div>
+        <p class="group-desc">Midterms and finals 2008–2015, most with full worked solutions.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20070129144520id_/http://www.ee.bilkent.edu.tr:80/~math225/F04-MT2.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2004 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2008-Fall.Midterm1.1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008.SolForMt21.yeni.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Fall.Finalexam..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008-09 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009.fall.midt1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2009 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/Math%20225.2010-11.Spring.2ndMidterm.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2010-11 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2011-12Fall-Final.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2011-12 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt1.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2012-13 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt2..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2012-13 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14%20Final.sol..pdf" target="_blank" rel="noopener"><span class="fname">Fall 2013-14 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14SpringSol.%20to%20Mdt1.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14.Spring.Mdt2.Solut..pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14Spring%20Sol.to%20Final.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013-14 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.%20to%20Mdt%201.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15Fall.Solt.Midt2.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.Final%20exam.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2014-15 — Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Fall.Midterm2.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2008-09 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Spring.Midterm2.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2008-09 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009.final.pdf" target="_blank" rel="noopener"><span class="fname">2009 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.MIDTERM1.COZUM.DEGISIK..pdf" target="_blank" rel="noopener"><span class="fname">Midterm 1 — alternative solutions</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final.1.pdf" target="_blank" rel="noopener"><span class="fname">Extra final — paper 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final2.pdf" target="_blank" rel="noopener"><span class="fname">Extra final — paper 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final3.pdf" target="_blank" rel="noopener"><span class="fname">Extra final — paper 3</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final4.pdf" target="_blank" rel="noopener"><span class="fname">Extra final — paper 4</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final5.pdf" target="_blank" rel="noopener"><span class="fname">Extra final — paper 5</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Past exams — Gürses</h3><span class="cnt">5</span></div>
+        <p class="group-desc">A second set: two midterms and a final, each with solutions.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1sol.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 1 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2sol.pdf" target="_blank" rel="noopener"><span class="fname">Midterm 2 (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam3sol.pdf" target="_blank" rel="noopener"><span class="fname">Final (solutions)</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Other instructors &amp; related</h3><span class="cnt">6</span></div>
+        <p class="group-desc">Muğan&#x27;s 2007-08 midterm with solutions, plus MATH 220 old exams kept in the MATH 225 course folder.</p>
+        <ul class="files">
+<li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/Midterm%20Ex-1-FALL-2007-08-Solution.pdf" target="_blank" rel="noopener"><span class="fname">Fall 2007-08 — Midterm 1 (solutions) — Muğan</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20040129094713id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math225/Old%20exams/220-mt1-2001.pdf" target="_blank" rel="noopener"><span class="fname">MATH 220 — Midterm 1, 2001</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20040129155526id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math225/Old%20exams/220-mt1-2002.pdf" target="_blank" rel="noopener"><span class="fname">MATH 220 — Midterm 1, 2002</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20040129064328id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math225/Old%20exams/220-mt2-2001.pdf" target="_blank" rel="noopener"><span class="fname">MATH 220 — Midterm 2, 2001</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20040129144414id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math225/Old%20exams/220-mt2-2002.pdf" target="_blank" rel="noopener"><span class="fname">MATH 220 — Midterm 2, 2002</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20040129095605id_/http://www.fen.bilkent.edu.tr:80/~gozkan/math225/Old%20exams/220-mt2-2002-sol.pdf" target="_blank" rel="noopener"><span class="fname">MATH 220 — Midterm 2, 2002 (solutions)</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Homeworks &amp; practice</h3><span class="cnt">5</span></div>
+        <p class="group-desc">Archived problem sets and a suggested-questions review sheet.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20070129144533id_/http://www.ee.bilkent.edu.tr:80/~math225/hw1.pdf" target="_blank" rel="noopener"><span class="fname">Homework 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20190712174227id_/http://kilyos.ee.bilkent.edu.tr:80/~math225/Homework/HW2.pdf" target="_blank" rel="noopener"><span class="fname">Homework 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031118051100id_/http://www.ee.bilkent.edu.tr:80/~math225/Homeworks/HW5.pdf" target="_blank" rel="noopener"><span class="fname">Homework 5</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20031118083714id_/http://www.ee.bilkent.edu.tr:80/~math225/Ch3SolHalf.pdf" target="_blank" rel="noopener"><span class="fname">Chapter 3 — partial solutions</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.Suggested.questions.pdf" target="_blank" rel="noopener"><span class="fname">Suggested practice questions</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head"><h2>CS 115</h2><span class="who">Introduction to Programming in Python · Prof. Aynur Dayanık · live</span></div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head"><h3>Lecture slides</h3><span class="cnt">14</span></div>
+        <p class="group-desc">The full Python course, Weeks 1–13, plus a review-exercises set.</p>
+        <ul class="files">
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week1.pdf" target="_blank" rel="noopener"><span class="fname">Week 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week2.pdf" target="_blank" rel="noopener"><span class="fname">Week 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week3.pdf" target="_blank" rel="noopener"><span class="fname">Week 3</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week4.pdf" target="_blank" rel="noopener"><span class="fname">Week 4</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week5.pdf" target="_blank" rel="noopener"><span class="fname">Week 5</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week6.pdf" target="_blank" rel="noopener"><span class="fname">Week 6</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week7.pdf" target="_blank" rel="noopener"><span class="fname">Week 7</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week8.pdf" target="_blank" rel="noopener"><span class="fname">Week 8</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week9.pdf" target="_blank" rel="noopener"><span class="fname">Week 9</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week10.pdf" target="_blank" rel="noopener"><span class="fname">Week 10</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week11.pdf" target="_blank" rel="noopener"><span class="fname">Week 11</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week12.pdf" target="_blank" rel="noopener"><span class="fname">Week 12</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Week13.pdf" target="_blank" rel="noopener"><span class="fname">Week 13</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/slides-PDF/Review-Exercises2.pdf" target="_blank" rel="noopener"><span class="fname">Review exercises</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Code examples</h3><span class="cnt">9</span></div>
+        <p class="group-desc">Runnable example bundles (weeks 5–13); earlier weeks&#x27; snippets are inside the slides.</p>
+        <ul class="files">
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code05.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 05</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code06.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 06</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code07.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 07</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code08.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 08</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code09.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 09</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code10.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 10</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code11.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 11</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code12.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 12</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+<li><a href="http://www.cs.bilkent.edu.tr/~adayanik/courses/cs115/lecture-examples/code13.zip" target="_blank" rel="noopener"><span class="fname">Code examples — set 13</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-zip">zip</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head"><h2>MATH 260</h2><span class="who">Introduction to Statistics · exams from Prof. Güvenç (live) · homeworks from Prof. Gözkan (archived)</span></div>
+    <div class="groups">
+      <section class="group">
+        <div class="group-head"><h3>Past exams — Güvenç</h3><span class="cnt">19</span></div>
+        <p class="group-desc">Midterms and finals from Spring 2013, 2014 and 2015 (question papers, no solutions).</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/20130502185406id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2007spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2007 — Midterm 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010027id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2007spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2007 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260final-2007spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2007 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20130502185411id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2008spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2008 — Midterm 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010043id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2008spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2008 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010044id_/http://www.fen.bilkent.edu.tr/~guvenc/260final-2008spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2008 — Final</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2009spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2009 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010046id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2009spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2009 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010047id_/http://www.fen.bilkent.edu.tr/~guvenc/260final-2009spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2009 — Final</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20130502185420id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2010spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2010 — Midterm 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010049id_/http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2010spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2010 — Midterm 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="https://web.archive.org/web/20150112010051id_/http://www.fen.bilkent.edu.tr/~guvenc/260final-2010spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2010 — Final</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2012spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2012 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2013spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260final-2013spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2013 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2014spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2014 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt1-2015spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2015 — Midterm 1</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260mt2-2015spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2015 — Midterm 2</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+<li><a href="http://www.fen.bilkent.edu.tr/~guvenc/260final-2015spring.pdf" target="_blank" rel="noopener"><span class="fname">Spring 2015 — Final</span><span class="tags"><span class="src src-live">live</span><span class="ext ext-pdf">pdf</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Homework sets — Gözkan</h3><span class="cnt">6</span></div>
+        <p class="group-desc">Six problem sets — the problems are on the page itself.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework1.htm" target="_blank" rel="noopener"><span class="fname">Homework 1</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework2.htm" target="_blank" rel="noopener"><span class="fname">Homework 2</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework3.htm" target="_blank" rel="noopener"><span class="fname">Homework 3</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework4.htm" target="_blank" rel="noopener"><span class="fname">Homework 4</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework5.htm" target="_blank" rel="noopener"><span class="fname">Homework 5</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/homework6.htm" target="_blank" rel="noopener"><span class="fname">Homework 6</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+        </ul>
+      </section>
+      <section class="group">
+        <div class="group-head"><h3>Course info</h3><span class="cnt">2</span></div>
+        <p class="group-desc">Policies, syllabus and the homework cover sheet.</p>
+        <ul class="files">
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/course_policies.htm" target="_blank" rel="noopener"><span class="fname">Course policies &amp; syllabus</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+<li><a href="https://web.archive.org/web/2019/http://www.fen.bilkent.edu.tr/~gozkan/math260/homework/cover.htm" target="_blank" rel="noopener"><span class="fname">Homework cover sheet</span><span class="tags"><span class="src src-arch">archive</span><span class="ext ext-htm">htm</span></span></a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="course">
+    <div class="course-head"><h2>IE 272</h2><span class="who">Manufacturing Processes &amp; Operations Analysis</span></div>
+    <div class="note" style="margin-top:0">
+      <b>No public materials found.</b> IE 272 has no personal course page and nothing in the Wayback Machine across the IE department domain — its materials live on Moodle/STARS (login-only). The only public reference is the
+      <a class="livelink" href="https://catalog.bilkent.edu.tr/course/c13272.html" target="_blank" rel="noopener">catalog description</a> (prereq: IE 102; covers product/process design, time study, work measurement, layout, and a manufacturing-simulation project).
+    </div>
+  </div>
+
+  <footer>
+    Public course materials from instructor pages and the <a href="https://web.archive.org" target="_blank" rel="noopener">Internet Archive Wayback Machine</a>. Live links point to files the instructors still publish; archived links are snapshots of pages that were publicly reachable when crawled. Use for your own study and follow each course's academic-honesty policy.
+  </footer>
+</div>
+</body>
+</html>
