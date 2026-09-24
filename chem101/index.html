@@ -5,236 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
-<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<title>Principles of Chemistry I Papers</title>
+<meta name="color-scheme" content="light dark">
+<title>CHEM 101 Archive</title>
+<meta name="description" content="Public course materials for Bilkent CHEM 101 Principles of Chemistry I">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 :root{
-  --paper:#F2F6F3; --surface:#FFFFFF; --sunken:#E6EDE8;
-  --ink:#111A17; --muted:#54655E; --faint:#83938C;
-  --rule:#C3D2CA; --hair:#D8E2DC;
-  --accent:#166B57; --accent-ink:#12594A; --accent-wash:#DCEBE4;
-  --amber:#8A5A17; --amber-wash:#F1E9D8;
-  --shadow:0 1px 2px rgba(16,20,28,.05);
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --ground:#F3F6F5; --surface:#FFFFFF; --ink:#15201C; --muted:#56655F; --rule:#D5DEDA; --soft:#E9EFEC; --host:#1F5FA8; --host-bg:#E3ECF8;
+  --live:#1D7A46; --live-bg:#E1F2E8; --arch:#83620E; --arch-bg:#F6EDD5; --focus:#1B5FD1; --gated:#7A3E8F; --gated-bg:#F1E5F5; --repo:#6B3FA0; --repo-bg:#EEE6F8;
+  --accent:#A8521A; --accent-soft:#F5E4D8;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#0C1210; --surface:#131A17; --sunken:#151D19;
-    --ink:#DFE7E2; --muted:#93A49C; --faint:#6A7A73;
-    --rule:#26322D; --hair:#1F2925;
-    --accent:#4FB394; --accent-ink:#71C8AC; --accent-wash:#132520;
-    --amber:#D3A45E; --amber-wash:#282216;
-    --shadow:0 1px 2px rgba(0,0,0,.4);
+    --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825; --host:#8DB8F0; --host-bg:#16273D;
+    --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36; --repo:#C9A8F0; --repo-bg:#2A1D3A;
+    --accent:#F0A26A; --accent-soft:#35220F;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0C1210; --surface:#131A17; --sunken:#151D19;
-  --ink:#DFE7E2; --muted:#93A49C; --faint:#6A7A73;
-  --rule:#26322D; --hair:#1F2925;
-  --accent:#4FB394; --accent-ink:#71C8AC; --accent-wash:#132520;
-  --amber:#D3A45E; --amber-wash:#282216;
-  --shadow:0 1px 2px rgba(0,0,0,.4);
+  --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825; --host:#8DB8F0; --host-bg:#16273D;
+  --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36; --repo:#C9A8F0; --repo-bg:#2A1D3A;
+  --accent:#F0A26A; --accent-soft:#35220F;
 }
-
 *{box-sizing:border-box}
-body{
-  margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--sans); font-size:15px; line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.5;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:"Archivo","Arial Narrow",sans-serif;font-stretch:78%;font-weight:800;font-size:clamp(44px,9vw,84px);line-height:.92;letter-spacing:-.01em;color:var(--accent);text-wrap:balance}
+.sub{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(20px,3.2vw,28px);text-wrap:balance}
+.trace{width:100%;max-width:640px;height:44px;display:block}
+.trace path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;opacity:.8}
+.trace line{stroke:var(--rule);stroke-width:1}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px 24px;margin:4px 0 0;padding:0;list-style:none;max-width:980px}
+.stats li{display:flex;flex-direction:column}
+.stats b{font-family:"Archivo",sans-serif;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.stats span{font-size:13px;color:var(--muted)}
+.intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px 32px}
+.intro p{margin:0 0 10px;max-width:66ch}
+.note{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--muted)}
+.note strong{color:var(--ink)}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+.toolbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);padding-block:10px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.85}
+.toolbar .sp{flex:1}
+.toolbar input[type=search]{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;min-width:0;width:220px;max-width:100%}
+.toggle{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--accent)}
+section.grp{display:flex;flex-direction:column;gap:10px}
+section.grp>h2{margin:0;font-family:"Archivo",sans-serif;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:baseline;border-bottom:2px solid var(--accent);padding-bottom:6px}
+section.grp>h2 .n{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;color:var(--muted)}
+.term{display:grid;grid-template-columns:170px minmax(0,1fr);gap:4px 20px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.term:last-child{border-bottom:0}
+.term h3{margin:0;font-size:14px;font-weight:600;color:var(--muted);padding-top:3px}
+.term ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:start}
+.it a{font-weight:600;text-decoration-color:var(--rule);text-underline-offset:3px}
+.it a:hover{text-decoration-color:var(--accent);color:var(--accent)}
+.meta{grid-column:1;font-size:13px;color:var(--muted)}
+.meta .f{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--rule);border-radius:4px;padding:0 4px;margin-right:6px;color:var(--ink)}
+.meta em{font-style:normal;color:var(--arch)}
+.badge{grid-column:2;grid-row:1;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.badge.LIVE{color:var(--live);background:var(--live-bg)}
+.badge.ARCHIVE{color:var(--arch);background:var(--arch-bg)}
+.badge.HOSTED{color:var(--host);background:var(--host-bg)}
+.badge.GATED{color:var(--gated);background:var(--gated-bg)}
+.badge.REPO{color:var(--repo);background:var(--repo-bg)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.tm{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.sec{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted)}
+td.sl{white-space:nowrap}
+.secl{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;border:1px solid var(--rule);border-radius:4px;padding:1px 5px;margin:0 2px 2px 0;display:inline-block}
+.secl:hover{border-color:var(--accent);color:var(--accent)}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.lists h2{font-family:"Archivo",sans-serif;font-size:20px;margin:0 0 8px}
+.lists ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.lists li strong{color:var(--ink)}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:720px){
+  .intro{grid-template-columns:1fr}
+  .term{grid-template-columns:1fr}
+  .toolbar input[type=search]{width:100%}
+  .toolbar .sp{display:none}
+  .toolbar{position:static}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.wrap{max-width:1060px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
-a{color:var(--accent-ink)}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
-
-/* ---- masthead ---- */
-.mast{padding-block:52px 30px; border-bottom:1px solid var(--rule)}
-.eyebrow{
-  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--muted); margin:0 0 18px;
-}
-.code{
-  font-family:var(--mono); font-size:13px; font-weight:500; letter-spacing:.1em;
-  color:var(--accent-ink); display:block; margin-bottom:8px;
-}
-h1{
-  font-family:var(--serif); font-weight:500; font-size:clamp(2.1rem,5.4vw,3.1rem);
-  line-height:1.08; letter-spacing:-.015em; margin:0 0 16px; text-wrap:balance;
-}
-.standfirst{
-  font-family:var(--serif); font-size:clamp(1.02rem,2.2vw,1.18rem); line-height:1.58;
-  color:var(--muted); max-width:60ch; margin:0;
-}
-.tally{
-  display:flex; flex-wrap:wrap; gap:0 30px; margin-top:26px;
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--muted);
-}
-.tally b{
-  display:block; font-family:var(--serif); font-size:1.55rem; font-weight:500;
-  letter-spacing:0; color:var(--ink); line-height:1.1; font-variant-numeric:tabular-nums;
-}
-.tally span{display:block; text-transform:uppercase; letter-spacing:.12em; margin-top:3px}
-
-/* ---- jump bar ---- */
-.jump{
-  position:sticky; top:0; z-index:5; background:var(--paper);
-  border-bottom:1px solid var(--rule); margin-bottom:44px;
-  display:flex; gap:4px; overflow-x:auto; padding-block:9px;
-}
-.jump a{
-  flex:none; font-family:var(--mono); font-size:11px; letter-spacing:.06em;
-  text-transform:uppercase; color:var(--muted); text-decoration:none;
-  padding:5px 9px; border-radius:4px; white-space:nowrap;
-}
-.jump a:hover{color:var(--ink); background:var(--sunken)}
-
-/* ---- prose ---- */
-.note{max-width:66ch; color:var(--muted); font-size:14.5px}
-.note p{margin:0 0 12px}
-.note strong{color:var(--ink); font-weight:600}
-
-.legend{
-  display:flex; flex-wrap:wrap; gap:14px 26px; margin:22px 0 0;
-  padding:16px 18px; background:var(--sunken); border-radius:6px;
-}
-.legend div{display:flex; align-items:flex-start; gap:9px; font-size:13.5px; color:var(--muted); max-width:38ch}
-
-/* ---- section ---- */
-section{margin-top:56px; scroll-margin-top:56px}
-.shead{border-top:2px solid var(--ink); padding-top:14px; margin-bottom:6px}
-h2{
-  font-family:var(--serif); font-weight:500; font-size:1.7rem; letter-spacing:-.01em;
-  margin:0; line-height:1.2; text-wrap:balance;
-}
-.byline{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--muted);
-  margin:7px 0 0; display:flex; flex-wrap:wrap; gap:4px 14px;
-}
-.byline em{font-style:normal; color:var(--accent-ink)}
-.blurb{max-width:64ch; color:var(--muted); font-size:14.5px; margin:14px 0 0}
-
-/* ---- badges ---- */
-.b{
-  flex:none; font-family:var(--mono); font-size:9.5px; font-weight:500; letter-spacing:.1em;
-  text-transform:uppercase; padding:2px 6px; border-radius:3px; line-height:1.5;
-  min-width:56px; text-align:center;
-}
-.b-live{color:var(--accent-ink); background:var(--accent-wash)}
-.b-arc{color:var(--amber); background:var(--amber-wash)}
-
-/* ---- link list ---- */
-.list{margin-top:20px; display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:0 34px}
-.list.solo{grid-template-columns:1fr; max-width:70ch}
-.row{
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; padding:9px 0;
-  border-bottom:1px solid var(--hair); min-width:0;
-}
-.row a{text-decoration:none; color:var(--ink); flex:1 1 12ch; min-width:0; overflow-wrap:anywhere}
-.row a:hover{color:var(--accent-ink); text-decoration:underline; text-underline-offset:2px}
-.row .why{
-  flex:0 0 100%; font-size:12.5px; line-height:1.45; color:var(--faint);
-}
-
-/* ---- exam grid ---- */
-.gridwrap{margin-top:22px; overflow-x:auto}
-table{border-collapse:collapse; width:100%; min-width:520px}
-th,td{text-align:left; vertical-align:middle; padding:9px 12px 9px 0; border-bottom:1px solid var(--hair)}
-thead th{
-  font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--muted); font-weight:500; border-bottom:1px solid var(--rule); padding-bottom:8px;
-}
-tbody th{
-  font-family:var(--mono); font-size:12.5px; font-weight:500; color:var(--ink);
-  white-space:nowrap; font-variant-numeric:tabular-nums; width:1%;
-}
-tbody tr:hover{background:var(--sunken)}
-thead th:nth-child(2),thead th:nth-child(3),thead th:nth-child(4){width:30%}
-.qs{display:flex; flex-wrap:wrap; gap:4px}
-.q{
-  font-family:var(--mono); font-size:11.5px; text-decoration:none; color:var(--accent-ink);
-  background:var(--accent-wash); padding:3px 7px; border-radius:3px; line-height:1.4;
-}
-.q:hover{background:var(--accent); color:var(--paper)}
-.q.arc{color:var(--amber); background:var(--amber-wash)}
-.q.arc:hover{background:var(--amber); color:var(--paper)}
-.na{font-family:var(--mono); font-size:11.5px; color:var(--faint)}
-.pdfrow{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px; align-items:baseline}
-.pdfrow .lab{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-right:6px}
-
-/* ---- quiz cluster ---- */
-.cluster{margin-top:20px; display:flex; flex-direction:column; gap:12px}
-.crow{display:flex; gap:14px; align-items:baseline; padding-bottom:12px; border-bottom:1px solid var(--hair)}
-.crow .cn{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.06em; color:var(--muted);
-  white-space:nowrap; width:60px; flex:none; padding-top:2px;
-}
-.crow .cl{display:flex; flex-wrap:wrap; gap:5px}
-
-/* ---- gaps / closing ---- */
-.gaps{
-  margin-top:56px; padding:24px 26px; background:var(--sunken); border-radius:8px;
-  border-left:3px solid var(--accent);
-}
-.gaps h2{font-size:1.25rem; margin-bottom:12px}
-.gaps ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px; max-width:66ch}
-.gaps li{margin-bottom:8px}
-.gaps li::marker{color:var(--accent)}
-
-footer{
-  margin-top:52px; padding-top:20px; border-top:1px solid var(--rule);
-  font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--faint);
-  display:flex; flex-wrap:wrap; gap:6px 20px;
-}
-
-@media (max-width:560px){
-  .mast{padding-block:36px 24px}
-  .list{grid-template-columns:1fr}
-  .tally{gap:0 22px}
-  .crow{flex-direction:column; gap:6px}
-  .crow .cn{width:auto}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap"><header class="mast">
-<p class="eyebrow">Bilkent University &middot; Department of Chemistry</p>
-<span class="code">CHEM 101</span>
-<h1>Principles of Chemistry I past papers</h1>
-<p class="standfirst">One instructor kept an open exam folder, and it is still on the server.
-That folder is the entire public record for CHEM 101 &mdash; this page is all of it, plus a
-straight account of what does not exist.</p>
-<div class="tally">
-<div><b>16</b><span>items</span></div>
-<div><b>13</b><span>live</span></div>
-<div><b>3</b><span>from the archive</span></div>
-<div><b>7</b><span>exam papers</span></div>
-<div><b>2000&ndash;05</b><span>years covered</span></div>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Bilkent University · Chemistry · swept 10 Sep 2026 · rebuilt 25 Sep 2026</div>
+  <h1>CHEM 101</h1>
+  <p class="sub">Principles of Chemistry I</p>
+  <ul class="stats"><li><b>16</b><span>files &amp; pages</span></li><li><b>13</b><span>still live on Bilkent servers</span></li><li><b>3</b><span>recovered from the Wayback Machine</span></li><li><b>7</b><span>midterm &amp; final files</span></li><li><b>0</b><span>quiz files</span></li><li><b>2000–2007</b><span>years covered</span></li></ul>
+</header>
+<div class="intro">
+  <div>
+    <p>Chemical systems and stoichiometry, properties of matter, chemical and ionic equilibrium, thermodynamics, electrochemistry and kinetics, with a compulsory laboratory. One instructor, Ulrike Salzner, kept an open exam folder, and it is still on the server: it is the whole public record for this course. <a href="https://catalog.bilkent.edu.tr/course/c02101.html" target="_blank" rel="noopener">Catalog entry</a>.</p>
+    <p>Everything below was posted publicly by the course’s instructors. <span class="badge LIVE">LIVE</span> links go to the file on the Bilkent server. <span class="badge ARCHIVE">ARCHIVE</span> links open the copy the Internet Archive took while the page was public. Grade lists, attendance sheets, rosters and exam-room lists were left out because they name students.</p>
+  </div>
+  <div class="note">
+    <p><strong>Use these for practice, not submission.</strong> Old solutions show how a problem was graded in that year. Handing them in breaks Bilkent’s academic-integrity rules.</p>
+    <p><strong>Current material lives on Moodle.</strong> For this semester’s slides and exams, use Moodle (from campus or the university VPN). STARS holds the official syllabus for every section since 2010.</p>
+  </div>
 </div>
-<div class="legend">
-<div><span class="b b-live">live</span> Still served by Bilkent. If a link is slow, the department server is slow &mdash; try again.</div>
-<div><span class="b b-arc">archive</span> Deleted from Bilkent; the link opens the Wayback Machine&rsquo;s copy of a page that was public when crawled.</div>
+<div class="toolbar" role="toolbar" aria-label="Filter materials">
+  <button class="chip" type="button" data-g="all" aria-pressed="true">All <span class="n">16</span></button><button class="chip" type="button" data-g="exams" aria-pressed="false">Exams &amp; solutions <span class="n">7</span></button><button class="chip" type="button" data-g="quizzes" aria-pressed="false">Quizzes &amp; solutions <span class="n">0</span></button><button class="chip" type="button" data-g="homework" aria-pressed="false">Homework &amp; solutions <span class="n">1</span></button><button class="chip" type="button" data-g="labs" aria-pressed="false">Labs &amp; tutorials <span class="n">1</span></button><button class="chip" type="button" data-g="pages" aria-pressed="false">Course pages &amp; syllabi <span class="n">7</span></button>
+  <span class="sp"></span>
+  <label class="toggle" for="liveonly"><input type="checkbox" id="liveonly"> Live only</label>
+  <input type="search" id="q" placeholder="Filter: midterm, 2005, quiz…" aria-label="Filter by text">
 </div>
-<p class="note" style="margin-top:22px">These are materials an instructor published openly on her
-own faculty page. Nothing here came from Moodle, STARS or any account-protected system.
-The papers are twenty years old &mdash; the topic list still matches, the exam format may not.</p>
-</header><nav class="jump"><a href="#exams">Old exams</a><a href="#coursepages">Course pages</a><a href="#related">CHEM 102</a></nav><section id="exams"><div class="shead"><h2>Ulrike Salzner&rsquo;s old exams</h2><p class="byline"><span><em>Ulrike Salzner</em></span><span>Fall 2000 &ndash; Fall 2005</span><span>7 papers</span><span>fen.bilkent.edu.tr/~salzner</span></p></div><p class="blurb">Whole papers, question and answer space as students sat them. Three midterm pairs and two finals. No solution keys were ever posted.</p><div class="list solo"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-F-00.pdf">Fall 2000 — Final</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT1-03.pdf">Fall 2003 — Midterm I</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-03.pdf">Fall 2003 — Midterm II</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-04.pdf">Fall 2004 — Midterm II</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT1-05.pdf">Fall 2005 — Midterm I</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-05.pdf">Fall 2005 — Midterm II</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-F-05.pdf">Fall 2005 — Final</a></div></div></section><section id="coursepages"><div class="shead"><h2>The course pages behind them</h2><p class="byline"><span><em>Ulrike Salzner</em></span><span>7 pages</span><span>fen.bilkent.edu.tr/~salzner</span></p></div><p class="blurb">Worth a look for the exam schedule, the study-habits advice and the topic order &mdash; the syllabus has moved on since, but the sequence is recognisable.</p><div class="list"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101.htm">Course page — CHEM 101</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101exams.htm">Old exams index</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101examschedule.htm">Exam schedule</a></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching.htm">Teaching index</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20070904200104id_/http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101homework.htm">Homework page</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20070904234231id_/http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101labschedule.htm">Laboratory schedule</a></div><div class="row"><span class="b b-arc">archive</span><a href="https://web.archive.org/web/20040114184532id_/http://www.fen.bilkent.edu.tr/~salzner/chem101.html">Earlier CHEM 101 page (2004 design)</a></div></div></section><section id="related"><div class="shead"><h2>Next door: CHEM 102</h2><p class="byline"><span><em>Ulrike Salzner</em></span><span>2 items</span></p></div><p class="blurb">Different syllabus, same examiner. Useful mainly for calibrating how she words a question.</p><div class="list solo"><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem102-MT2-04.pdf">CHEM 102 — Fall 2004 Midterm II</a><span class="why">Second-semester paper by the same instructor — same style, different syllabus</span></div><div class="row"><span class="b b-live">live</span><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem102.htm">CHEM 102 course page</a><span class="why">Sequel course, same layout</span></div></div></section>
-<div class="gaps"><h2>What is not here, and why</h2>
-<ul>
-<li><strong>Seven papers is the whole public record.</strong> Salzner&rsquo;s own &ldquo;old exams&rdquo; index lists exactly these seven files &mdash; nothing was quietly dropped from this page.</li>
-<li><strong>No solutions, ever.</strong> The exams page linked papers only. No key was posted for any of them, and none was archived.</li>
-<li><strong>No current material.</strong> Every present-day CHEM 101 section runs on Moodle. That is enrolled-student access through your Bilkent account &mdash; it is not something this page can or should route around.</li>
-<li><strong>Checked and empty:</strong> the personal folders of all twelve current Chemistry faculty, the department site, the departmental curricula pages, and a Wayback sweep of both <code>chem.bilkent.edu.tr</code> and <code>fen.bilkent.edu.tr</code> for anything matching CHEM&nbsp;101. The only other chemistry teaching material in public is Erman Beng&uuml;&rsquo;s CHEM 201 folder, a different course.</li>
-<li><strong>The newest CHEM 101 file in public dates from 2005.</strong> That is where the trail ends.</li>
-</ul></div>
-<p class="note" style="margin-top:32px"><strong>Course description.</strong> CHEM 101 Principles of Chemistry I, 4 credits / 6.5 ECTS:
-chemical systems and stoichiometry, properties of matter, chemical and ionic equilibrium,
-thermodynamics, electrochemistry and kinetics. Laboratory is compulsory.
-<a href="https://catalog.bilkent.edu.tr/course/c02101.html">Official catalog entry</a> &middot;
-<a href="https://stars.bilkent.edu.tr/homepage/offerings.php?DEPT=CHEM">Current CHEM offerings</a></p><footer><span>Built 10 September 2026</span><span>Every link opened and checked</span><span>Sources: fen.bilkent.edu.tr, Wayback Machine</span></footer></div>
+<main class="wrap" style="gap:28px">
+<section class="grp" data-g="exams"><h2>Exams &amp; solutions <span class="n">7 items</span></h2><div class="term"><h3>Fall 2000</h3><ul><li class="it" data-s="LIVE" data-q="final u. salzner fall 2000 pdf question paper only; no key was ever posted "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-F-00.pdf" target="_blank" rel="noopener">Final</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner · <em>question paper only; no key was ever posted</em></span></li></ul></div><div class="term"><h3>Fall 2003</h3><ul><li class="it" data-s="LIVE" data-q="midterm i u. salzner fall 2003 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT1-03.pdf" target="_blank" rel="noopener">Midterm I</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="midterm ii u. salzner fall 2003 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-03.pdf" target="_blank" rel="noopener">Midterm II</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li></ul></div><div class="term"><h3>Fall 2004</h3><ul><li class="it" data-s="LIVE" data-q="midterm ii u. salzner fall 2004 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-04.pdf" target="_blank" rel="noopener">Midterm II</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li></ul></div><div class="term"><h3>Fall 2005</h3><ul><li class="it" data-s="LIVE" data-q="midterm i u. salzner fall 2005 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT1-05.pdf" target="_blank" rel="noopener">Midterm I</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="midterm ii u. salzner fall 2005 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-MT2-05.pdf" target="_blank" rel="noopener">Midterm II</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="final u. salzner fall 2005 pdf  "><a href="http://www.fen.bilkent.edu.tr/~salzner/oldexams/chem101-F-05.pdf" target="_blank" rel="noopener">Final</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PDF</span>U. Salzner</span></li></ul></div></section><section class="grp" data-g="quizzes" data-empty="1"><h2>Quizzes &amp; solutions <span class="n">0 items</span></h2><p class="empty">No CHEM 101 quiz was ever posted publicly. Every current section runs on Moodle.</p></section><section class="grp" data-g="homework"><h2>Homework &amp; solutions <span class="n">1 item</span></h2><div class="term"><h3>2007</h3><ul><li class="it" data-s="ARCHIVE" data-q="homework page u. salzner 2007 page  "><a href="https://web.archive.org/web/20070904200104id_/http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101homework.htm" target="_blank" rel="noopener">Homework page</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li></ul></div></section><section class="grp" data-g="labs"><h2>Labs &amp; tutorials <span class="n">1 item</span></h2><div class="term"><h3>2007</h3><ul><li class="it" data-s="ARCHIVE" data-q="laboratory schedule u. salzner 2007 page  "><a href="https://web.archive.org/web/20070904234231id_/http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101labschedule.htm" target="_blank" rel="noopener">Laboratory schedule</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li></ul></div></section><section class="grp" data-g="pages"><h2>Course pages &amp; syllabi <span class="n">7 items</span></h2><div class="term"><h3>2004</h3><ul><li class="it" data-s="ARCHIVE" data-q="earlier chem 101 page (2004 design) u. salzner 2004 page  "><a href="https://web.archive.org/web/20040114184532id_/http://www.fen.bilkent.edu.tr/~salzner/chem101.html" target="_blank" rel="noopener">Earlier CHEM 101 page (2004 design)</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li></ul></div><div class="term"><h3>Year not stated</h3><ul><li class="it" data-s="LIVE" data-q="course page — chem 101 u. salzner  page  "><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101.htm" target="_blank" rel="noopener">Course page — CHEM 101</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="old exams index (lists exactly the seven papers above) u. salzner  page  "><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101exams.htm" target="_blank" rel="noopener">Old exams index (lists exactly the seven papers above)</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="exam schedule u. salzner  page  "><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching-chem101examschedule.htm" target="_blank" rel="noopener">Exam schedule</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="teaching index u. salzner  page  "><a href="http://www.fen.bilkent.edu.tr/~salzner/teaching.htm" target="_blank" rel="noopener">Teaching index</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>U. Salzner</span></li><li class="it" data-s="LIVE" data-q="official catalog entry bilkent catalog  page  "><a href="https://catalog.bilkent.edu.tr/course/c02101.html" target="_blank" rel="noopener">Official catalog entry</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>Bilkent catalog</span></li><li class="it" data-s="LIVE" data-q="stars syllabi, every section since 2010 bilkent stars  page  "><a href="https://stars.bilkent.edu.tr/syllabus/view/CHEM/101/" target="_blank" rel="noopener">STARS syllabi, every section since 2010</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>Bilkent STARS</span></li></ul></div></section>
+<p class="empty" id="none" hidden>Nothing matches that filter.</p>
+</main>
+
+<div class="lists">
+  <div><h2>Linked but lost</h2><ul><li>Nothing that was linked has gone missing. Salzner’s “old exams” index lists exactly the seven papers above, and no key was ever posted for any of them.</li></ul></div>
+  <div><h2>What was searched</h2><ul><li><strong>Instructor folders</strong>: the personal folders of all twelve current Chemistry faculty, plus Salzner’s <code>~salzner</code> folder and its exam index</li><li><strong>Department sites</strong>: chem.bilkent.edu.tr and the departmental curricula pages</li><li><strong>Wayback CDX</strong>: chem.bilkent.edu.tr and fen.bilkent.edu.tr, filtered for CHEM 101</li><li><strong>Other chemistry teaching material in public</strong>: only Erman Bengü’s CHEM 201 folder, a different course, so it is not listed</li><li><strong>Student repos</strong> (25 Sep 2026): about 1,430 public GitHub repositories whose name, description or topics mention Bilkent were collected, and the full file lists of about 580 of them (every coursework repo and monorepo among them) were searched, along with code-name searches for this course. Nothing for CHEM 101.</li></ul></div>
+  
+</div>
+<footer>Swept 10 September 2026; rebuilt 25 September 2026 to the current layout, with the student-repository search added. The newest public CHEM 101 file is from 2005. Copies on Course Hero, Studocu and paid prep sites were not included.</footer>
+</div>
+<script>
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('.chip[data-g]'));
+  var q=document.getElementById('q'), live=document.getElementById('liveonly');
+  var active='all';
+  function apply(){
+    var term=(q.value||'').trim().toLowerCase(), lo=live.checked;
+    document.querySelectorAll('section.grp[data-g]').forEach(function(sec){
+      var gshow=(active==='all'||sec.dataset.g===active);
+      if(sec.dataset.empty){sec.hidden=!(gshow&&!term&&!lo);return;}
+      var secCount=0;
+      sec.querySelectorAll('.term').forEach(function(tb){
+        var c=0;
+        tb.querySelectorAll('.it').forEach(function(li){
+          var ok=gshow&&(!lo||li.dataset.s==='LIVE')&&(!term||li.dataset.q.indexOf(term)>-1);
+          li.hidden=!ok; if(ok)c++;
+        });
+        tb.hidden=(c===0); secCount+=c;
+      });
+      sec.hidden=(secCount===0);
+      var n=sec.querySelector('h2 .n'); if(n) n.textContent=secCount+(secCount===1?' item':' items');
+    });
+    var none=document.getElementById('none');
+    none.hidden=!!document.querySelector('section.grp[data-g]:not([hidden])');
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    active=c.dataset.g; chips.forEach(function(o){o.setAttribute('aria-pressed',String(o===c));}); apply();
+  });});
+  q.addEventListener('input',apply); live.addEventListener('change',apply);
+})();
+</script>
 </body>
 </html>

@@ -5,356 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
-<style>:root{color-scheme:light dark}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<title>Bilkent MATH 105 Archive</title>
+<meta name="color-scheme" content="light dark">
+<title>MATH 105 Archive</title>
+<meta name="description" content="Public course materials for Bilkent MATH 105 Introduction to Calculus I">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 :root{
-  --bg:#EEF0F4; --surface:#FFFFFF; --surface-2:#F7F8FA;
-  --ink:#15181F; --ink-2:#3D434F; --muted:#6B7284;
-  --rule:#DCE0E8; --rule-soft:#E9ECF1;
-  --accent:#33368C; --accent-soft:#E6E7F5;
-  --live:#1B6A4B; --live-bg:#E2F0E9;
-  --arch:#8A5410; --arch-bg:#F6EBDA;
-  --focus:#33368C;
+  --ground:#F3F6F5; --surface:#FFFFFF; --ink:#15201C; --muted:#56655F; --rule:#D5DEDA; --soft:#E9EFEC; --host:#1F5FA8; --host-bg:#E3ECF8;
+  --live:#1D7A46; --live-bg:#E1F2E8; --arch:#83620E; --arch-bg:#F6EDD5; --focus:#1B5FD1; --gated:#7A3E8F; --gated-bg:#F1E5F5; --repo:#6B3FA0; --repo-bg:#EEE6F8;
+  --accent:#A8521A; --accent-soft:#F5E4D8;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
-    --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
-    --rule:#2A303B; --rule-soft:#232932;
-    --accent:#A3A5F0; --accent-soft:#23264A;
-    --live:#6FCB9B; --live-bg:#163024;
-    --arch:#E0AE64; --arch-bg:#33260F;
-    --focus:#A3A5F0;
+    --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825; --host:#8DB8F0; --host-bg:#16273D;
+    --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36; --repo:#C9A8F0; --repo-bg:#2A1D3A;
+    --accent:#F0A26A; --accent-soft:#35220F;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#101319; --surface:#181C24; --surface-2:#1E232C;
-  --ink:#E8EAF0; --ink-2:#C2C7D2; --muted:#8D95A6;
-  --rule:#2A303B; --rule-soft:#232932;
-  --accent:#A3A5F0; --accent-soft:#23264A;
-  --live:#6FCB9B; --live-bg:#163024;
-  --arch:#E0AE64; --arch-bg:#33260F;
-  --focus:#A3A5F0;
+  --ground:#0F1513; --surface:#161F1C; --ink:#E2EAE6; --muted:#98A8A2; --rule:#2A3632; --soft:#1D2825; --host:#8DB8F0; --host-bg:#16273D;
+  --live:#6FD39B; --live-bg:#15301F; --arch:#E3BD62; --arch-bg:#33280E; --focus:#7FB0FF; --gated:#D9A2EC; --gated-bg:#2E1A36; --repo:#C9A8F0; --repo-bg:#2A1D3A;
+  --accent:#F0A26A; --accent-soft:#35220F;
 }
 *{box-sizing:border-box}
-body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+body{background:var(--ground);color:var(--ink);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:16px;line-height:1.5;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:0;font-family:"Archivo","Arial Narrow",sans-serif;font-stretch:78%;font-weight:800;font-size:clamp(44px,9vw,84px);line-height:.92;letter-spacing:-.01em;color:var(--accent);text-wrap:balance}
+.sub{margin:0;font-family:"Archivo",sans-serif;font-weight:600;font-size:clamp(20px,3.2vw,28px);text-wrap:balance}
+.trace{width:100%;max-width:640px;height:44px;display:block}
+.trace path{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;opacity:.8}
+.trace line{stroke:var(--rule);stroke-width:1}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px 24px;margin:4px 0 0;padding:0;list-style:none;max-width:980px}
+.stats li{display:flex;flex-direction:column}
+.stats b{font-family:"Archivo",sans-serif;font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.stats span{font-size:13px;color:var(--muted)}
+.intro{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px 32px}
+.intro p{margin:0 0 10px;max-width:66ch}
+.note{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;font-size:14px;color:var(--muted)}
+.note strong{color:var(--ink)}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+.toolbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);padding-block:10px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.85}
+.toolbar .sp{flex:1}
+.toolbar input[type=search]{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;min-width:0;width:220px;max-width:100%}
+.toggle{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--accent)}
+section.grp{display:flex;flex-direction:column;gap:10px}
+section.grp>h2{margin:0;font-family:"Archivo",sans-serif;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:baseline;border-bottom:2px solid var(--accent);padding-bottom:6px}
+section.grp>h2 .n{font-family:"JetBrains Mono",monospace;font-size:13px;font-weight:500;color:var(--muted)}
+.term{display:grid;grid-template-columns:170px minmax(0,1fr);gap:4px 20px;padding-block:10px;border-bottom:1px solid var(--rule)}
+.term:last-child{border-bottom:0}
+.term h3{margin:0;font-size:14px;font-weight:600;color:var(--muted);padding-top:3px}
+.term ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:start}
+.it a{font-weight:600;text-decoration-color:var(--rule);text-underline-offset:3px}
+.it a:hover{text-decoration-color:var(--accent);color:var(--accent)}
+.meta{grid-column:1;font-size:13px;color:var(--muted)}
+.meta .f{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--rule);border-radius:4px;padding:0 4px;margin-right:6px;color:var(--ink)}
+.meta em{font-style:normal;color:var(--arch)}
+.badge{grid-column:2;grid-row:1;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;border-radius:4px;padding:2px 6px;white-space:nowrap}
+.badge.LIVE{color:var(--live);background:var(--live-bg)}
+.badge.ARCHIVE{color:var(--arch);background:var(--arch-bg)}
+.badge.HOSTED{color:var(--host);background:var(--host-bg)}
+.badge.GATED{color:var(--gated);background:var(--gated-bg)}
+.badge.REPO{color:var(--repo);background:var(--repo-bg)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.tm{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.sec{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted)}
+td.sl{white-space:nowrap}
+.secl{font-family:"JetBrains Mono",monospace;font-size:12px;text-decoration:none;border:1px solid var(--rule);border-radius:4px;padding:1px 5px;margin:0 2px 2px 0;display:inline-block}
+.secl:hover{border-color:var(--accent);color:var(--accent)}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.lists h2{font-family:"Archivo",sans-serif;font-size:20px;margin:0 0 8px}
+.lists ul{margin:0;padding-left:18px;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.lists li strong{color:var(--ink)}
+footer{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:720px){
+  .intro{grid-template-columns:1fr}
+  .term{grid-template-columns:1fr}
+  .toolbar input[type=search]{width:100%}
+  .toolbar .sp{display:none}
+  .toolbar{position:static}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-a{color:var(--accent)}
-a:focus-visible,summary:focus-visible{outline:2px solid var(--focus); outline-offset:2px; border-radius:2px}
-.wrap{max-width:940px; margin:0 auto; padding:0 24px 96px}
-
-/* masthead */
-.mast{padding:56px 0 32px; border-bottom:1px solid var(--rule)}
-.eyebrow{
-  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 14px
-}
-h1{
-  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(34px,5.2vw,52px);
-  line-height:1.1; margin:0 0 16px; text-wrap:balance; letter-spacing:-.01em
-}
-.lede{max-width:62ch; color:var(--ink-2); font-size:17px; margin:0 0 28px}
-.tally{display:flex; flex-wrap:wrap; gap:10px}
-.tally span{
-  font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.03em;
-  padding:5px 11px; border:1px solid var(--rule); border-radius:999px; color:var(--ink-2);
-  background:var(--surface); font-variant-numeric:tabular-nums
-}
-
-/* correction callout */
-.correction{
-  margin:28px 0 0; padding:18px 20px; background:var(--accent-soft);
-  border-left:3px solid var(--accent); border-radius:0 4px 4px 0;
-}
-.correction strong{font-weight:700}
-.correction p{margin:0; font-size:15px; color:var(--ink-2); max-width:64ch}
-
-/* toc */
-.toc{display:flex; flex-direction:column; margin:36px 0 0; border-top:1px solid var(--rule-soft)}
-.toc-link{
-  display:flex; align-items:baseline; gap:16px; padding:13px 4px;
-  border-bottom:1px solid var(--rule-soft); text-decoration:none; color:var(--ink)
-}
-.toc-link:hover{background:var(--surface-2)}
-.toc-code{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--accent); min-width:88px}
-.toc-title{font-family:Spectral,Georgia,serif; font-size:18px; flex:1}
-.toc-n{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
-
-/* course */
-.course{padding-top:64px; scroll-margin-top:16px}
-.course-head{border-bottom:2px solid var(--ink); padding-bottom:18px; margin-bottom:8px}
-.course-id{
-  font-family:"IBM Plex Mono",monospace; font-size:13px; letter-spacing:.12em;
-  color:var(--accent); margin-bottom:6px
-}
-.course-head h2{
-  font-family:Spectral,Georgia,serif; font-weight:600; font-size:clamp(26px,3.6vw,34px);
-  margin:0 0 12px; line-height:1.2; text-wrap:balance
-}
-.blurb{margin:0 0 14px; color:var(--ink-2); max-width:66ch; font-size:15.5px}
-.course-meta{
-  display:flex; gap:18px; align-items:baseline; font-family:"IBM Plex Mono",monospace;
-  font-size:12.5px; color:var(--muted); flex-wrap:wrap
-}
-
-/* group */
-.grp{padding-top:30px}
-.grp-head{display:flex; align-items:baseline; gap:12px}
-.grp-head h3{
-  font-family:"Public Sans",sans-serif; font-weight:700; font-size:13px;
-  letter-spacing:.1em; text-transform:uppercase; margin:0; color:var(--ink)
-}
-.count{
-  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
-  font-variant-numeric:tabular-nums
-}
-.grp-note{margin:8px 0 0; font-size:14.5px; color:var(--muted); max-width:64ch; font-style:italic}
-.items{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column}
-.item{
-  display:grid; grid-template-columns:1fr auto auto; gap:8px 14px; align-items:baseline;
-  padding:10px 2px; border-bottom:1px solid var(--rule-soft)
-}
-.item:hover{background:var(--surface-2)}
-.item a{text-decoration:none; font-size:15.5px; color:var(--ink); border-bottom:1px solid transparent}
-.item a:hover{color:var(--accent); border-bottom-color:var(--accent)}
-.who{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted); white-space:nowrap}
-.badge{
-  font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; letter-spacing:.09em;
-  padding:2px 7px; border-radius:3px; white-space:nowrap
-}
-.badge.live{color:var(--live); background:var(--live-bg)}
-.badge.archive{color:var(--arch); background:var(--arch-bg)}
-
-/* absences + footer */
-.notes{margin-top:72px; padding-top:28px; border-top:1px solid var(--rule)}
-.notes h2{font-family:Spectral,Georgia,serif; font-weight:600; font-size:24px; margin:0 0 6px}
-.notes h4{
-  font-family:"Public Sans",sans-serif; font-size:13px; letter-spacing:.09em;
-  text-transform:uppercase; margin:26px 0 6px; color:var(--ink)
-}
-.notes p{margin:0 0 10px; color:var(--ink-2); max-width:66ch; font-size:15px}
-.notes ul{margin:0 0 10px; padding-left:20px; color:var(--ink-2); max-width:66ch; font-size:15px}
-.notes li{margin-bottom:5px}
-code{font-family:"IBM Plex Mono",monospace; font-size:.88em; background:var(--surface-2); padding:1px 5px; border-radius:3px}
-footer{margin-top:56px; padding-top:22px; border-top:1px solid var(--rule); color:var(--muted); font-size:13.5px}
-@media (max-width:560px){
-  .item{grid-template-columns:1fr auto}
-  .who{grid-column:1 / -1; order:3}
-  .toc-code{min-width:0}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="mast">
-    <p class="eyebrow">Bilkent University · Department of Mathematics</p>
-    <h1>Calculus for economists, recovered</h1>
-    <p class="lede">Quizzes with solutions, seven exercise sets and the syllabus for MATH 105 — every one of them deleted from the university server and pulled back out of the Internet Archive.</p>
-    <div class="tally">
-      <span>22 items</span>
-      <span>0 live</span>
-      <span>22 recovered from archive</span>
-      <span>Recovered · 2008–2014</span>
-    </div>
-    <div class="correction">
-      <p><strong>Every link here is an archive recovery.</strong> Salih Karadağ’s folder at <code>fen.bilkent.edu.tr/~karadag/</code> was taken down; the files were public when the Internet Archive crawled them, so they are recoverable, but nothing in this list resolves on the live server any more. Archive links occasionally take a few seconds to rebuild — that is normal.</p>
-    </div>
-    <nav class="toc">
-<a class="toc-link" href="#MATH105"><span class="toc-code">MATH 105</span><span class="toc-title">Introduction to Calculus I</span><span class="toc-n">22</span></a>
-    </nav>
-  </header>
-
-
-    <article class="course" id="MATH105">
-      <header class="course-head">
-        <div class="course-id">MATH 105</div>
-        <h2>Introduction to Calculus I</h2>
-        <p class="blurb">The calculus course for economics and business students — limits, differentiation, optimisation, curve sketching, applied to economic problems. Everything below was posted by Salih Karadağ and has since vanished from the university server; every link is an Internet Archive recovery.</p>
-        <div class="course-meta">
-          <span>22 items</span>
-          <a href="https://catalog.bilkent.edu.tr/course/c03105.html" target="_blank" rel="noopener">Course catalogue entry</a>
-        </div>
-      </header>
-
-      <section class="grp">
-        <div class="grp-head">
-          <h3>Quizzes with full solutions</h3>
-          <span class="count">2</span>
-        </div>
-        <p class="grp-note">The only graded MATH 105 papers that were ever posted publicly.</p>
-        <ul class="items">
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071041id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz1%20exam_solution_2011s.pdf" target="_blank" rel="noopener">2011 — Quiz 1, with solutions</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111125021731id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz2%20exam_solutions_2011.pdf" target="_blank" rel="noopener">2011 — Quiz 2, with solutions</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-        </ul>
-      </section>
-
-      <section class="grp">
-        <div class="grp-head">
-          <h3>Exercise sets — 2011</h3>
-          <span class="count">7</span>
-        </div>
-        <p class="grp-note">Seven sets covering the semester in order. These are the course’s working problems.</p>
-        <ul class="items">
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071045id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%201%20_2011.doc" target="_blank" rel="noopener">Exercise set 1</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071051id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%202%20_2011.doc" target="_blank" rel="noopener">Exercise set 2</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071055id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%203%20_2011.doc" target="_blank" rel="noopener">Exercise set 3</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071100id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%204%20_2011.doc" target="_blank" rel="noopener">Exercise set 4</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071109id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%205%20_2011.doc" target="_blank" rel="noopener">Exercise set 5</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071112id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%206%20_2011.doc" target="_blank" rel="noopener">Exercise set 6</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203071117id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%207%20_2011.doc" target="_blank" rel="noopener">Exercise set 7</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-        </ul>
-      </section>
-
-      <section class="grp">
-        <div class="grp-head">
-          <h3>Course documents</h3>
-          <span class="count">2</span>
-        </div>
-        
-        <ul class="items">
-          <li class="item">
-            <a href="https://web.archive.org/web/20111203200941id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_%20105_%20syllabus%20(2011-2012).doc" target="_blank" rel="noopener">Syllabus, 2011–12</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20081019085505id_/http://www.fen.bilkent.edu.tr:80/~karadag/Math105_Course-Page.php" target="_blank" rel="noopener">Course homepage, 2008</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-        </ul>
-      </section>
-
-      <section class="grp">
-        <div class="grp-head">
-          <h3>MATH 106 — the second half</h3>
-          <span class="count">11</span>
-        </div>
-        <p class="grp-note">Introduction to Calculus II, same instructor, same folder. It has the solved midterm MATH 105 never got, so it is worth taking now rather than hunting for again next semester.</p>
-        <ul class="items">
-          <li class="item">
-            <a href="https://web.archive.org/web/20100601143245id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_midterm1%20exam_solutions.pdf" target="_blank" rel="noopener">Midterm 1 — full solutions</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20140308155452id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_quiz1%20solutions_2014.pdf" target="_blank" rel="noopener">2014 — Quiz 1, solutions</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20140308155444id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math106_homework%201%20_2014.pdf" target="_blank" rel="noopener">2014 — Homework 1</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20100326014940id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises2_ANSWERS.pdf" target="_blank" rel="noopener">Exercise set 2 — answers</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20100326014912id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises3-4-5%20(ANSWERS).pdf" target="_blank" rel="noopener">Exercise sets 3–5 — answers</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20120216113622id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_exercises%201%20_2012.doc" target="_blank" rel="noopener">2012 — Exercise set 1</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20100326014921id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math106_exercises_%202%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 2</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20100326014916id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises_%203%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 3</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20100326014944id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/math_106_exercises5%20(2010).doc" target="_blank" rel="noopener">2010 — Exercise set 5</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20120216113631id_/http://www.fen.bilkent.edu.tr:80/~karadag/math106/Math_106_syllabus_2012.doc" target="_blank" rel="noopener">Syllabus, 2012</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-          <li class="item">
-            <a href="https://web.archive.org/web/20090221031617id_/http://www.fen.bilkent.edu.tr:80/~karadag/Math106_Course-Page.php" target="_blank" rel="noopener">Course homepage, 2009</a>
-            <span class="who">S. Karadağ</span>
-            <span class="badge archive">ARCHIVE</span>
-          </li>
-        </ul>
-      </section>
-    </article>
-
-  <section class="notes">
-    <h2>What was searched, and what isn't here</h2>
-    <p>The sweep covered the mathematics faculty list and all twenty personal <code>~user</code> folders it links to, each instructor’s course subfolders, and a Wayback CDX sweep of the whole <code>fen.bilkent.edu.tr</code> domain filtered on the course number.</p>
-
-    <h4>One instructor ever posted MATH 105 publicly</h4>
-    <p>No other Bilkent mathematics folder contains a single MATH 105 file. This is not a gap in the search — it is the whole public record for the course.</p>
-
-    <h4>No midterms or finals for MATH 105</h4>
-    <p>Only the two quizzes were posted. The solved midterm in the MATH 106 group is the nearest thing to a full past paper from this instructor, which is why it is included.</p>
-
-    <h4>Nothing after 2014</h4>
-    <p>The newest file of any kind is a 2014 MATH 106 quiz. Recent sections run entirely on Moodle and STARS — reach those with your own student login on the campus network or VPN.</p>
-
-    <h4>Use these the way they were meant</h4>
-    <p>These are study materials. Check your section’s academic-honesty policy before using anything in graded work, and note that the syllabi and grading schemes here belong to old semesters.</p>
-  </section>
-
-  <footer>
-    Compiled 2026-09-09. Links marked <span class="badge live">LIVE</span> point at the instructor's server; <span class="badge archive">ARCHIVE</span> links go to the Internet Archive's copy of the original file. Live links use plain <code>http</code>, which some browsers will flag.
-  </footer>
+<header>
+  <div class="eyebrow">Bilkent University · Mathematics · swept 9–10 Sep 2026 · rebuilt 25 Sep 2026</div>
+  <h1>MATH 105</h1>
+  <p class="sub">Introduction to Calculus I</p>
+  <ul class="stats"><li><b>14</b><span>files &amp; pages</span></li><li><b>2</b><span>still live on Bilkent servers</span></li><li><b>12</b><span>recovered from the Wayback Machine</span></li><li><b>0</b><span>midterm &amp; final files</span></li><li><b>2</b><span>quiz files</span></li><li><b>2003–2011</b><span>years covered</span></li></ul>
+</header>
+<div class="intro">
+  <div>
+    <p>The calculus course for economics, business and social-science students: functions, limits, derivatives and their applications, and an introduction to integration. Salih Karadağ is the only instructor who ever posted MATH 105 material; his folder was deleted, so every file below is an Internet Archive copy. <a href="https://catalog.bilkent.edu.tr/course/c03105.html" target="_blank" rel="noopener">Catalog entry</a>.</p>
+    <p>Everything below was posted publicly by the course’s instructors. <span class="badge LIVE">LIVE</span> links go to the file on the Bilkent server. <span class="badge ARCHIVE">ARCHIVE</span> links open the copy the Internet Archive took while the page was public. Grade lists, attendance sheets, rosters and exam-room lists were left out because they name students.</p>
+  </div>
+  <div class="note">
+    <p><strong>Use these for practice, not submission.</strong> Old solutions show how a problem was graded in that year. Handing them in breaks Bilkent’s academic-integrity rules.</p>
+    <p><strong>Current material lives on Moodle.</strong> For this semester’s slides and exams, use Moodle (from campus or the university VPN). STARS holds the official syllabus for every section since 2010.</p>
+  </div>
 </div>
+<div class="toolbar" role="toolbar" aria-label="Filter materials">
+  <button class="chip" type="button" data-g="all" aria-pressed="true">All <span class="n">14</span></button><button class="chip" type="button" data-g="exams" aria-pressed="false">Exams &amp; solutions <span class="n">0</span></button><button class="chip" type="button" data-g="quizzes" aria-pressed="false">Quizzes &amp; solutions <span class="n">2</span></button><button class="chip" type="button" data-g="homework" aria-pressed="false">Homework &amp; solutions <span class="n">7</span></button><button class="chip" type="button" data-g="pages" aria-pressed="false">Course pages &amp; syllabi <span class="n">5</span></button>
+  <span class="sp"></span>
+  <label class="toggle" for="liveonly"><input type="checkbox" id="liveonly"> Live only</label>
+  <input type="search" id="q" placeholder="Filter: midterm, 2005, quiz…" aria-label="Filter by text">
+</div>
+<main class="wrap" style="gap:28px">
+<section class="grp" data-g="exams" data-empty="1"><h2>Exams &amp; solutions <span class="n">0 items</span></h2><p class="empty">No MATH 105 midterm or final paper was ever captured. Karadağ posted quiz solutions and exercise sets only.</p></section><section class="grp" data-g="quizzes"><h2>Quizzes &amp; solutions <span class="n">2 items</span></h2><div class="term"><h3>2011</h3><ul><li class="it" data-s="ARCHIVE" data-q="quiz 1, with solutions s. karadağ 2011 pdf  "><a href="https://web.archive.org/web/20111203071041id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz1%20exam_solution_2011s.pdf" target="_blank" rel="noopener">Quiz 1, with solutions</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PDF</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="quiz 2, with solutions s. karadağ 2011 pdf  "><a href="https://web.archive.org/web/20111125021731id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math105_quiz2%20exam_solutions_2011.pdf" target="_blank" rel="noopener">Quiz 2, with solutions</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PDF</span>S. Karadağ</span></li></ul></div></section><section class="grp" data-g="homework"><h2>Homework &amp; solutions <span class="n">7 items</span></h2><div class="term"><h3>2011</h3><ul><li class="it" data-s="ARCHIVE" data-q="exercise set 1 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071045id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%201%20_2011.doc" target="_blank" rel="noopener">Exercise set 1</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 2 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071051id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%202%20_2011.doc" target="_blank" rel="noopener">Exercise set 2</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 3 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071055id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%203%20_2011.doc" target="_blank" rel="noopener">Exercise set 3</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 4 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071100id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%204%20_2011.doc" target="_blank" rel="noopener">Exercise set 4</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 5 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071109id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%205%20_2011.doc" target="_blank" rel="noopener">Exercise set 5</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 6 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071112id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%206%20_2011.doc" target="_blank" rel="noopener">Exercise set 6</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li><li class="it" data-s="ARCHIVE" data-q="exercise set 7 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203071117id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_105_exercises%207%20_2011.doc" target="_blank" rel="noopener">Exercise set 7</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li></ul></div></section><section class="grp" data-g="pages"><h2>Course pages &amp; syllabi <span class="n">5 items</span></h2><div class="term"><h3>Spring 2003</h3><ul><li class="it" data-s="ARCHIVE" data-q="syllabus and exam schedule, spring 2003–04 ü. özger spring 2003 page  "><a href="https://web.archive.org/web/20040603131129id_/http://www.fen.bilkent.edu.tr:80/~kumit/105syllabus.htm" target="_blank" rel="noopener">Syllabus and exam schedule, Spring 2003–04</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>Ü. Özger</span></li></ul></div><div class="term"><h3>2008</h3><ul><li class="it" data-s="ARCHIVE" data-q="course homepage, 2008 s. karadağ 2008 page  "><a href="https://web.archive.org/web/20081019085505id_/http://www.fen.bilkent.edu.tr:80/~karadag/Math105_Course-Page.php" target="_blank" rel="noopener">Course homepage, 2008</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">PAGE</span>S. Karadağ</span></li></ul></div><div class="term"><h3>2011</h3><ul><li class="it" data-s="ARCHIVE" data-q="syllabus, 2011–12 s. karadağ 2011 doc  "><a href="https://web.archive.org/web/20111203200941id_/http://www.fen.bilkent.edu.tr:80/~karadag/math105/Math_%20105_%20syllabus%20(2011-2012).doc" target="_blank" rel="noopener">Syllabus, 2011–12</a><span class="badge ARCHIVE">ARCHIVE</span><span class="meta"><span class="f">DOC</span>S. Karadağ</span></li></ul></div><div class="term"><h3>Year not stated</h3><ul><li class="it" data-s="LIVE" data-q="official catalog entry bilkent catalog  page  "><a href="https://catalog.bilkent.edu.tr/course/c03105.html" target="_blank" rel="noopener">Official catalog entry</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>Bilkent catalog</span></li><li class="it" data-s="LIVE" data-q="stars syllabi, every section since 2010 bilkent stars  page  "><a href="https://stars.bilkent.edu.tr/syllabus/view/MATH/105/" target="_blank" rel="noopener">STARS syllabi, every section since 2010</a><span class="badge LIVE">LIVE</span><span class="meta"><span class="f">PAGE</span>Bilkent STARS</span></li></ul></div></section>
+<p class="empty" id="none" hidden>Nothing matches that filter.</p>
+</main>
+
+<div class="lists">
+  <div><h2>Linked but lost</h2><ul><li>Karadağ’s <code>~karadag</code> folder is deleted; files he linked but the Archive never crawled are gone.</li></ul></div>
+  <div><h2>What was searched</h2><ul><li><strong>Mathematics faculty folders</strong> on fen.bilkent.edu.tr, grepped for 105</li><li><strong>Wayback CDX</strong>: fen.bilkent.edu.tr filtered for 105, then full listings of <code>~karadag</code> and <code>~kumit</code></li><li><strong>Left out</strong>: MATH 106 (the second-semester course) material by Karadağ and Gonca Özkan</li><li><strong>Student repos</strong> (25 Sep 2026): about 1,430 public GitHub repositories whose name, description or topics mention Bilkent were collected, and the full file lists of about 580 of them (every coursework repo and monorepo among them) were searched, along with code-name searches for this course. Nothing for MATH 105.</li></ul></div>
+  
+</div>
+<footer>Swept 9–10 September 2026 (it was the MATH 105 part of the “Econ” collection page); rebuilt 25 September 2026 as its own page in the current layout, with the student-repository search added. Copies on Course Hero, Studocu and paid prep sites were not included.</footer>
+</div>
+<script>
+(function(){
+  var chips=[].slice.call(document.querySelectorAll('.chip[data-g]'));
+  var q=document.getElementById('q'), live=document.getElementById('liveonly');
+  var active='all';
+  function apply(){
+    var term=(q.value||'').trim().toLowerCase(), lo=live.checked;
+    document.querySelectorAll('section.grp[data-g]').forEach(function(sec){
+      var gshow=(active==='all'||sec.dataset.g===active);
+      if(sec.dataset.empty){sec.hidden=!(gshow&&!term&&!lo);return;}
+      var secCount=0;
+      sec.querySelectorAll('.term').forEach(function(tb){
+        var c=0;
+        tb.querySelectorAll('.it').forEach(function(li){
+          var ok=gshow&&(!lo||li.dataset.s==='LIVE')&&(!term||li.dataset.q.indexOf(term)>-1);
+          li.hidden=!ok; if(ok)c++;
+        });
+        tb.hidden=(c===0); secCount+=c;
+      });
+      sec.hidden=(secCount===0);
+      var n=sec.querySelector('h2 .n'); if(n) n.textContent=secCount+(secCount===1?' item':' items');
+    });
+    var none=document.getElementById('none');
+    none.hidden=!!document.querySelector('section.grp[data-g]:not([hidden])');
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    active=c.dataset.g; chips.forEach(function(o){o.setAttribute('aria-pressed',String(o===c));}); apply();
+  });});
+  q.addEventListener('input',apply); live.addEventListener('change',apply);
+})();
+</script>
 </body>
 </html>
