@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CS 223 — Digital Design · Bilkent archive</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{--bg:#f4f2ee;--surface:#fbfaf8;--surface-2:#f0ede7;--ink:#1c1a17;--ink-soft:#5c574e;
+--line:#ddd7cc;--accent:#0b6b5f;--accent-soft:#0b6b5f18;--accent-ink:#084b43;
+--amber:#a9640b;--amber-soft:#a9640b16;--blue:#2b6bb0;--blue-soft:#2b6bb016;
+--violet:#6d4aa8;--violet-soft:#6d4aa816;
+--font-d:Georgia,"Times New Roman",serif;--font-b:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+--font-m:ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;--ink-soft:#b0a993;--line:#38342a;
+--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;--amber:#e0a24e;--amber-soft:#e0a24e1c;
+--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}}
+:root[data-theme="dark"]{--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;
+--ink-soft:#b0a993;--line:#38342a;--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;
+--amber:#e0a24e;--amber-soft:#e0a24e1c;--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.55;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:clamp(1.5rem,4vw,3.25rem) 16px 4rem}
+header.top{border-bottom:2px solid var(--ink);padding-bottom:1.3rem;margin-bottom:1.6rem}
+.eyebrow{font-family:var(--font-m);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+color:var(--accent-ink);margin:0 0 .5rem}
+h1{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.05;
+margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-d);font-size:1.05rem;color:var(--ink-soft);margin:.5rem 0 0}
+.lede{color:var(--ink-soft);max-width:62ch;margin:1rem 0 0;font-size:.97rem}
+.mainlink{margin:1.1rem 0 0;font-size:.9rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+border-radius:0 6px 6px 0;padding:.7rem .9rem}
+.mainlink a{color:var(--accent-ink);word-break:break-all}
+.stat{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.3rem;font-family:var(--font-m)}
+.stat b{font-family:var(--font-d);font-size:1.4rem;display:block;color:var(--accent-ink);font-weight:600}
+.stat span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.09em;font-size:.65rem}
+.note{background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;
+padding:.85rem 1rem;margin:1.5rem 0;font-size:.9rem}
+.note b{color:var(--amber)}
+section.grp{margin-top:2.2rem}
+.grp-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;border-bottom:1px solid var(--line);
+padding-bottom:.45rem;margin-bottom:.9rem}
+.grp-head h2{font-family:var(--font-d);font-weight:600;font-size:1.4rem;margin:0}
+.cnt{font-family:var(--font-m);font-size:.68rem;background:var(--accent-soft);color:var(--accent-ink);
+padding:.1rem .45rem;border-radius:20px}
+.grp-desc{color:var(--ink-soft);font-size:.86rem;margin:-.4rem 0 .9rem}
+.term{font-family:var(--font-m);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+color:var(--ink-soft);margin:1rem 0 .3rem}
+ul.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ul.files li{margin:0}
+ul.files a{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:var(--ink);
+padding:.38rem .5rem;border-radius:6px;font-size:.9rem}
+ul.files a:hover{background:var(--surface-2)}
+ul.files a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fname{flex:1;min-width:0;word-break:break-word}
+.who{color:var(--ink-soft);font-size:.8rem}
+.inote{display:block;color:var(--ink-soft);font-size:.78rem;padding:0 .5rem .35rem 1rem}
+.src{font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;
+padding:.12rem .4rem;border-radius:4px;font-weight:700;flex-shrink:0}
+.src-live{background:var(--accent-soft);color:var(--accent-ink)}
+.src-archive{background:var(--amber-soft);color:var(--amber)}
+.src-repo{background:var(--violet-soft);color:var(--violet)}
+.src-hosted{background:var(--blue-soft);color:var(--blue)}
+.empty{color:var(--ink-soft);font-size:.88rem;background:var(--surface);border:1px dashed var(--line);
+border-radius:8px;padding:.8rem .9rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem 1.15rem;margin-top:1rem}
+.box h3{font-family:var(--font-b);font-size:.95rem;margin:0 0 .5rem}
+.box ul{margin:0;padding-left:1.1rem;color:var(--ink-soft);font-size:.87rem}
+.box li{margin-bottom:.3rem}
+footer{margin-top:3rem;padding-top:1.3rem;border-top:1px solid var(--line);color:var(--ink-soft);
+font-size:.8rem;line-height:1.6}
+footer a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Bilkent University · public course materials</p>
+    <h1>CS 223</h1>
+    <p class="sub">Digital Design</p>
+    <p class="lede">Everything public for CS 223, pulled from five instructors' folders — Will Sawyer, Özcan Öztürk, Mehmet Baray and two teaching assistants — spanning 1997 to 2015. The exams, slides and labs are archive copies: both surviving course pages are live, but their files were deleted from the server.</p>
+    <div class="stat">
+      <div><b>195</b><span>documents</span></div>
+      <div><b>11</b><span>live</span></div>
+      <div><b>184</b><span>from the archive</span></div>
+      <div><b>11</b><span>exam papers</span></div>
+    </div>
+  </header>
+  <div class="note"><b>How to read the badges:</b> <span class="src src-live">live</span> still sits on the instructor's own server; <span class="src src-archive">archive</span> is a Wayback Machine copy of a page that was publicly reachable when it was crawled. Everything here opens for anyone, with no login and no payment. Use it for your own study and follow the course's academic-honesty policy.</div>
+  <section class="grp">
+    <div class="grp-head"><h2>Exams &amp; solutions</h2><span class="cnt">11</span></div>
+    <p class="grp-desc">Midterms and finals, newest term first.</p>
+      <p class="term">2004</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070104073904id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/FinalExam_2004.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Final exam — 2004</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2005</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070104073359id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/FinalExam_2005.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Final exam — 2005</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2008</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111110074433id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/midterm2008.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm — 2008</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2009 Fall</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111110074439id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/midterm2009Fall.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm — Fall 2009</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2009</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110110100946id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/MidtermExam_2009.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm exam — 2009</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2010</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120131064013id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/cs2232010Final.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Final exam — 2010</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2011 Spring</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20121119001439id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/midterm2011Spring.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm — Spring 2011</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120131043407id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/CS223Spring2011Final.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Final exam — Spring 2011</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">undated</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110617235916id_/http://www.cs.bilkent.edu.tr/~baray/cs223/CS_223_MidtermFinalII.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm + Final II paper</span><span class="who">Mehmet Baray</span></a><span class="inote">Combined midterm/final paper, term not printed</span></li>
+      </ul>
+      <p class="term">index</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20031129141037/http://www.cs.bilkent.edu.tr/~will/courses/CS223/pastexams.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Past-exam index page (2003)</span><span class="who">Will Sawyer</span></a><span class="inote">The instructor&#x27;s own list of past papers</span></li>
+        <li><a href="https://web.archive.org/web/20080919023013/http://www.cs.bilkent.edu.tr/~ozturk/cs223/pastexams.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Past-exam index page (2008)</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Quizzes &amp; solutions</h2><span class="cnt">3</span></div>
+    <p class="grp-desc">Quiz papers.</p>
+      <p class="term">2002</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020109113429/http://www.cs.bilkent.edu.tr/~ubora/cs223/cs223_1_quiz.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 1 quizzes</span><span class="who">Uğur Bora (TA)</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109152637/http://www.cs.bilkent.edu.tr/~ubora/cs223/cs223_2_quiz.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 2 quizzes</span><span class="who">Uğur Bora (TA)</span></a></li>
+      </ul>
+      <p class="term">2004</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040202060458/http://www.cs.bilkent.edu.tr/~will/courses/CS223/cs223_2_quiz.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 2 quizzes</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Homework &amp; solutions</h2><span class="cnt">53</span></div>
+    <p class="grp-desc">Problem sets and their solution sheets.</p>
+      <p class="term">2011 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110419004325id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/homework1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 1</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110419002936id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/Homework2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110419004320id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/Homework3.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110419002941id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/Homework4.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110419002947id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/Homework5.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110419002952id_/http://www.cs.bilkent.edu.tr/~baray/cs223/Homework/Homework6.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 6</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2011 (Öztürk)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110110082110id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hw2.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110093628id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hw3.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110080952id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hw4.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110093753id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hw5.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2009 (Öztürk)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20090117203829id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/homeworks/homework3.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20090117203836id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/homeworks/homework4.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20090117203847id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/homeworks/homework5.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20090109053230/http://www.cs.bilkent.edu.tr/~ozturk/cs223/homeworks/hw3_q3.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3, question 3 — worked</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919113644/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hwsolutions.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework solutions index</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2006–07 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070102073445id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework1.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 1</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070102073459id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework2.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070102073219id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework3.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20061212175325id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework4.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070102073235id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework5.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070102073332id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework6.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 6</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070102073511id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework7.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 7</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20061211215021id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework8.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 8</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2009 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20091014151154id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/homework2b.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2b</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2002 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020204202829/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework1.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 1</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020410110202/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework2.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109105117/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020204202700/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020410112233/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework5.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109112838/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework6.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 6</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109113142/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework8.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 8</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109114809/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/homework9.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 9</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109120600/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw6_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 6 — solutions</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020203155546/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw7_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 7 — solutions</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109122049/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw8_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 8 — solutions</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109123429/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw9_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 9 — solutions</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2002–03 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20030130042421/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw4_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4 — solutions</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20030130042234/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Homeworks/hw5_sol.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5 — solutions</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2003 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20030307212105/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework1.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 1</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030307211604/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework2.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030307211926/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 3</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030307211646/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030310155646/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework5.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030310155421/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework6.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 6</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030310160235/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework7.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 7</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030310160125/http://www.cs.bilkent.edu.tr/~baray/cs223/Homeworks/Homework8.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 8</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">1997 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/19970724164814id_/http://www.cs.bilkent.edu.tr/~baray/cs223/hwall.txt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">All homework problems (text)</span><span class="who">Mehmet Baray</span></a><span class="inote">Plain-text problem list from the 1997 course</span></li>
+      </ul>
+      <p class="term">2004</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040130165842/http://www.cs.bilkent.edu.tr/~will/courses/CS223/cs223_1_hw.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 1 homework</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20040202052712/http://www.cs.bilkent.edu.tr/~will/courses/CS223/cs223_2_hw.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 2 homework</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20040130173732/http://www.cs.bilkent.edu.tr/~will/courses/CS223/cs223_3_hw.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 3 homework</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2002</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020203121532/http://www.cs.bilkent.edu.tr/~ubora/cs223/cs223_1_hw.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 1 homework</span><span class="who">Uğur Bora (TA)</span></a></li>
+        <li><a href="https://web.archive.org/web/20020204060215/http://www.cs.bilkent.edu.tr/~ubora/cs223/cs223_2_hw.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 2 homework</span><span class="who">Uğur Bora (TA)</span></a></li>
+      </ul>
+      <p class="term">1998</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/19980122034800/http://www.cs.bilkent.edu.tr/~ayavuz/cs223/hwall.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">All homework (section pages)</span><span class="who">A. Yavuz (TA)</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Lecture notes &amp; slides</h2><span class="cnt">41</span></div>
+    <p class="grp-desc">Slide decks and written notes.</p>
+      <p class="term">2011 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111030175106id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch01.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 1 — Digital systems &amp; information</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175118id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch02.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 2 — Combinational logic circuits</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175122id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch03.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 — Combinational logic design</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175139id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch04.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 4 — Sequential circuits</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175151id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch05.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 5 — Registers &amp; register transfers</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175211id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch06.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 6 — Arithmetic functions</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111030175218id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ch07.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 7 — Memory basics</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20101203203028/http://www.cs.bilkent.edu.tr/~will/courses/CS223/lectureslides.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lecture-slide index page</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2012 Spring (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120303233233id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch01.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 1</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233243id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch02.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 2</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233246id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch03.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233253id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch04.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233258id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch05.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 5</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233304id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch06.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 6</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120303233311id_/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/ch07.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 7</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2011 (Öztürk)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110110084134id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 1</span><span class="who">Özcan Öztürk</span></a><span class="inote">PPT version: set1.ppt</span></li>
+        <li><a href="https://web.archive.org/web/20110110083655id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 2</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110083338id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set3.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 3</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110082933id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set3b.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 3b</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110081834id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set4a.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 4a</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110080757id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set4b.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 4b</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110081131id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set5a.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 5a</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110081620id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set5b.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 5b</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110081446id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set5c.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 5c</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110082714id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set6.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 6</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110083916id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set6b.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 6b</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110082614id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set7.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 7</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110083056id_/http://www.cs.bilkent.edu.tr/~ozturk/cs223/set8.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Set 8</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2000–03 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20021226061356/http://www.cs.bilkent.edu.tr/~baray/cs223/cs223notes3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Notes set 3</span><span class="who">Mehmet Baray</span></a><span class="inote">HTML slide show</span></li>
+        <li><a href="https://web.archive.org/web/20021226061725/http://www.cs.bilkent.edu.tr/~baray/cs223/cs223notes4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Notes set 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20021226062446/http://www.cs.bilkent.edu.tr/~baray/cs223/cs223notes5.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Notes set 5</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20030310154517/http://www.cs.bilkent.edu.tr/~baray/cs223/cs223notes6.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Notes set 6</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20021226063601/http://www.cs.bilkent.edu.tr/~baray/cs223/cs223notes7.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Notes set 7</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2000 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20001007063811id_/http://www.cs.bilkent.edu.tr/~baray/cs223/chapter5.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 5 notes (PDF)</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20000817194809/http://www.cs.bilkent.edu.tr/~baray/cs223/abel_primer.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">ABEL primer</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">1998</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/19980122034732/http://www.cs.bilkent.edu.tr/~ayavuz/cs223/chapter2.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 2 notes</span><span class="who">A. Yavuz (TA)</span></a></li>
+        <li><a href="https://web.archive.org/web/19980122034742/http://www.cs.bilkent.edu.tr/~ayavuz/cs223/espresso.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Espresso (logic minimiser) notes</span><span class="who">A. Yavuz (TA)</span></a></li>
+      </ul>
+      <p class="term">2012 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120105140212id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/sol_ch3_seq1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 sequential-circuit solutions 1</span><span class="who">Will Sawyer</span></a><span class="inote">Worked problems</span></li>
+        <li><a href="https://web.archive.org/web/20120105140225id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/sol_ch3_seq2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 sequential-circuit solutions 2</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120105140235id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/sol_ch3_seq3.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 sequential-circuit solutions 3</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120105140241id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/sol_ch3_seq4.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 sequential-circuit solutions 4</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Labs, tutorials &amp; references</h2><span class="cnt">70</span></div>
+    <p class="grp-desc">Lab sheets, tool tutorials and language references.</p>
+      <p class="term">2011–12 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111007105519/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_0.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 0</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111012141015/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_1.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 1</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111019192749/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_2.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 2</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111025204817/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_3.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111104182139/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_4.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111116020207/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_5.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 5</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111123212635/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_5_again.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 5 (repeat version)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111128034425/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_6.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 6</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111206002448/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_7.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 7</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120108002208/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_8.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 8</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120108070940/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_9.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 9</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120112062740/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/CS223_Lab_ExtraCredit.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Extra-credit lab</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2011 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111103194505id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab3_testbench_partAb.txt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3 testbench — part A(b)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111103212050id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab3_testbench_partAg.txt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3 testbench — part A(g)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111201051554id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab3_testbench_partBc.txt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3 testbench — part B(c)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111201051600id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab3_testbench_partCb.txt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3 testbench — part C(b)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111018012603id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/FPGA_tutorial.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">FPGA tutorial</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2012 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120113080654id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab_Project%209A.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab project 9A</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120113080659id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab_Project%209B.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab project 9B</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120113080704id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab_Project%209C.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab project 9C</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120113080709id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/Lab_Project%209D.doc" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab project 9D</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2010 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20101216191428/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab10.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 10</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2002–04 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020203131558/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab1.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 1</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020203124532/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab2.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 2</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20030131235108/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20040121150909/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020203125502/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab5.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 5</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109130610/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab6.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 6</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020109131613/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab7.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 7</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20020203122543/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab8.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 8</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2007 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20071208053011/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/lab9.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 9</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2002 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020109065703/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/policies.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab policies</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2004 (Sawyer)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040125190019/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Labs/suggestions.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab suggestions</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2008 (Öztürk)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20081028203137/http://www.cs.bilkent.edu.tr/~ozturk/cs223/Labs/lab1.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 1</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20081019085456/http://www.cs.bilkent.edu.tr/~ozturk/cs223/Labs/lab3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20081019045639/http://www.cs.bilkent.edu.tr/~ozturk/cs223/Labs/lab4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2010 (Öztürk)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20101106043907/http://www.cs.bilkent.edu.tr/~ozturk/cs223/Labs/lab_guide.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">FPGA &amp; Verilog lab survival guide</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">2011 (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110525023317/http://www.cs.bilkent.edu.tr/~baray/cs223/Labs/lab3.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110525023321/http://www.cs.bilkent.edu.tr/~baray/cs223/Labs/lab4.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20110525023336/http://www.cs.bilkent.edu.tr/~baray/cs223/Labs/lab6.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 6</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2012 Spring (Baray)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120301100217/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223_Lab_0.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 0</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120229051250/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223_Lab_1.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 1</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120229051305/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223_Lab_2.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 2</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120229051310/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223_Lab_3.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 3</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120229063931/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223_Lab_4.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4</span><span class="who">Mehmet Baray</span></a></li>
+        <li><a href="https://web.archive.org/web/20120301100212/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/Labs/CS223%20Quick%20Startup%20Guide%20for%20FPGA%20and%20Verilog%20Labs.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Quick startup guide for FPGA &amp; Verilog labs</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2011 (Önder)</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">CS223 survival guide for FPGA &amp; Verilog labs</span><span class="who">Onur Önder (TA)</span></a><span class="inote">Still online — the fullest lab walkthrough, with 19 Verilog sample files</span></li>
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/ise11tut.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Xilinx ISE 11 tutorial (Bilkent mirror)</span><span class="who">Onur Önder (TA)</span></a></li>
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/plugin_ism.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">iSim user guide</span><span class="who">Onur Önder (TA)</span></a></li>
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/isimtutorial_ug682.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">iSim in-depth tutorial</span><span class="who">Onur Önder (TA)</span></a></li>
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/Basys2_rm.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Basys2 board reference manual</span><span class="who">Onur Önder (TA)</span></a></li>
+        <li><a href="http://www.cs.bilkent.edu.tr/~oonder/CS223/Labs/lab2.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Lab 2 sheet</span><span class="who">Onur Önder (TA)</span></a></li>
+      </ul>
+      <p class="term">2011</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~sermetcan/CS223/Labs_Sec2.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Section 2 lab pages</span><span class="who">Sermetcan Baysal (TA)</span></a></li>
+      </ul>
+      <p class="term">2000</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20000122201322/http://www.cs.bilkent.edu.tr/~ayavuz/cs223/lab4/lab4a.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 4a</span><span class="who">A. Yavuz (TA)</span></a></li>
+        <li><a href="https://web.archive.org/web/20000525090143/http://www.cs.bilkent.edu.tr/~ayavuz/cs223/lab5/lab5.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lab 5</span><span class="who">A. Yavuz (TA)</span></a></li>
+      </ul>
+      <p class="term">2002</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020203130716/http://www.cs.bilkent.edu.tr/~ubora/cs223/cs223_1_labs.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Section 1 labs</span><span class="who">Uğur Bora (TA)</span></a></li>
+      </ul>
+      <p class="term">reference</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/Verilog_tutorial.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Verilog tutorial</span><span class="who">Will Sawyer</span></a><span class="inote">One of the few files still live in this folder</span></li>
+        <li><a href="https://web.archive.org/web/20120105140056id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/VerilogBehavioralExamples.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog behavioural examples</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161710id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/VerilogExamples.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog examples</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161714id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/VerilogExamples1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog examples (set 1)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161727id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/verilogexamples2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog examples (set 2)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161725id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/VerilogLangRefManual.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog language reference manual</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20120105140105id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/vhdlvlogcompared.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">VHDL vs Verilog compared</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161705id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/UEVerilogTutorial.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog tutorial (UE)</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161655id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/LCDF3_Verilog_Ch_4.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">LCDF3 Verilog — chapter 4</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20111119161659id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/Verilog/LCDF3_Verilog_Ch_5.ppt" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">LCDF3 Verilog — chapter 5</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20031126012910id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ISE4tutorial.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Xilinx ISE 4 tutorial</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20031126035554id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ISE5tutorial.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Xilinx ISE 5 tutorial</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20070221073808id_/http://www.cs.bilkent.edu.tr/~will/courses/CS223/ISE6tutorial.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Xilinx ISE 6 tutorial</span><span class="who">Will Sawyer</span></a></li>
+        <li><a href="https://web.archive.org/web/20110110092758/http://www.cs.bilkent.edu.tr/~ozturk/cs223/VRLG95A.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog 95 quick reference</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Course pages &amp; syllabi</h2><span class="cnt">17</span></div>
+    <p class="grp-desc">Term pages, syllabi and policies.</p>
+      <p class="term">2015 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~will/courses/CS223/" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Sawyer &amp; Baray (live)</span><span class="who">Will Sawyer</span></a><span class="inote">Still online, but only the header survives: every file link is dead</span></li>
+      </ul>
+      <p class="term">2010 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~ozturk/cs223/" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Öztürk &amp; Baray (live)</span><span class="who">Özcan Öztürk</span></a><span class="inote">Live index; its own file links 404 — use the archived copies above</span></li>
+      </ul>
+      <p class="term">2001</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20011004104937/http://www.cs.bilkent.edu.tr/~will/courses/CS223/syllabus.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2000</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20010608061916/http://www.cs.bilkent.edu.tr/~will/courses/CS223/syl2000.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus</span><span class="who">Will Sawyer</span></a></li>
+      </ul>
+      <p class="term">2008</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20080919113710/http://www.cs.bilkent.edu.tr/~ozturk/cs223/syllabus.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919113705/http://www.cs.bilkent.edu.tr/~ozturk/cs223/references.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Reference list</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919113715/http://www.cs.bilkent.edu.tr/~ozturk/cs223/verilog.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Verilog resources</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919113720/http://www.cs.bilkent.edu.tr/~ozturk/cs223/xilinx.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Xilinx resources</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919051011/http://www.cs.bilkent.edu.tr/~ozturk/cs223/hwpolicy.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework &amp; lab policies</span><span class="who">Özcan Öztürk</span></a></li>
+        <li><a href="https://web.archive.org/web/20080919113628/http://www.cs.bilkent.edu.tr/~ozturk/cs223/examrules.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Exam rules</span><span class="who">Özcan Öztürk</span></a></li>
+      </ul>
+      <p class="term">1997</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/19970724164759/http://www.cs.bilkent.edu.tr/~baray/cs223/syl.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus (1997)</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2002</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20021226062003/http://www.cs.bilkent.edu.tr/~baray/cs223/syllabus2002.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus (2002)</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2011</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20110407100845/http://www.cs.bilkent.edu.tr/~baray/cs223/Lectures.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Lecture plan</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2012 Spring</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20120301100329/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2012/syllabus.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page &amp; syllabus</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">2013 Spring</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20130520173845/http://www.cs.bilkent.edu.tr/~baray/CS223Spring2013/" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page</span><span class="who">Mehmet Baray</span></a></li>
+      </ul>
+      <p class="term">current</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~guvenir/CS223CS224EEE212.html" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Department course note page (CS 223 / CS 224 / EEE 212)</span><span class="who">H. Altay Güvenir</span></a></li>
+      </ul>
+      <p class="term">2021</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20211027165737/http://www.cs.bilkent.edu.tr/~s.rahimzadeh/CS223.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page</span><span class="who">S. Rahimzadeh (TA)</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>What was searched</h2></div>
+    <div class="box"><ul>
+      <li>Bilkent catalog entry (c11223) and the STARS section list for every term from 2014-15 to 2026-27.</li>
+      <li>Every CS-department personal folder that mentions 223: ~will (Will Sawyer), ~ozturk, ~baray, ~oonder, ~sermetcan, ~ubora, ~ayavuz, ~busra, ~bastan, ~guvenir, ~s.rahimzadeh.</li>
+      <li>Live checks of every file linked from the surviving course pages — on ~will and ~ozturk only the index pages still answer; the files themselves are gone, so the archived copies are linked instead.</li>
+      <li>Wayback CDX sweeps of cs.bilkent.edu.tr and www.cs.bilkent.edu.tr for every URL containing &quot;223&quot; (1,229 captures), plus a full prefix enumeration of ~will/courses/CS223/ (349 captures).</li>
+      <li>GitHub, GitLab and Codeberg student-repo sweep (2026-09-19): file trees of roughly 3,500 Bilkent-linked repositories and 1,000 repos named cs223 — no CS 223 exam or quiz paper exists on any open code host.</li>
+    </ul></div>
+    <div class="box"><h3>Linked but lost</h3><ul>
+      <li>FinalExam_2006.doc and FinalExam_2009.doc — linked from the past-exam pages, never crawled.</li>
+      <li>Öztürk&#x27;s ManoKimeSlides.html (extra Mano/Kime slide set) and PetervrlK.pdf — linked, never archived.</li>
+      <li>Sawyer&#x27;s homework 9 and 10 sheets, Homeworks/hw10_sol.htm, Labs lab6_sec1–4 and PEGASUS-rm.pdf.</li>
+      <li>The 2002–03 Baray notes sets 1 and 2 (cs223intro, cs223notes2) — the server answered 403 when the crawler called.</li>
+    </ul></div>
+    <div class="box"><h3>Deliberately left out</h3><ul><li>Left out on purpose: every grade, attendance and section list that names students — ~will/courses/CS223/Grades/*, examgrades*.htm, ~ozturk sec1–3.htm and sec1quiz.htm, ~busra and ~bastan section-grade pages, Baray&#x27;s CS223Spring2012 MidtermGrades.pdf and the Quizsaps grade spreadsheet. Givone.pdf (the course textbook) is also left out — it is a commercial book, not course material the instructor wrote.</li></ul></div>
+  </section>
+  <footer>
+    Collected from instructors' own pages and from the <a href="https://web.archive.org" target="_blank" rel="noopener">Internet Archive Wayback Machine</a>. Nothing here was taken from behind a login, a paywall or an access control. Anyone with this link can open the page.
+  </footer>
+</div>
+</body>
+</html>

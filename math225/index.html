@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MATH 225 — Linear Algebra and Differential Equations · Bilkent archive</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{--bg:#f4f2ee;--surface:#fbfaf8;--surface-2:#f0ede7;--ink:#1c1a17;--ink-soft:#5c574e;
+--line:#ddd7cc;--accent:#0b6b5f;--accent-soft:#0b6b5f18;--accent-ink:#084b43;
+--amber:#a9640b;--amber-soft:#a9640b16;--blue:#2b6bb0;--blue-soft:#2b6bb016;
+--violet:#6d4aa8;--violet-soft:#6d4aa816;
+--font-d:Georgia,"Times New Roman",serif;--font-b:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+--font-m:ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;--ink-soft:#b0a993;--line:#38342a;
+--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;--amber:#e0a24e;--amber-soft:#e0a24e1c;
+--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}}
+:root[data-theme="dark"]{--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;
+--ink-soft:#b0a993;--line:#38342a;--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;
+--amber:#e0a24e;--amber-soft:#e0a24e1c;--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.55;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:clamp(1.5rem,4vw,3.25rem) 16px 4rem}
+header.top{border-bottom:2px solid var(--ink);padding-bottom:1.3rem;margin-bottom:1.6rem}
+.eyebrow{font-family:var(--font-m);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+color:var(--accent-ink);margin:0 0 .5rem}
+h1{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.05;
+margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-d);font-size:1.05rem;color:var(--ink-soft);margin:.5rem 0 0}
+.lede{color:var(--ink-soft);max-width:62ch;margin:1rem 0 0;font-size:.97rem}
+.mainlink{margin:1.1rem 0 0;font-size:.9rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+border-radius:0 6px 6px 0;padding:.7rem .9rem}
+.mainlink a{color:var(--accent-ink);word-break:break-all}
+.stat{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.3rem;font-family:var(--font-m)}
+.stat b{font-family:var(--font-d);font-size:1.4rem;display:block;color:var(--accent-ink);font-weight:600}
+.stat span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.09em;font-size:.65rem}
+.note{background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;
+padding:.85rem 1rem;margin:1.5rem 0;font-size:.9rem}
+.note b{color:var(--amber)}
+section.grp{margin-top:2.2rem}
+.grp-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;border-bottom:1px solid var(--line);
+padding-bottom:.45rem;margin-bottom:.9rem}
+.grp-head h2{font-family:var(--font-d);font-weight:600;font-size:1.4rem;margin:0}
+.cnt{font-family:var(--font-m);font-size:.68rem;background:var(--accent-soft);color:var(--accent-ink);
+padding:.1rem .45rem;border-radius:20px}
+.grp-desc{color:var(--ink-soft);font-size:.86rem;margin:-.4rem 0 .9rem}
+.term{font-family:var(--font-m);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+color:var(--ink-soft);margin:1rem 0 .3rem}
+ul.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ul.files li{margin:0}
+ul.files a{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:var(--ink);
+padding:.38rem .5rem;border-radius:6px;font-size:.9rem}
+ul.files a:hover{background:var(--surface-2)}
+ul.files a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fname{flex:1;min-width:0;word-break:break-word}
+.who{color:var(--ink-soft);font-size:.8rem}
+.inote{display:block;color:var(--ink-soft);font-size:.78rem;padding:0 .5rem .35rem 1rem}
+.src{font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;
+padding:.12rem .4rem;border-radius:4px;font-weight:700;flex-shrink:0}
+.src-live{background:var(--accent-soft);color:var(--accent-ink)}
+.src-archive{background:var(--amber-soft);color:var(--amber)}
+.src-repo{background:var(--violet-soft);color:var(--violet)}
+.src-hosted{background:var(--blue-soft);color:var(--blue)}
+.empty{color:var(--ink-soft);font-size:.88rem;background:var(--surface);border:1px dashed var(--line);
+border-radius:8px;padding:.8rem .9rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem 1.15rem;margin-top:1rem}
+.box h3{font-family:var(--font-b);font-size:.95rem;margin:0 0 .5rem}
+.box ul{margin:0;padding-left:1.1rem;color:var(--ink-soft);font-size:.87rem}
+.box li{margin-bottom:.3rem}
+footer{margin-top:3rem;padding-top:1.3rem;border-top:1px solid var(--line);color:var(--ink-soft);
+font-size:.8rem;line-height:1.6}
+footer a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Bilkent University · public course materials</p>
+    <h1>MATH 225</h1>
+    <p class="sub">Linear Algebra and Differential Equations</p>
+    <p class="lede">Kurtulmaz's exam archive, Muğan's 22 solved homework sets, Gürses's three papers with solutions and Özkan's 2003 course folder. Most of it is still on the instructors' own servers, so those links are live.</p>
+    <div class="stat">
+      <div><b>129</b><span>documents</span></div>
+      <div><b>93</b><span>live</span></div>
+      <div><b>36</b><span>from the archive</span></div>
+      <div><b>48</b><span>exam papers</span></div>
+    </div>
+  </header>
+  <div class="note"><b>How to read the badges:</b> <span class="src src-live">live</span> still sits on the instructor's own server; <span class="src src-archive">archive</span> is a Wayback Machine copy of a page that was publicly reachable when it was crawled. Everything here opens for anyone, with no login and no payment. Use it for your own study and follow the course's academic-honesty policy.</div>
+  <section class="grp">
+    <div class="grp-head"><h2>Exams &amp; solutions</h2><span class="cnt">48</span></div>
+    <p class="grp-desc">Midterms and finals, newest term first.</p>
+      <p class="term">2004 Fall</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070129144520id_/http://www.ee.bilkent.edu.tr/~math225/F04-MT2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Midterm 2</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+      <p class="term">2007–08 Spring</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2007-2008.spring.MDT1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">Question paper, no solutions</span></li>
+      </ul>
+      <p class="term">2007–08 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/Midterm%20Ex-1-FALL-2007-08-Solution.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — with solutions</span><span class="who">Uğurhan Muğan</span></a><span class="inote">Muğan&#x27;s own sample exam</span></li>
+      </ul>
+      <p class="term">2008–09 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2008-Fall.Midterm1.1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — with solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Fall.Midterm2.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008.SolForMt21.yeni.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — with solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Fall.Finalexam..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2008-2009.Fall.Final.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final (question paper)</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="https://web.archive.org/web/20120112012456id_/http://www.fen.bilkent.edu.tr/~yosum/2008.225.Final.tif" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Final (scan)</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">TIFF scan</span></li>
+      </ul>
+      <p class="term">2008–09 Spring</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.1.sinav.cozumleri.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2008-09.Spring.Midterm2.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/ABCD.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2009–10 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009.fall.midt1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009-2010.fall.MDT1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 (second paper)</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2009</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2009.final.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2010–11 Spring</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Math%20225.2010-11.Spring.2ndMidterm.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2011–12 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2011-12Fall-Final.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2012–13 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2012-13Fall.Sol..Mdt2..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2013–14 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14%20Final.sol..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2013–14 Spring</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14SpringSol.%20to%20Mdt1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14.Spring.Mdt2.Solut..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14Spring%20Sol.to%20Final.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2014–15 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.%20to%20Mdt%201.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15Fall.Solt.Midt2.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2014-15%20Fall.Sol.Final%20exam.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">undated</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.MIDTERM1.COZUM.DEGISIK..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — alternative solutions</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">Term not printed on the paper</span></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.2.sinav.dogru.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Fall.final.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final.1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Extra final — paper 1</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">Five loose final papers, terms not printed</span></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final2.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Extra final — paper 2</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final3.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Extra final — paper 3</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final4.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Extra final — paper 4</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.final5.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Extra final — paper 5</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">undated (Gürses)</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1</span><span class="who">Metin Gürses</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam1sol.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 1 — solutions</span><span class="who">Metin Gürses</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2</span><span class="who">Metin Gürses</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam2sol.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Midterm 2 — solutions</span><span class="who">Metin Gürses</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225exam3sol.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Final — solutions</span><span class="who">Metin Gürses</span></a></li>
+      </ul>
+      <p class="term">2001 (MATH 220)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040129094713id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-mt1-2001.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 — Midterm 1, 2001</span><span class="who">Gonca Özkan</span></a><span class="inote">Predecessor course, kept in the MATH 225 folder</span></li>
+        <li><a href="https://web.archive.org/web/20040129064328id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-mt2-2001.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 — Midterm 2, 2001</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+      <p class="term">2002 (MATH 220)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040129155526id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-mt1-2002.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 — Midterm 1, 2002</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040129144414id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-mt2-2002.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 — Midterm 2, 2002</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040129095605id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-mt2-2002-sol.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 — Midterm 2, 2002, solutions</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+      <p class="term">index</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.EXAMPGE2.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Exam index — papers with solutions</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">The instructor&#x27;s own list, 2007-08 to 2014-15</span></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.EXAMPAGE.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Exam index — older papers</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.Exams.withoutsolutions.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Exam index — papers without solutions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="https://web.archive.org/web/20040122054304/http://www.fen.bilkent.edu.tr/~gozkan/math225/Old%20exams/220-fall2000exams.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATH 220 old-exam index, Fall 2000 &amp; Fall 2002</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Quizzes &amp; solutions</h2><span class="cnt">0</span></div>
+    <p class="grp-desc">Quiz papers.</p>
+    <p class="empty">No MATH 225 quiz paper has ever been published publicly. Quizzes are run per section and collected on paper; the only quiz-named pages on any instructor folder are section grade lists, which are deliberately not linked here.</p>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Homework &amp; solutions</h2><span class="cnt">42</span></div>
+    <p class="grp-desc">Problem sets and their solution sheets.</p>
+      <p class="term">Muğan&#x27;s set</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%201-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 1 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%202-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 2 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%203-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 3 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%204-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 4 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%205-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 5 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%206-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 6 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%207-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 7 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%208-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 8 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%209-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 9 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2010-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 10 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2011-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 11 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2012-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 12 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2013-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 13 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2014-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 14 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2015-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 15 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2016-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 16 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2017-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 17 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2018-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 18 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2019-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 19 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2020-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 20 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2021-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 21 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2022-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 22 — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2015-A-Solutions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 15-A — solutions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2016.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 16 — questions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2017.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 17 — questions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2018.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 18 — questions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homework%20set%2019.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework set 19 — questions</span><span class="who">Uğurhan Muğan</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/homeworkset.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Homework index page</span><span class="who">Uğurhan Muğan</span></a><span class="inote">Lists all 22 sets</span></li>
+      </ul>
+      <p class="term">2011 (Kurtulmaz)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20111029191410id_/http://www.fen.bilkent.edu.tr/~yosum/HW12.225.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 12</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2003–04 (Özkan)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20031031232100id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/225week1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 1 problems</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20031204060203id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/225week9.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 9 problems</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20031204092406id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/week9.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 9 solutions</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040119095407id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/225week12.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 12 problems</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040119095814id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/225week14.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 14 problems</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040119101826id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/week14.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Week 14 solutions</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040119093320id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/bonus/hw1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Bonus homework 1</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040118191311/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/bonus/bonus_homework.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Bonus homework instructions</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040118191532/http://www.fen.bilkent.edu.tr/~gozkan/math225/homework/main.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework index</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+      <p class="term">2003 (EEE section)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070129144533id_/http://www.ee.bilkent.edu.tr/~math225/hw1.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 1</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+        <li><a href="https://web.archive.org/web/20031118051100id_/http://www.ee.bilkent.edu.tr/~math225/Homeworks/HW5.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 5</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+        <li><a href="https://web.archive.org/web/20031118083714id_/http://www.ee.bilkent.edu.tr/~math225/Ch3SolHalf.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Chapter 3 — partial solutions</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+      <p class="term">2019 (EEE section)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20190712174227id_/http://kilyos.ee.bilkent.edu.tr/~math225/Homework/HW2.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Homework 2</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Practice &amp; review sheets</h2><span class="cnt">8</span></div>
+    <p class="grp-desc">Not real exam papers — revision material the instructors handed out.</p>
+      <p class="term">current</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/225.Suggested.questions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Suggested problems from the textbook</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">undated</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225.Review%201.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review sheet 1</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225.ReviewII.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review sheet 2</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225.Review%20III.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review sheet 3</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225.Review%20IV.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review sheet 4</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225.Review5.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review sheet 5</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Math225.Review%20questions.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Review questions</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2006–07</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~aydan/Math.225SugProblems.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Suggested problems</span><span class="who">Aydan Pamir</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Lecture notes &amp; handouts</h2><span class="cnt">8</span></div>
+    <p class="grp-desc">Written notes and reference sheets.</p>
+      <p class="term">2004 (Muğan)</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/ol225.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course notes / outline (ol225)</span><span class="who">Uğurhan Muğan</span></a></li>
+      </ul>
+      <p class="term">2007 Spring (Muğan)</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/ol225-Spring-2007.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course notes / outline</span><span class="who">Uğurhan Muğan</span></a></li>
+      </ul>
+      <p class="term">2009 Fall (Muğan)</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/ol225-FALL-2009.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course notes / outline</span><span class="who">Uğurhan Muğan</span></a></li>
+      </ul>
+      <p class="term">2003–04 (Özkan)</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20031031043544/http://www.fen.bilkent.edu.tr/~gozkan/math225/Documents/firstorderequations.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">First-order equations</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20031031230054id_/http://www.fen.bilkent.edu.tr/~gozkan/math225/Documents/integraltable.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Integral table</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20031030110022/http://www.fen.bilkent.edu.tr/~gozkan/math225/Documents/course_documents.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course documents index</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040123171355/http://www.fen.bilkent.edu.tr/~gozkan/math225/maple/documents.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Maple material</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040124224312/http://www.fen.bilkent.edu.tr/~gozkan/math225/matlab/main.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">MATLAB material</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>Course pages &amp; syllabi</h2><span class="cnt">23</span></div>
+    <p class="grp-desc">Term pages, syllabi and policies.</p>
+      <p class="term">current</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/math225.html" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Kurtulmaz (live)</span><span class="who">Yosum Kurtulmaz</span></a><span class="inote">The main public MATH 225 page</span></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Class%20Policy.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Class policy</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/e-mail.policy.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">E-mail policy</span><span class="who">Yosum Kurtulmaz</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~gurses/math225.html" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Gürses</span><span class="who">Metin Gürses</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Muğan</span><span class="who">Uğurhan Muğan</span></a></li>
+      </ul>
+      <p class="term">2013–14 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14Fall.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2017–18 Summer</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Yaz.2017-18.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page &amp; syllabus</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2013–14</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/2013-14%20Syllabus.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Syllabus</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2014–15</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/Math%20225.%202014-15%20Syllb..pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Syllabus</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2011–12 Spring</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~yosum/MATH%20225-2011-12Spring.Syllabus.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Syllabus</span><span class="who">Yosum Kurtulmaz</span></a></li>
+      </ul>
+      <p class="term">2009 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~mugan/courses/math225/Announcement.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Announcements — Muğan</span><span class="who">Uğurhan Muğan</span></a></li>
+      </ul>
+      <p class="term">2020</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~aurelian/MATH225.html" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Gheondea</span><span class="who">Aurelian Gheondea</span></a></li>
+        <li><a href="http://www.fen.bilkent.edu.tr/~aurelian/math225syllabus.pdf" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Detailed syllabus — Gheondea</span><span class="who">Aurelian Gheondea</span></a></li>
+      </ul>
+      <p class="term">2008</p>
+      <ul class="files">
+        <li><a href="http://www.fen.bilkent.edu.tr/~kocatepe/MATH225Home.htm" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Kocatepe</span><span class="who">Mefharet Kocatepe</span></a></li>
+      </ul>
+      <p class="term">2006–07 Fall</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20061214190128/http://www.fen.bilkent.edu.tr/~aydan/Math.225(2006-2007,Fall).htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page — Pamir</span><span class="who">Aydan Pamir</span></a></li>
+        <li><a href="https://web.archive.org/web/20061219044026/http://www.fen.bilkent.edu.tr/~aydan/Math.225Syllabus(2006-2007,Fall).htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus — Pamir</span><span class="who">Aydan Pamir</span></a></li>
+      </ul>
+      <p class="term">2003–04</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20031205201654/http://www.fen.bilkent.edu.tr/~gozkan/math225/course_policies.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course policies — Özkan</span><span class="who">Gonca Özkan</span></a></li>
+        <li><a href="https://web.archive.org/web/20040122045605/http://www.fen.bilkent.edu.tr/~gozkan/math225/syllabus_and_course_information.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus &amp; course information — Özkan</span><span class="who">Gonca Özkan</span></a></li>
+      </ul>
+      <p class="term">2003</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20031125094759/http://www.ee.bilkent.edu.tr/~math225/" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page — EEE sections</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+      <p class="term">2007</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20070115072137/http://www.ee.bilkent.edu.tr/~math225/syllabus.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Syllabus — EEE sections</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+      <p class="term">2004</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20040102215700id_/http://www.ee.bilkent.edu.tr/~math225/errata.pdf" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Errata sheet — EEE sections</span><span class="who">MATH 225 course folder (EEE)</span></a></li>
+      </ul>
+      <p class="term">2002</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20020225180612/http://www.ee.bilkent.edu.tr/~eeweb/math225/home.html" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page — EE web copy</span><span class="who">EEE department</span></a></li>
+      </ul>
+      <p class="term">2005 Fall</p>
+      <ul class="files">
+        <li><a href="https://web.archive.org/web/20071119095020/http://www.ee.bilkent.edu.tr/~ider/COURSES/MATH225/MATH225_Fall_2005/math225_fall_2005_main.htm" target="_blank" rel="noopener"><span class="src src-archive">archive</span><span class="fname">Course page — İder (EEE)</span><span class="who">Y. Ziya İder</span></a></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>What was searched</h2></div>
+    <div class="box"><ul>
+      <li>Bilkent catalog entry (c03225) and the STARS term list — the course has run every term since 2010-11, with summer sections.</li>
+      <li>Every Mathematics-department personal folder that mentions 225: ~yosum (Kurtulmaz), ~mugan, ~gurses, ~gozkan, ~aydan, ~kocatepe, ~aurelian, ~yurekli.</li>
+      <li>The EEE department&#x27;s own MATH 225 sections: ~math225 and ~eeweb/math225 on both www.ee and kilyos.ee, plus ~ider&#x27;s Fall 2005 course folder.</li>
+      <li>Live re-checks of all 56 candidate files: 52 still answer 200 on the instructors&#x27; own servers, so they are linked live rather than through the archive.</li>
+      <li>Wayback CDX sweeps of fen.bilkent.edu.tr, ee.bilkent.edu.tr and kilyos.ee.bilkent.edu.tr for every URL containing &quot;225&quot;.</li>
+      <li>GitHub, GitLab and Codeberg student-repo sweep (2026-09-19): roughly 3,500 Bilkent-linked repositories plus 1,000 repos named math225 — no MATH 225 exam or quiz paper on any open code host. The only near misses are two practice sheets in MAKman1/Bilkent-CS-Curriculum (MATH225/Practice1 and Practice2), which are not real papers.</li>
+    </ul></div>
+    <div class="box"><h3>Linked but lost</h3><ul>
+      <li>Kurtulmaz&#x27;s Spring 2008-09 midterm-2 solution sheet (20090502111432523.pdf): still linked from his exam index page, but the file is gone from the server and was never archived.</li>
+      <li>Kurtulmaz&#x27;s 2009, 2010 and 2011 Fall course pages (2009Fall.Math225.htm and siblings) — linked, never crawled.</li>
+      <li>Özkan&#x27;s homework weeks 2–8, 10, 11 and 13 — only weeks 1, 9, 12 and 14 were ever archived.</li>
+      <li>~yurekli/math/225 (Doğan Yürekli, 2005): the folder structure was archived but every file inside it redirects and no content survives.</li>
+      <li>Muğan&#x27;s &#x27;ugurcan.htm&#x27; problem page and the LR/discoII and LR/seriesIII note sets — 404 at crawl time.</li>
+    </ul></div>
+    <div class="box"><h3>Deliberately left out</h3><ul><li>Left out on purpose: every grade and exam-room page that names students — the ~math225/grades/ spreadsheets on the EEE server, Muğan&#x27;s Grades-posted PDFs, Gürses&#x27;s ORTALAMA2.xls, Özkan&#x27;s quiz-section and name-range lists, and Pamir&#x27;s exam-place pages.</li></ul></div>
+  </section>
+  <footer>
+    Collected from instructors' own pages and from the <a href="https://web.archive.org" target="_blank" rel="noopener">Internet Archive Wayback Machine</a>. Nothing here was taken from behind a login, a paywall or an access control. Anyone with this link can open the page.
+  </footer>
+</div>
+</body>
+</html>

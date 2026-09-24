@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CS 211 — Data Structures · Bilkent archive</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{--bg:#f4f2ee;--surface:#fbfaf8;--surface-2:#f0ede7;--ink:#1c1a17;--ink-soft:#5c574e;
+--line:#ddd7cc;--accent:#0b6b5f;--accent-soft:#0b6b5f18;--accent-ink:#084b43;
+--amber:#a9640b;--amber-soft:#a9640b16;--blue:#2b6bb0;--blue-soft:#2b6bb016;
+--violet:#6d4aa8;--violet-soft:#6d4aa816;
+--font-d:Georgia,"Times New Roman",serif;--font-b:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+--font-m:ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;--ink-soft:#b0a993;--line:#38342a;
+--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;--amber:#e0a24e;--amber-soft:#e0a24e1c;
+--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}}
+:root[data-theme="dark"]{--bg:#16150f;--surface:#201e17;--surface-2:#2a271e;--ink:#f2efe6;
+--ink-soft:#b0a993;--line:#38342a;--accent:#4fbfa6;--accent-soft:#4fbfa61f;--accent-ink:#8fe0cd;
+--amber:#e0a24e;--amber-soft:#e0a24e1c;--blue:#7fb0e8;--blue-soft:#7fb0e81c;--violet:#b79fe0;--violet-soft:#b79fe01c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.55;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:clamp(1.5rem,4vw,3.25rem) 16px 4rem}
+header.top{border-bottom:2px solid var(--ink);padding-bottom:1.3rem;margin-bottom:1.6rem}
+.eyebrow{font-family:var(--font-m);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+color:var(--accent-ink);margin:0 0 .5rem}
+h1{font-family:var(--font-d);font-weight:600;font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.05;
+margin:0;letter-spacing:-.01em}
+.sub{font-family:var(--font-d);font-size:1.05rem;color:var(--ink-soft);margin:.5rem 0 0}
+.lede{color:var(--ink-soft);max-width:62ch;margin:1rem 0 0;font-size:.97rem}
+.mainlink{margin:1.1rem 0 0;font-size:.9rem;background:var(--accent-soft);border-left:3px solid var(--accent);
+border-radius:0 6px 6px 0;padding:.7rem .9rem}
+.mainlink a{color:var(--accent-ink);word-break:break-all}
+.stat{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.3rem;font-family:var(--font-m)}
+.stat b{font-family:var(--font-d);font-size:1.4rem;display:block;color:var(--accent-ink);font-weight:600}
+.stat span{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.09em;font-size:.65rem}
+.note{background:var(--amber-soft);border-left:3px solid var(--amber);border-radius:0 6px 6px 0;
+padding:.85rem 1rem;margin:1.5rem 0;font-size:.9rem}
+.note b{color:var(--amber)}
+section.grp{margin-top:2.2rem}
+.grp-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;border-bottom:1px solid var(--line);
+padding-bottom:.45rem;margin-bottom:.9rem}
+.grp-head h2{font-family:var(--font-d);font-weight:600;font-size:1.4rem;margin:0}
+.cnt{font-family:var(--font-m);font-size:.68rem;background:var(--accent-soft);color:var(--accent-ink);
+padding:.1rem .45rem;border-radius:20px}
+.grp-desc{color:var(--ink-soft);font-size:.86rem;margin:-.4rem 0 .9rem}
+.term{font-family:var(--font-m);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+color:var(--ink-soft);margin:1rem 0 .3rem}
+ul.files{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ul.files li{margin:0}
+ul.files a{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;color:var(--ink);
+padding:.38rem .5rem;border-radius:6px;font-size:.9rem}
+ul.files a:hover{background:var(--surface-2)}
+ul.files a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fname{flex:1;min-width:0;word-break:break-word}
+.who{color:var(--ink-soft);font-size:.8rem}
+.inote{display:block;color:var(--ink-soft);font-size:.78rem;padding:0 .5rem .35rem 1rem}
+.src{font-family:var(--font-m);font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;
+padding:.12rem .4rem;border-radius:4px;font-weight:700;flex-shrink:0}
+.src-live{background:var(--accent-soft);color:var(--accent-ink)}
+.src-archive{background:var(--amber-soft);color:var(--amber)}
+.src-repo{background:var(--violet-soft);color:var(--violet)}
+.src-hosted{background:var(--blue-soft);color:var(--blue)}
+.empty{color:var(--ink-soft);font-size:.88rem;background:var(--surface);border:1px dashed var(--line);
+border-radius:8px;padding:.8rem .9rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1rem 1.15rem;margin-top:1rem}
+.box h3{font-family:var(--font-b);font-size:.95rem;margin:0 0 .5rem}
+.box ul{margin:0;padding-left:1.1rem;color:var(--ink-soft);font-size:.87rem}
+.box li{margin-bottom:.3rem}
+footer{margin-top:3rem;padding-top:1.3rem;border-top:1px solid var(--line);color:var(--ink-soft);
+font-size:.8rem;line-height:1.6}
+footer a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">Bilkent University · public course materials</p>
+    <h1>CS 211</h1>
+    <p class="sub">Data Structures</p>
+    <p class="lede">CS 211 runs for the first time in Fall 2026, so there is no public back catalogue: no past exams, no homework archive, no student copies anywhere. This page records what exists today and what was checked.</p>
+    <div class="stat">
+      <div><b>6</b><span>documents</span></div>
+      <div><b>6</b><span>live</span></div>
+      <div><b>0</b><span>from the archive</span></div>
+      <div><b>0</b><span>exam papers</span></div>
+    </div>
+  </header>
+  <div class="note"><b>How to read the badges:</b> <span class="src src-live">live</span> still sits on the instructor's own server; <span class="src src-archive">archive</span> is a Wayback Machine copy of a page that was publicly reachable when it was crawled. Everything here opens for anyone, with no login and no payment. Use it for your own study and follow the course's academic-honesty policy.</div>
+  <div class="note">The lecture slides, code examples and handouts on the course page are not publicly downloadable: the page itself is public, but every file under ~saksoy/courses/cs211/ answers 403 Forbidden to anyone off campus. That is deliberate access control by the instructor, so this archive does not link copies of them. Open them from the campus network, over the university VPN, or from Moodle, where the course also posts its assignments.</div>
+  <div class="box"><h3>Files that need campus access</h3><ul>
+    <li>Lecture slides — Introduction; Pointers and Arrays</li>
+    <li>Code examples — introduction_examples.zip</li>
+    <li>Interlude 1, 2 and 3 handouts</li>
+    <li>Linux command summaries 1 and 2</li>
+  </ul></div>
+  <section class="grp">
+    <div class="grp-head"><h2>Course pages &amp; syllabi</h2><span class="cnt">6</span></div>
+    <p class="grp-desc">Term pages, syllabi and policies.</p>
+      <p class="term">2026–27 Fall</p>
+      <ul class="files">
+        <li><a href="http://www.cs.bilkent.edu.tr/~saksoy/courses/cs211/" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Course page — Aksoy &amp; Çiçek (all four sections)</span><span class="who">Selim Aksoy · Ercüment Çiçek</span></a><span class="inote">The only public CS 211 page. Topic list, exam and homework structure, reading list and links. The files it links to are not public — see the note above.</span></li>
+        <li><a href="https://stars.bilkent.edu.tr/syllabus/view/CS/211/20261?section=1" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">STARS syllabus — section 1</span><span class="who">STARS</span></a></li>
+        <li><a href="https://stars.bilkent.edu.tr/syllabus/view/CS/211/20261?section=2" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">STARS syllabus — section 2</span><span class="who">STARS</span></a></li>
+        <li><a href="https://stars.bilkent.edu.tr/syllabus/view/CS/211/20261?section=3" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">STARS syllabus — section 3</span><span class="who">STARS</span></a></li>
+        <li><a href="https://stars.bilkent.edu.tr/syllabus/view/CS/211/20261?section=4" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">STARS syllabus — section 4</span><span class="who">STARS</span></a></li>
+      </ul>
+      <p class="term">current</p>
+      <ul class="files">
+        <li><a href="https://catalog.bilkent.edu.tr/course/c11211.html" target="_blank" rel="noopener"><span class="src src-live">live</span><span class="fname">Catalog entry</span><span class="who">Bilkent catalog</span></a><span class="inote">Official description, credits and prerequisites (CS 102 and MATH 132 or MATH 210).</span></li>
+      </ul>
+  </section>
+  <section class="grp">
+    <div class="grp-head"><h2>What was searched</h2></div>
+    <div class="box"><ul>
+      <li>Bilkent catalog: CS 211 Data Structures exists (course code c11211), 3 credits, prerequisite CS 102 and MATH 132 or MATH 210.</li>
+      <li>STARS term list: the course runs for the first time in 2026-27 Fall with four sections — sections 1 and 4 with Ercüment Çiçek, sections 2 and 3 with Selim Aksoy. An older CS 211 ran Fall 1990 to Fall 1995 (last taught by İlyas Çiçekli); the web is older than that record but nothing from it was ever put online.</li>
+      <li>Every CS-department personal folder for both instructors: ~saksoy (course page live, files gated), ~cicek (empty index page, no course folder), plus probes for ~ercument and ~ecicek (do not exist).</li>
+      <li>Wayback CDX sweep of cs.bilkent.edu.tr and www.cs.bilkent.edu.tr for every URL containing &quot;211&quot; and for &quot;cs211&quot; across the whole domain: 74 captures, none of them CS 211 material (they are an unrelated personal folder and library pages).</li>
+      <li>GitHub repository search, five queries (bilkent CS211, bilkent &quot;CS 211&quot;, bilkent cs211 in:readme, and two data-structures variants): zero repositories. No student has posted anything for this course yet — the first midterm has not happened.</li>
+    </ul></div>
+  </section>
+  <footer>
+    Collected from instructors' own pages and from the <a href="https://web.archive.org" target="_blank" rel="noopener">Internet Archive Wayback Machine</a>. Nothing here was taken from behind a login, a paywall or an access control. Anyone with this link can open the page.
+  </footer>
+</div>
+</body>
+</html>
